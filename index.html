@@ -323,6 +323,40 @@ tr.best td.score{color:var(--accent);font-family:var(--display);font-size:16px}
 .fill.center{text-align:center;font-family:var(--display);font-size:17px}
 .export-host .who .fill{border-bottom:1px solid var(--paper-line);min-width:200px}
 
+
+/* ---------- 1일차 활동 보조 요소 ---------- */
+.say{display:flex;gap:10px;align-items:flex-start;border:1px dashed #b9c2be;border-radius:10px;padding:8px 12px;background:#fbfcfb;font-size:13.5px;line-height:1.55}
+.say .ic{margin-top:2px;color:#525a5d}
+.say b{font-weight:400;font-family:var(--display);margin-right:8px}
+.carry{display:flex;flex-wrap:wrap;gap:4px 14px;align-items:baseline;border-left:3px solid var(--paper-ink);background:#f6f7f6;border-radius:0 8px 8px 0;padding:7px 12px;font-size:13.5px}
+.carry[hidden]{display:none}
+.carry b{font-family:var(--display);font-weight:400}
+.carry small{flex-basis:100%;color:#646d70;font-size:12px}
+.muted{color:#8a9491}
+.vchips{display:flex;flex-wrap:wrap;gap:6px}
+.vchip{border:1px solid var(--paper-line);background:#fff;border-radius:999px;padding:3px 11px;font-size:13px;cursor:pointer;color:var(--paper-ink)}
+.vchip:hover{border-color:var(--paper-ink)}
+.cls-table .ans{display:none}
+.reveal .cls-table .ans{display:table-cell}
+.sheet:not(.reveal) .cls-table col.ans-col{width:0}
+.cls-table td.ans{font-size:13px;color:#525a5d;background:#fafbfa}
+.cls-table td.ans.a{font-family:var(--display);color:var(--paper-ink);text-align:center;vertical-align:middle}
+.cls-table tr.ok td.ans.a{color:var(--accent)}
+.cls-table tr.no td.ans.a{color:var(--crit)}
+.cls-table tr.ok td.ans.a::after{content:" ✓"}
+.cls-table tr.no td.ans.a::after{content:" ✗"}
+.roles{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+.roles label{display:grid;gap:3px;font-size:13px;font-family:var(--display)}
+.roles small{font-family:var(--body);font-size:11px;color:#646d70}
+.linkbox.ok{border-style:solid;border-color:var(--accent);color:var(--ink)}
+.linkbox.ok .ic{color:var(--accent)}
+.ed-status{margin-bottom:14px}
+.ed-says{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px}
+.ed-says textarea,.ed-table textarea{resize:vertical;overflow:hidden;width:100%;font-size:14px;line-height:1.5}
+.ed-table td{vertical-align:top}
+.ed-table .inp{width:100%;padding:6px 8px;font-size:14px}
+.ed-table td.no{text-align:center;font-family:var(--display);color:var(--muted);vertical-align:middle}
+
 /* ---------- 함께 수업 ---------- */
 #live-btn{white-space:nowrap}
 #live-btn b{font-family:var(--display);font-weight:400;letter-spacing:.06em}
@@ -411,8 +445,10 @@ body.is-student .views{padding-bottom:120px}
 .tag.g{border-color:var(--accent);color:var(--accent)}
 .tag.y{border-color:var(--warn);color:var(--warn)}
 .tp-foot{display:flex;flex-wrap:wrap;gap:6px;border-top:1px solid var(--line);padding-top:12px}
-body.is-teacher .views{padding-right:400px}
-@media (max-width:1279px){ body.is-teacher .views{padding-right:28px} }
+.views{transition:padding-right .25s ease}
+body.is-teacher.tp-open .views{padding-right:400px}
+@media (max-width:1279px){ body.is-teacher.tp-open .views{padding-right:28px} }
+@media (prefers-reduced-motion: reduce){ .views{transition:none} }
 
 .proj{position:fixed;inset:0;z-index:70;background:var(--bg);display:grid;place-items:center;align-content:center;gap:10px;text-align:center;padding:24px}
 .proj[hidden]{display:none}
@@ -486,16 +522,17 @@ body.is-teacher .views{padding-right:400px}
     <ul class="tree" id="tree">
       <li><a href="#home" data-view="home"><svg class="ic lg" data-i="home"></svg>개요<span class="pct num" data-pct="all"></span></a></li>
       <li class="group">1일차 활동</li>
-      <li data-node="s1"><a href="#s1" data-view="s1"><svg class="ic lg" data-i="msg"></svg>1차시 발문 분석<span class="pct num" data-pct="s1"></span></a>
+      <li data-node="s1"><a href="#s1" data-view="s1"><svg class="ic lg" data-i="msg"></svg>1차시 교사의 질문<span class="pct num" data-pct="s1"></span></a>
         <ul class="sub"><li><a href="#s1-guide" data-sub="s1-guide">활동 안내</a></li><li><a href="#s1-ref" data-sub="s1-ref">참고 카드</a></li><li><a href="#s1-ex" data-sub="s1-ex">작성 예시</a></li><li><a href="#s1-sheet" data-sub="s1-sheet">활동지</a></li></ul></li>
-      <li data-node="s2"><a href="#s2" data-view="s2"><svg class="ic lg" data-i="compass"></svg>2차시 EQ·Q-Focus<span class="pct num" data-pct="s2"></span></a>
+      <li data-node="s2"><a href="#s2" data-view="s2"><svg class="ic lg" data-i="compass"></svg>2차시 질문 설계<span class="pct num" data-pct="s2"></span></a>
         <ul class="sub"><li><a href="#s2-guide" data-sub="s2-guide">활동 안내</a></li><li><a href="#s2-ref" data-sub="s2-ref">참고 카드</a></li><li><a href="#s2-ex" data-sub="s2-ex">작성 예시</a></li><li><a href="#s2-sheet" data-sub="s2-sheet">활동지</a></li></ul></li>
-      <li data-node="s3"><a href="#s3" data-view="s3"><svg class="ic lg" data-i="spark"></svg>3차시 질문 생성·개선<span class="pct num" data-pct="s3"></span></a>
+      <li data-node="s3"><a href="#s3" data-view="s3"><svg class="ic lg" data-i="spark"></svg>3차시 학생이 되어<span class="pct num" data-pct="s3"></span></a>
         <ul class="sub"><li><a href="#s3-guide" data-sub="s3-guide">활동 안내</a></li><li><a href="#s3-ref" data-sub="s3-ref">참고 카드</a></li><li><a href="#s3-ex" data-sub="s3-ex">작성 예시</a></li><li><a href="#s3-sheet" data-sub="s3-sheet">활동지</a></li></ul></li>
       <li data-node="s4"><a href="#s4" data-view="s4"><svg class="ic lg" data-i="layout"></svg>4차시 수업 설계표<span class="pct num" data-pct="s4"></span></a>
         <ul class="sub"><li><a href="#s4-doc" data-sub="s4-doc">문서 받기</a></li><li><a href="#s4-check" data-sub="s4-check">완성 기준</a></li></ul></li>
       <li class="group">도구</li>
       <li><a href="#live" id="nav-live"><svg class="ic lg" data-i="users"></svg>함께 수업 (코드 참여)</a></li>
+      <li><a href="#content" data-view="content"><svg class="ic lg" data-i="edit"></svg>예시·문장 편집 (강사)</a></li>
       <li><a href="#timer" data-view="timer"><svg class="ic lg" data-i="clock"></svg>활동 타이머</a></li>
       <li><a href="#backup" data-view="backup"><svg class="ic lg" data-i="archive"></svg>백업과 불러오기</a></li>
     </ul>
@@ -530,9 +567,9 @@ body.is-teacher .views{padding-right:400px}
     </div>
   </div>
   <div class="cards">
-    <a class="card" href="#s1"><span class="k"><svg class="ic" data-i="msg"></svg>1차시 · 웹 활동지</span><b>교사 발문 유형 분석 및 질문 개선</b><span class="f">발문 5개 진단 → 렌즈로 고쳐 쓰기</span><div class="meter" data-meter="s1"><div class="meter-top"><span>진행률</span><b class="num"><span data-val>0</span><small>%</small></b></div><div class="track"><div class="fillbar"></div></div></div></a>
-    <a class="card" href="#s2"><span class="k"><svg class="ic" data-i="compass"></svg>2차시 · 웹 활동지</span><b>핵심 질문(EQ)과 질문 초점(Q-Focus) 설계</b><span class="f">EQ 후보 7원칙 점검 → 차시별 Q-Focus</span><div class="meter" data-meter="s2"><div class="meter-top"><span>진행률</span><b class="num"><span data-val>0</span><small>%</small></b></div><div class="track"><div class="fillbar"></div></div></div></a>
-    <a class="card" href="#s3"><span class="k"><svg class="ic" data-i="spark"></svg>3차시 · 웹 활동지</span><b>교과서 텍스트로 질문 생성·개선</b><span class="f">QFT 쏟아내기 → 렌즈로 개선 → 우선 질문 3개</span><div class="meter" data-meter="s3"><div class="meter-top"><span>진행률</span><b class="num"><span data-val>0</span><small>%</small></b></div><div class="track"><div class="fillbar"></div></div></div></a>
+    <a class="card" href="#s1"><span class="k"><svg class="ic" data-i="msg"></svg>1차시 · 웹 활동지</span><b>교사의 질문 다시 보기</b><span class="f">단원 정하기 → 발문 3개 진단 → 한 층 올리기 → 학생에게 넘겨주기</span><div class="meter" data-meter="s1"><div class="meter-top"><span>진행률</span><b class="num"><span data-val>0</span><small>%</small></b></div><div class="track"><div class="fillbar"></div></div></div></a>
+    <a class="card" href="#s2"><span class="k"><svg class="ic" data-i="compass"></svg>2차시 · 웹 활동지</span><b>질문을 설계하기</b><span class="f">구별하기 → 가치 찾기 → EQ → 차시별 Q-Focus</span><div class="meter" data-meter="s2"><div class="meter-top"><span>진행률</span><b class="num"><span data-val>0</span><small>%</small></b></div><div class="track"><div class="fillbar"></div></div></div></a>
+    <a class="card" href="#s3"><span class="k"><svg class="ic" data-i="spark"></svg>3차시 · 웹 활동지 · 모둠</span><b>학생이 되어 질문 만들기</b><span class="f">모둠 QFT → 렌즈 업그레이드 → 교사로 돌아오기</span><div class="meter" data-meter="s3"><div class="meter-top"><span>진행률</span><b class="num"><span data-val>0</span><small>%</small></b></div><div class="track"><div class="fillbar"></div></div></div></a>
     <a class="card" href="#s4"><span class="k"><svg class="ic" data-i="layout"></svg>4차시 · 구글 문서</span><b>STAR 모형 기반 수업 설계표 초안</b><span class="f">Step 1~4·6 작성, 2일차에 이어 작성</span><div class="meter" data-meter="s4"><div class="meter-top"><span>완성 기준 점검</span><b class="num"><span data-val>0</span><small>%</small></b></div><div class="track"><div class="fillbar"></div></div></div></a>
   </div>
   <div class="how">
@@ -544,12 +581,12 @@ body.is-teacher .views{padding-right:400px}
 </section>
 
 <!-- ========== 1차시 ========== -->
-<section class="view" id="v-s1" data-title="1차시 · 교사 발문 분석">
+<section class="view" id="v-s1" data-title="1차시 · 교사의 질문 다시 보기">
   <div class="vgrid">
     <div class="v-head">
-      <div class="meta"><span class="chip"><svg class="ic" data-i="globe"></svg>웹 활동지</span><span class="chip"><svg class="ic" data-i="clock"></svg>약 15분</span><span class="chip">1-3 전시형 vs 참조형 · 1-4 Bloom · 1-5 교사 발문 분석</span></div>
-      <h2>교사 발문 유형 분석 및 질문 개선 활동지</h2>
-      <p>최근 수업에서 실제로 쓴 발문을 옮겨 적고, 분류표와 Bloom 수준으로 진단한 뒤 STAR 렌즈를 골라 고쳐 씁니다.</p>
+      <div class="meta"><span class="chip"><svg class="ic" data-i="globe"></svg>웹 활동지</span><span class="chip">1-1 교육과정과 필요성 · 1-3 전시형 vs 참조형 · 1-4 Bloom · 1-5 교사 발문 분석</span></div>
+      <h2>1차시 · 교사의 질문 다시 보기</h2>
+      <p>내가 평소 던지는 질문이 어떤 질문인지 알아차리고, 그 질문을 학생에게 넘기는 방법을 찾아봅니다. 여기서 고른 단원으로 1일차 설계를 이어 갑니다.</p>
     </div>
 
     <div class="info panel" data-tabs="s1">
@@ -560,83 +597,134 @@ body.is-teacher .views{padding-right:400px}
       </div>
       <div class="tabpanel" role="tabpanel" id="s1-guide-panel" aria-labelledby="s1-guide-tab">
         <ol class="steps">
-          <li>최근 수업 발문 5개 적기<span>수업 중 실제로 던진 말 그대로</span></li>
-          <li>유형·사고 수준 진단<span>전시형/참조형, Bloom 수준 고르기</span></li>
-          <li>렌즈로 고쳐 쓰기<span>사용한 렌즈를 함께 표시</span></li>
-          <li>저장해서 패들렛에 공유<span>서로의 개선 발문 읽어 보기</span></li>
+          <li>열기<span>세 가지 수업 비교 · 내 수업 돌아보기</span></li>
+          <li>오늘 설계할 단원 정하기<span>1일차 내내 이어 쓸 단원</span></li>
+          <li>내 발문 진단하기<span>발문 3개 · 유형과 사고 수준</span></li>
+          <li>한 층 올리기<span>질문 사다리 · Kagan · Just One Thing</span></li>
+          <li>학생에게 넘겨주기<span>5가지 전환 전략 중 하나</span></li>
         </ol>
+        <p class="note">이 차시의 핵심: 질문의 주인을 교사에서 학생으로 옮기는 첫걸음은, 내가 지금 어떤 질문을 하고 있는지 알아차리는 것입니다.</p>
       </div>
       <div class="tabpanel" role="tabpanel" id="s1-ref-panel" aria-labelledby="s1-ref-tab" hidden>
-        <div class="subhead">질문 유형 분류표: 전시형(Display) vs 참조형(Referential)</div>
+        <div class="subhead">세 가지 수업, 무엇이 다를까?</div>
         <div class="tbl"><table>
-          <thead><tr><th>대분류</th><th>중분류</th><th>Bloom</th><th>발문 예시</th><th>STAR 렌즈 연계</th></tr></thead>
-          <tbody>
-            <tr><td rowspan="2">전시형<br>(Display)</td><td>하위 수렴형</td><td>지식</td><td>How many hours are in a day? What is the title of the story?</td><td>Evidence / Definition</td></tr>
-            <tr><td>상위 수렴형</td><td>이해</td><td>Was the main character a girl? Does anyone know what this word means?</td><td>Evidence / Definition</td></tr>
-            <tr><td rowspan="4">참조형<br>(Referential)</td><td rowspan="2">하위 확산형</td><td>추론</td><td>How does this apply to your life? Would you like to come to my party?</td><td>Alternative / Implicature</td></tr>
-            <tr><td>분석</td><td>Where does the story go next? What is your opinion about...?</td><td>Perspective / Chain of Thought</td></tr>
-            <tr><td rowspan="2">상위 확산형</td><td>평가</td><td>Is this argument well supported? Why? Is this rational?</td><td>Value / Assumption</td></tr>
-            <tr><td>창조</td><td>How could you combine these ideas? What could you create to solve this?</td><td>Tree of Thought / Perspective</td></tr>
-          </tbody>
-        </table></div>
-        <p class="note">설계 방향: 전시형(수렴)에서 참조형(확산)으로 점진적으로 심화합니다.</p>
-        <div class="subhead">Bloom 사고 수준과 좋은 발문의 방향</div>
-        <div class="tbl"><table>
-          <thead><tr><th>하위사고기능 (LOTS)</th><th>상위사고기능 (HOTS)</th></tr></thead>
+          <thead><tr><th>학습 문제 중심</th><th>탐구 질문 중심</th><th>학생 질문 중심</th></tr></thead>
           <tbody><tr>
-            <td>정보 암기하기 · 정보 순서 짓기 · 대상물 정의하기 · 이해 점검하기 · 복습하기</td>
-            <td>추론 기능 신장하기 · 탐구 및 토론 능력 신장하기 · 창조적 사고 능력 신장하기 · 자신 및 타인 평가하기 · 가설 설정하기</td>
+            <td>교사가 지식을 전달하고 학생은 받아들임 · 질문은 이해 확인이나 정답 점검 · 평가는 목표 달성 여부 확인</td>
+            <td>학생이 계획하고 자료를 찾고 근거를 구성함 · 질문은 수업 방향을 잡는 틀 · 평가는 탐구 과정과 근거 기반 답변</td>
+            <td>학생이 질문을 정하고 탐구 방향을 조정함 · 질문은 학습 내용이자 평가 대상 · 평가는 질문의 질, 탐구 지속성, 성찰</td>
           </tr></tbody>
         </table></div>
+        <div class="subhead">질문 유형 분류표: 전시형(Display) vs 참조형(Referential)</div>
         <div class="tbl"><table>
-          <thead><tr><th>이런 질문에서</th><th>이런 질문으로 (Kagan, 1999)</th></tr></thead>
+          <thead><tr><th>대분류</th><th>중분류</th><th>사고 수준</th><th>발문 예시</th></tr></thead>
           <tbody>
-            <tr><td>짧은 대답 · 얕은 사고</td><td>정교한 대답 · 깊은 사고</td></tr>
-            <tr><td>참/거짓 · 사고의 내용(“what” to think)</td><td>한 개 이상의 정답 · 사고의 방법(“how” to think)</td></tr>
-            <tr><td>고정된 정답 · 정답 확인</td><td>다양한 정답 · 사고 요구</td></tr>
+            <tr><td rowspan="2">전시형</td><td>하위 수렴형</td><td>지식</td><td>How many hours are in a day? What is the title of the story?</td></tr>
+            <tr><td>상위 수렴형</td><td>이해</td><td>Was the main character a girl? Does anyone know what this word means?</td></tr>
+            <tr><td rowspan="4">참조형</td><td rowspan="2">하위 확산형</td><td>추론</td><td>How does this apply to your life? Would you like to come to my party?</td></tr>
+            <tr><td>분석</td><td>Where does the story go next? What is your opinion about...?</td></tr>
+            <tr><td rowspan="2">상위 확산형</td><td>평가</td><td>Is this argument well supported? Why?</td></tr>
+            <tr><td>창조</td><td>How could you combine these ideas? What could you create to solve this?</td></tr>
           </tbody>
         </table></div>
-        <div class="subhead">STAR 9 질문 렌즈 (ADAPTIVE-C)</div>
-        <div class="lens-grid" data-lens-cards></div>
+        <p class="note">사고 수준은 Bloom의 분류를 따릅니다. 지식·이해는 하위사고기능(LOTS), 추론·분석·평가·창조는 상위사고기능(HOTS)에 가깝습니다.</p>
+        <div class="subhead">한 층 올리는 방법</div>
+        <div class="tbl"><table>
+          <thead><tr><th style="width:24%">방법</th><th>이렇게 바꿔요</th></tr></thead>
+          <tbody>
+            <tr><td>질문 사다리</td><td>What do I like? → Why do I like it? → What does it show about what I care about?</td></tr>
+            <tr><td>Kagan (1999)</td><td>짧은 대답 → 정교한 대답 · 참/거짓 → 한 개 이상의 정답 · 고정된 정답(묻는 사람이 답을 앎) → 다양한 정답(사고 요구)</td></tr>
+            <tr><td>Just One Thing</td><td>“왜 그런 생각을 하게 되었나요?” · “만약 ~라는 관점에서 다시 본다면?” · “이전에 배운 개념과 연결해 볼 수 있을까요?” · “구체적인 근거는 무엇인가요?”</td></tr>
+          </tbody>
+        </table></div>
+        <div class="subhead">수업의 판을 바꾸는 5가지 전환 전략</div>
+        <div class="tbl"><table>
+          <tbody>
+            <tr><td style="width:24%">순서의 역전</td><td>답을 먼저 제시하고 “이 답이 되려면 어떤 질문이 필요한가?” 역추적</td></tr>
+            <tr><td>타이밍의 역전</td><td>읽기 전 질문 3가지 생성 → 답을 찾기 위해 읽기</td></tr>
+            <tr><td>주체의 역전</td><td>학생 질문바구니 → 다음 수업의 탐구 주제</td></tr>
+            <tr><td>관점의 역전</td><td>막연한 질문을 다른 관점에서 다시 묻기 (3차시 렌즈로 이어짐)</td></tr>
+            <tr><td>형식의 역전</td><td>학생 답변에 “맞아” 대신 재질문(Up-taking Question)</td></tr>
+          </tbody>
+        </table></div>
       </div>
       <div class="tabpanel" role="tabpanel" id="s1-ex-panel" aria-labelledby="s1-ex-tab" hidden>
+        <div class="subhead">시장 단원 (Must-Visit Markets Around the World)</div>
         <div class="tbl"><table>
-          <thead><tr><th style="width:4%"></th><th>내가 한 발문</th><th style="width:11%">유형</th><th style="width:9%">Bloom</th><th>개선한 발문</th><th style="width:14%">사용한 렌즈</th></tr></thead>
+          <thead><tr><th style="width:4%"></th><th>내가 한 발문</th><th style="width:12%">유형</th><th style="width:10%">사고 수준</th></tr></thead>
           <tbody>
-            <tr><td>1</td><td>Is this market famous?</td><td>전시형</td><td>이해</td><td>What part of the market shows this country’s culture is unique?</td><td>Evidence</td></tr>
-            <tr><td>2</td><td>What does the market look like?</td><td>전시형</td><td>지식</td><td>If I were a local seller, what would I sell? Why?</td><td>Perspective</td></tr>
-            <tr><td>3</td><td>Is this item expensive?</td><td>전시형</td><td>지식</td><td>Why is this item important in this country?</td><td>Value</td></tr>
+            <tr><td>1</td><td>Is this market famous?</td><td>전시형</td><td>이해</td></tr>
+            <tr><td>2</td><td>What does the market look like?</td><td>전시형</td><td>지식</td></tr>
+            <tr><td>3</td><td>Is this item expensive?</td><td>전시형</td><td>지식</td></tr>
           </tbody>
         </table></div>
-        <p class="note">시장 단원 2차시 질문 업그레이드 사례입니다. 학생에게는 렌즈 이름 대신 비계 문구(Think about evidence. / Try a different perspective. / Think about value.)를 주어도 됩니다.</p>
-        <div class="subhead">질문 사다리로 한 층씩 올리기 (Future Jobs 1차시)</div>
-        <div class="ladder"><span>What do I like?</span><svg class="ic" data-i="arrow"></svg><span>Why do I like it?</span><svg class="ic" data-i="arrow"></svg><span>What does it show about what I care about?</span></div>
+        <div class="tbl"><table>
+          <tbody>
+            <tr><td style="width:24%">한 층 올리기 (2번, 질문 사다리)</td><td>What does the market look like? → Why do people come to this market? → What does this market show about what local people value?</td></tr>
+            <tr><td>학생에게 넘겨주기 (타이밍의 역전)</td><td>지문을 읽기 전에 시장 사진 세 장만 보여 주고, 학생이 궁금한 점을 질문 3개로 먼저 쓰게 한다. 읽으면서 자기 질문의 답을 찾고, 답이 없는 질문은 다음 시간 탐구 주제로 남긴다.</td></tr>
+          </tbody>
+        </table></div>
       </div>
     </div>
 
     <div class="sheet-area" id="s1-sheet-anchor">
       <div class="sheet-bar" data-for="sheet1"></div>
       <div class="sheet-scroll">
-        <div class="sheet" id="sheet1" data-file="1차시_발문분석">
+        <div class="sheet" id="sheet1" data-file="1차시_교사의질문">
           <div class="sh-head">
             <span class="sh-no">1차시</span>
-            <div class="sh-title">교사 발문 유형 분석 및 질문 개선 활동지<small>최근 수업 발문 5개 적기 → 유형·사고 수준 진단 → 렌즈로 고쳐 쓰기</small></div>
+            <div class="sh-title">교사의 질문 다시 보기<small>열기 → 단원 정하기 → 발문 진단 → 한 층 올리기 → 학생에게 넘겨주기</small></div>
             <label class="who" for="s1-who">작성자(개인 또는 모둠) <input id="s1-who" data-k="s1.who" placeholder="이름 / 모둠명"></label>
           </div>
-          <div class="fields">
-            <label for="s1-class">수업 정보 (학년 · 단원 · 영역)<input id="s1-class" data-k="s1.class" placeholder="예: 중2 · Lesson 3 · 읽기"></label>
-          </div>
+
           <div class="sh-sec">
+            <h4>① 열기</h4>
+            <div class="say"><svg class="ic" data-i="users"></svg><span><b>함께 이야기해요</b><span data-c="say.s1open"></span></span></div>
+            <label class="fields" for="s1-open" style="grid-template-columns:1fr"><span>내 수업에서 학생 질문이 잘 나오지 않는 이유</span><textarea id="s1-open" data-k="s1.open" rows="1"></textarea></label>
+          </div>
+
+          <div class="sh-sec">
+            <h4>② 오늘 설계할 단원 <span>1일차와 2일차 설계에 계속 이어 씁니다</span></h4>
+            <div class="fields">
+              <label for="s1-book">교과서<input id="s1-book" data-k="s1.book" placeholder="예: 천재 영어3(이)"></label>
+              <label for="s1-grade">학년<input id="s1-grade" data-k="s1.grade" placeholder="예: 중3"></label>
+              <label for="s1-unit">단원명<input id="s1-unit" data-k="s1.unit" placeholder="예: Lesson 4. Opening a Window to the World"></label>
+            </div>
+          </div>
+
+          <div class="sh-sec">
+            <h4>③ 내 발문 진단하기 <span>이 단원(또는 최근 수업)에서 실제로 던진 발문을 그대로</span></h4>
+            <div class="say"><svg class="ic" data-i="users"></svg><span><b>함께 이야기해요</b><span data-c="say.s1diag"></span></span></div>
             <table>
-              <colgroup><col style="width:4%"><col style="width:28%"><col style="width:11%"><col style="width:10%"><col style="width:32%"><col style="width:15%"></colgroup>
-              <thead><tr><th></th><th>① 내가 한 발문</th><th>② 전시형 / 참조형</th><th>② Bloom 수준</th><th>③ 개선한 발문</th><th>③ 사용한 렌즈</th></tr></thead>
+              <colgroup><col style="width:5%"><col style="width:59%"><col style="width:18%"><col style="width:18%"></colgroup>
+              <thead><tr><th></th><th>내가 한 발문</th><th>전시형 / 참조형</th><th>사고 수준</th></tr></thead>
               <tbody data-rows="s1"></tbody>
             </table>
             <div class="tally" id="s1-tally"></div>
           </div>
+
           <div class="sh-sec">
-            <h4>가장 크게 달라진 발문 하나 <span>무엇이 어떻게 바뀌었고, 학생은 어떤 생각을 하게 될까요?</span></h4>
-            <textarea id="s1-ref" data-k="s1.reflect" rows="2" placeholder="예: 3번 발문은 사실 확인에서 가치 판단으로 바뀌어 학생이 자기 기준을 말해야 한다."></textarea>
+            <h4>④ 한 층 올리기 <span>발문 하나를 골라 1차시에서 배운 방법으로</span></h4>
+            <div class="fields">
+              <label for="s1-uppick">고른 발문<select id="s1-uppick" data-k="s1.uppick"><option value="">선택</option><option value="1">1번</option><option value="2">2번</option><option value="3">3번</option></select></label>
+              <label for="s1-uptool">사용한 방법<select id="s1-uptool" data-k="s1.uptool"></select></label>
+            </div>
+            <div class="carry" id="s1-upfrom"></div>
+            <label class="fields" for="s1-up" style="grid-template-columns:1fr"><span>한 층 올린 질문</span><textarea id="s1-up" data-k="s1.up" rows="1"></textarea></label>
+          </div>
+
+          <div class="sh-sec">
+            <h4>⑤ 학생에게 넘겨주기 <span>이 질문을 교사가 묻지 않고 학생이 스스로 묻게 하려면?</span></h4>
+            <div class="say"><svg class="ic" data-i="users"></svg><span><b>함께 이야기해요</b><span data-c="say.s1pass"></span></span></div>
+            <div class="fields">
+              <label for="s1-pass">전환 전략<select id="s1-pass" data-k="s1.pass"></select></label>
+            </div>
+            <label class="fields" for="s1-passhow" style="grid-template-columns:1fr"><span>수업 장면으로 한두 줄</span><textarea id="s1-passhow" data-k="s1.passhow" rows="2" placeholder="예: 읽기 전에 사진만 보여 주고 학생이 질문 3개를 먼저 쓰게 한다."></textarea></label>
+          </div>
+
+          <div class="sh-sec">
+            <h4>모둠 토의 메모 <span>선택</span></h4>
+            <textarea id="s1-memo" data-k="s1.memo" rows="2"></textarea>
           </div>
           <div class="sh-foot"><span>질문 중심 영어 수업·평가의 이해와 실제 · 1일차</span><span>1차시 산출물</span></div>
         </div>
@@ -651,10 +739,10 @@ body.is-teacher .views{padding-right:400px}
       <div class="panel crit-card">
         <div class="panel-head"><h3>완성 기준 점검</h3><small>진행률에 반영</small></div>
         <ul class="crit">
-          <li><label><input type="checkbox" data-k="c1.1">실제 수업에서 쓴 발문을 그대로 5개 적었다.</label></li>
-          <li><label><input type="checkbox" data-k="c1.2">모든 발문의 유형과 Bloom 수준을 진단했다.</label></li>
-          <li><label><input type="checkbox" data-k="c1.3">개선한 발문마다 사용한 렌즈를 표시했다.</label></li>
-          <li><label><input type="checkbox" data-k="c1.4">개선한 발문이 정답이 하나로 정해지지 않은 열린 질문이다.</label></li>
+          <li><label><input type="checkbox" data-k="c1.1">오늘 설계할 단원을 정했다.</label></li>
+          <li><label><input type="checkbox" data-k="c1.2">실제 발문 3개의 유형과 사고 수준을 진단했다.</label></li>
+          <li><label><input type="checkbox" data-k="c1.3">발문 하나를 배운 방법으로 한 층 올렸다.</label></li>
+          <li><label><input type="checkbox" data-k="c1.4">그 질문을 학생이 하게 만드는 방법을 수업 장면으로 적었다.</label></li>
         </ul>
       </div>
     </div>
@@ -662,12 +750,12 @@ body.is-teacher .views{padding-right:400px}
 </section>
 
 <!-- ========== 2차시 ========== -->
-<section class="view" id="v-s2" data-title="2차시 · EQ와 Q-Focus 설계">
+<section class="view" id="v-s2" data-title="2차시 · 질문을 설계하기">
   <div class="vgrid">
     <div class="v-head">
-      <div class="meta"><span class="chip"><svg class="ic" data-i="globe"></svg>웹 활동지</span><span class="chip"><svg class="ic" data-i="clock"></svg>실습 ① 10분 · ② 10분 · 공유 25분</span><span class="chip">2-2 EQ 설계 7원칙 · 2-3 Q-Focus · 2-5 실습</span></div>
-      <h2>핵심 질문(EQ)과 질문 초점(Q-Focus) 설계</h2>
-      <p>내 단원의 핵심 질문 후보를 7원칙으로 점검해 최종 EQ를 고르고, 차시별 Q-Focus 2~3개로 나눕니다. 여기서 정한 단원·EQ·Q-Focus는 4차시 수업 설계표 Step 1~3에 옮겨 적습니다.</p>
+      <div class="meta"><span class="chip"><svg class="ic" data-i="globe"></svg>웹 활동지</span><span class="chip">2-1 성취기준·핵심 개념 · 2-2 EQ 설계 7원칙 · 2-3 Q-Focus 구성 원리 · 2-5 실습</span></div>
+      <h2>2차시 · 질문을 설계하기</h2>
+      <p>EQ와 Q-Focus를 구별하는 눈을 먼저 기르고, 1차시에 고른 단원의 소재에서 가치를 찾아 EQ를 만든 뒤 차시별 Q-Focus로 나눕니다.</p>
     </div>
 
     <div class="info panel" data-tabs="s2">
@@ -678,57 +766,73 @@ body.is-teacher .views{padding-right:400px}
       </div>
       <div class="tabpanel" role="tabpanel" id="s2-guide-panel" aria-labelledby="s2-guide-tab">
         <ol class="steps">
-          <li>단원 정하기<span>내일까지 계속 쓸 단원 하나</span></li>
-          <li>실습 ① EQ 후보 점검<span>7원칙에 ○ 충족, △ 일부 충족</span></li>
-          <li>실습 ② 차시별 Q-Focus<span>EQ를 2~3개 차시로 나누기</span></li>
-          <li>실습 ③ 짝 점검과 모둠 발표<span>점검 질문 4개 · 1인 2분 발표</span></li>
+          <li>구별하기<span>전시형 질문 · EQ · Q-Focus 분류하고 이유 토의</span></li>
+          <li>가치 찾기<span>단원 소재 + 가치</span></li>
+          <li>EQ 만들기<span>후보 2~3개 → 7원칙 점검 → 최종 EQ</span></li>
+          <li>Q-Focus 만들기<span>차시별 2~3개 · 예상 학생 질문</span></li>
+          <li>짝 점검 → 모둠 발표<span>Q-Focus 5가지 조건</span></li>
         </ol>
-        <p class="note">발표 후 함께 볼 질문: 이 EQ는 7원칙 중 무엇을 가장 잘 충족하나요? Q-Focus를 보면 학생에게서 어떤 질문이 나올 것 같나요? 세 Q-Focus를 모으면 EQ에 대한 답이 되나요?</p>
+        <p class="note">이 차시의 핵심: EQ는 단원 전체를 관통하는 나침반이고, Q-Focus는 학생이 질문을 쏟아내게 하는 차시별 출발점입니다.</p>
       </div>
       <div class="tabpanel" role="tabpanel" id="s2-ref-panel" aria-labelledby="s2-ref-tab" hidden>
-        <div class="subhead">핵심 질문(EQ) 설계 7원칙</div>
-        <div class="tbl"><table>
-          <thead><tr><th>원칙</th><th>판단 기준</th><th>연계 렌즈·도구</th></tr></thead>
-          <tbody>
-            <tr><td>① 전이 가능성</td><td>교실 밖(가족, 사회, 국제 관계)에서도 적용되는가?</td><td>Definition, Value</td></tr>
-            <tr><td>② 개념 중심성</td><td>단순 사실 확인이 아닌 핵심 개념의 이해를 요구하는가?</td><td>Chain of Thought</td></tr>
-            <tr><td>③ 논쟁성 및 비판성</td><td>서로 다른 입장이 충돌하여 토론을 일으키는가?</td><td>What if, Perspective</td></tr>
-            <tr><td>④ 고차원적 사고 자극</td><td>암기·기억을 넘어 분석·평가·창조를 요구하는가?</td><td>5 Whys, Implicature</td></tr>
-            <tr><td>⑤ 호기심과 동기 유발</td><td>학생이 진정으로 알고 싶다고 느낄 만한 흥미를 유발하는가?</td><td>MTV See-Think-Wonder</td></tr>
-            <tr><td>⑥ 지속적 탐구 가능성</td><td>한 차시로 끝나지 않고 단원 내내 답이 깊어지는가?</td><td>Evidence, Alternative</td></tr>
-            <tr><td>⑦ 자기주도적 성찰 연결</td><td>학생 자신의 경험이나 태도와 연결되어 성찰을 이끄는가?</td><td>Value</td></tr>
-          </tbody>
-        </table></div>
-        <div class="subhead">Q-Focus 공식</div>
-        <div class="pill-row"><span>1 명확한 초점이 있다</span><span>2 의문문이 아니다 (진술문·이미지)</span><span>3 새로운 방식의 사고를 자극한다</span><span>4 교사의 선호나 성향을 드러내지 않는다</span></div>
+        <div class="subhead">EQ와 Q-Focus는 무엇이 다를까?</div>
         <div class="tbl"><table>
           <thead><tr><th>구분</th><th>핵심 질문 (EQ)</th><th>Q-Focus</th></tr></thead>
           <tbody>
             <tr><td>범위</td><td>단원 전체를 관통</td><td>각 차시의 출발점</td></tr>
             <tr><td>역할</td><td>수업 설계의 나침반</td><td>학생의 질문 생성 자극</td></tr>
-            <tr><td>형태</td><td>열린 가치 질문 (의문문)</td><td>진술문·이미지도 가능 (의문문 아님)</td></tr>
+            <tr><td>형태</td><td>열린 가치 질문 (의문문 + 명사구)</td><td>진술문·이미지 (의문문 아님)</td></tr>
           </tbody>
         </table></div>
-        <p class="note">EQ는 ‘의문문 형태’와 ‘명사구 형태’를 함께 정해 두면 수업 설계 전반에서 쓰기 좋습니다.</p>
+        <div class="subhead">핵심 질문(EQ) 설계 7원칙</div>
+        <div class="tbl"><table>
+          <thead><tr><th>원칙</th><th>판단 기준</th></tr></thead>
+          <tbody>
+            <tr><td>① 전이 가능성</td><td>교실 밖(가족, 사회, 국제 관계)에서도 적용되는가?</td></tr>
+            <tr><td>② 개념 중심성</td><td>단순 사실 확인이 아닌 핵심 개념의 이해를 요구하는가?</td></tr>
+            <tr><td>③ 논쟁성 및 비판성</td><td>서로 다른 입장이 충돌하여 토론을 일으키는가?</td></tr>
+            <tr><td>④ 고차원적 사고 자극</td><td>암기·기억을 넘어 분석·평가·창조를 요구하는가?</td></tr>
+            <tr><td>⑤ 호기심과 동기 유발</td><td>학생이 진정으로 알고 싶다고 느낄 만한 흥미를 유발하는가?</td></tr>
+            <tr><td>⑥ 지속적 탐구 가능성</td><td>한 차시로 끝나지 않고 단원 내내 답이 깊어지는가?</td></tr>
+            <tr><td>⑦ 자기주도적 성찰 연결</td><td>학생 자신의 경험이나 태도와 연결되어 성찰을 이끄는가?</td></tr>
+          </tbody>
+        </table></div>
+        <div class="subhead">Q-Focus 5가지 조건</div>
+        <div class="pill-row"><span>1 명확한 초점이 있다</span><span>2 의문문이 아니다 (진술문·이미지)</span><span>3 새로운 방식의 사고를 자극한다</span><span>4 교사의 선호나 답을 드러내지 않는다</span><span>5 사실·개념·추론·평가 질문이 다 나올 만큼 열려 있다</span></div>
+        <div class="subhead">Q-Focus 5가지 장면 유형 (We Have a Cat on Our Team)</div>
+        <div class="tbl"><table>
+          <thead><tr><th style="width:18%">유형</th><th>예시</th><th>질문의 방향</th></tr></thead>
+          <tbody>
+            <tr><td>도발적 단정</td><td>“Only dogs can play fetch.”</td><td>“정말 그럴까?” 반대 사례 찾기</td></tr>
+            <tr><td>감정적 결핍</td><td>“Cathy watched silently.”</td><td>“그 인물은 지금 어떤 마음일까?”</td></tr>
+            <tr><td>인과 미스터리</td><td>“They bumped into each other.”</td><td>“왜 이런 일이 생겼지?”</td></tr>
+            <tr><td>시각적 대비</td><td>“We never had a cat on our team!”</td><td>“‘우리’의 경계는 어디일까?”</td></tr>
+            <tr><td>미완성 확장</td><td>“Cookie! Please come out.”</td><td>“만약 ~라면 어떨까?”</td></tr>
+          </tbody>
+        </table></div>
+        <p class="note">Q-Focus는 지문 속 문장을 그대로 가져와도 좋고, 지문 내용을 바탕으로 직접 만들어도 좋습니다.</p>
       </div>
       <div class="tabpanel" role="tabpanel" id="s2-ex-panel" aria-labelledby="s2-ex-tab" hidden>
-        <div class="subhead">Lesson 6. Click, Connect, and Communicate · EQ: How do you communicate in the digital world?</div>
+        <div class="subhead">천재 영어3(이) Lesson 4. Opening a Window to the World</div>
         <div class="tbl"><table>
-          <thead><tr><th style="width:8%">차시</th><th style="width:34%">Q-Focus (교과서 원문)</th><th>초점화 부연 · 생성될 질문</th></tr></thead>
           <tbody>
-            <tr><td>1</td><td>We connect, but we sometimes hurt each other.</td><td>도입부의 역설적 상황을 압축. 연결인데 왜 상처가 생기지? 진짜 소통은 무엇이 다른가?</td></tr>
-            <tr><td>2</td><td>I want to be kind, but I don’t feel good.</td><td>세 이야기를 관통하는 감정적 긴장. 배려와 불편함 중 무엇이 우선? 나라면 어떻게 했을까?</td></tr>
-            <tr><td>3</td><td>Please give them advice.</td><td>지문이 독자에게 직접 건네는 말. 어떤 조언이 진짜 도움이 되나? 캠페인 슬로건 창작으로 연결</td></tr>
+            <tr><td style="width:22%">소재 + 가치</td><td>문화 + 다양성 (문화적 다양성을 존중하고 향유하는 태도)</td></tr>
+            <tr><td>최종 EQ</td><td>What makes a culture worth sharing? (The value of culture)</td></tr>
           </tbody>
         </table></div>
-        <div class="subhead">Future Jobs · EQ: How do my interests, strengths, and reasons shape my future job story?</div>
         <div class="tbl"><table>
-          <thead><tr><th style="width:8%">차시</th><th style="width:46%">Q-Focus</th><th>초점화 부연</th></tr></thead>
+          <thead><tr><th style="width:8%">차시</th><th>Q-Focus</th><th style="width:14%">출처</th><th style="width:14%">유형</th><th>예상 학생 질문</th></tr></thead>
           <tbody>
-            <tr><td>1</td><td>What I like can show what I care about.</td><td>관심사와 가치 찾기</td></tr>
-            <tr><td>2</td><td>One strength can be useful in many different jobs.</td><td>강점과 직업 연결하기</td></tr>
-            <tr><td>3</td><td>People choose jobs for reasons we cannot always see.</td><td>보이는 이유와 숨은 이유 해석하기</td></tr>
-            <tr><td>4</td><td>A good future job story connects interests, strengths, and reasons.</td><td>관심사·강점·이유를 연결해 글쓰기</td></tr>
+            <tr><td>1</td><td>I wonder whether there is any better way to discover another culture.</td><td>교과서 원문</td><td>미완성 확장</td><td>시장 말고 다른 방법은 없을까? 나는 어떻게 생각하지?</td></tr>
+            <tr><td>2</td><td>They kept the tradition alive.</td><td>교과서 원문</td><td>인과 미스터리</td><td>왜 지켰지? 어떻게 살아남았지?</td></tr>
+            <tr><td>3</td><td>Markets are places where you can meet people, learn history, and taste local food.</td><td>교과서 원문</td><td>도발적 단정</td><td>시장이 정말 문화를 보여 줄까? 온라인 쇼핑도 그럴까?</td></tr>
+          </tbody>
+        </table></div>
+        <div class="subhead">Lesson 6. Click, Connect, and Communicate</div>
+        <div class="tbl"><table>
+          <tbody>
+            <tr><td style="width:22%">최종 EQ</td><td>How do you communicate in the digital world? (Communication in the digital world)</td></tr>
+            <tr><td>Q-Focus</td><td>We connect, but we sometimes hurt each other. · I want to be kind, but I don’t feel good. · Please give them advice.</td></tr>
           </tbody>
         </table></div>
       </div>
@@ -737,48 +841,79 @@ body.is-teacher .views{padding-right:400px}
     <div class="sheet-area" id="s2-sheet-anchor">
       <div class="sheet-bar" data-for="sheet2"></div>
       <div class="sheet-scroll">
-        <div class="sheet" id="sheet2" data-file="2차시_EQ_QFocus">
+        <div class="sheet" id="sheet2" data-file="2차시_질문설계">
           <div class="sh-head">
             <span class="sh-no">2차시</span>
-            <div class="sh-title">핵심 질문(EQ)과 질문 초점(Q-Focus) 설계<small>실습 ① 내 단원의 핵심 질문 고르기 · 실습 ② 차시별 Q-Focus로 나누기</small></div>
+            <div class="sh-title">질문을 설계하기<small>구별하기 → 가치 찾기 → EQ 만들기 → Q-Focus 만들기 → 짝 점검</small></div>
             <label class="who" for="s2-who">작성자(개인 또는 모둠) <input id="s2-who" data-k="s2.who" placeholder="이름 / 모둠명"></label>
           </div>
-          <div class="fields">
-            <label for="s2-unit">교과서 · 학년 · 단원명<input id="s2-unit" data-k="s2.unit" placeholder="예: YBM 영어1 · Lesson 6. Click, Connect, and Communicate"></label>
-            <label for="s2-std">단원 주제 · 관련 성취기준<input id="s2-std" data-k="s2.std" placeholder="예: 사회생활 · [9영01-06] [9영02-06]"></label>
-          </div>
+          <div class="carry" id="s2-unit"></div>
+
           <div class="sh-sec">
-            <h4>실습 ① 내 단원의 핵심 질문 고르기 <span>칸을 누를 때마다 ○ → △ → 빈칸. ○ 1점, △ 0.5점으로 자동 합계</span></h4>
+            <h4>① 구별하기 <span>이 문장은 전시형 질문, EQ, Q-Focus 중 무엇일까요?</span></h4>
+            <div class="say"><svg class="ic" data-i="users"></svg><span><b>함께 이야기해요</b><span data-c="say.s2cls"></span></span></div>
+            <table class="cls-table">
+              <colgroup><col style="width:5%"><col style="width:45%"><col style="width:16%"><col class="ans-col" style="width:12%"><col class="ans-col" style="width:22%"></colgroup>
+              <thead><tr><th></th><th>문장</th><th>내 분류</th><th class="ans">정답</th><th class="ans">이유</th></tr></thead>
+              <tbody data-cls></tbody>
+            </table>
+            <div class="trow no-export"><button type="button" class="addrow" id="s2-reveal"><svg class="ic" data-i="eye"></svg><span>정답과 이유 보기</span></button><span class="tally" id="s2-clsscore"></span></div>
+          </div>
+
+          <div class="sh-sec">
+            <h4>② 가치 찾기 <span>단원의 핵심 소재를 선생님만의 가치와 연결</span></h4>
+            <div class="fields">
+              <label for="s2-topic">핵심 소재<input id="s2-topic" data-k="s2.topic" placeholder="예: 문화"></label>
+              <label for="s2-value">연결할 가치<input id="s2-value" data-k="s2.value" placeholder="아래에서 고르거나 직접 입력"></label>
+            </div>
+            <div class="vchips no-export" id="s2-vchips"></div>
+            <div class="carry" id="s2-tv"></div>
+            <label class="fields" for="s2-vwhy" style="grid-template-columns:1fr"><span>이 가치를 고른 이유</span><textarea id="s2-vwhy" data-k="s2.valuewhy" rows="1"></textarea></label>
+          </div>
+
+          <div class="sh-sec">
+            <h4>③ EQ 만들기 <span>칸을 누를 때마다 ○ → △ → 빈칸. ○ 1점, △ 0.5점으로 자동 합계</span></h4>
+            <div class="say"><svg class="ic" data-i="users"></svg><span><b>함께 이야기해요</b><span data-c="say.s2eq"></span></span></div>
             <table>
               <colgroup><col style="width:4%"><col style="width:33%"><col span="7" style="width:7%"><col style="width:9%"></colgroup>
-              <thead><tr><th></th><th>핵심 질문 후보</th><th>전이</th><th>개념</th><th>논쟁</th><th>고차원</th><th>흥미·삶</th><th>지속</th><th>자기주도</th><th>합계</th></tr></thead>
+              <thead><tr><th></th><th>EQ 후보</th><th>전이</th><th>개념</th><th>논쟁</th><th>고차원</th><th>흥미·삶</th><th>지속</th><th>자기주도</th><th>합계</th></tr></thead>
               <tbody data-rows="s2a"></tbody>
             </table>
-            <label class="fields" for="s2-final" style="grid-template-columns:1fr"><span style="font-family:var(--display);font-size:15px;color:var(--paper-ink)">최종 EQ (의문문 · 명사구)</span>
-              <textarea id="s2-final" data-k="s2.final" rows="1" placeholder="예: How do you communicate in the digital world? (Communication in the digital world)"></textarea>
-            </label>
+            <div class="fields">
+              <label for="s2-final">최종 EQ (의문문)<textarea id="s2-final" data-k="s2.final" rows="1" placeholder="예: What makes a culture worth sharing?"></textarea></label>
+              <label for="s2-finalnp">최종 EQ (명사구)<input id="s2-finalnp" data-k="s2.finalnp" placeholder="예: The value of culture"></label>
+            </div>
           </div>
+
           <div class="sh-sec">
-            <h4>실습 ② 차시별 Q-Focus로 나누기 <span>교과서 원문 문장이나 그림에서 가져오면 좋아요</span></h4>
+            <h4>④ Q-Focus 만들기 <span>EQ를 차시별 출발점 2~3개로 나누기</span></h4>
+            <div class="say"><svg class="ic" data-i="users"></svg><span><b>함께 이야기해요</b><span data-c="say.s2qf"></span></span></div>
             <div class="eq-mirror" id="s2-eq"></div>
             <table>
-              <colgroup><col style="width:7%"><col style="width:13%"><col style="width:38%"><col style="width:42%"></colgroup>
-              <thead><tr><th>차시</th><th>STAR 단계</th><th>Q-Focus (진술문·이미지)</th><th>초점화 부연 (예상 학생 질문 · 도착점)</th></tr></thead>
+              <colgroup><col style="width:6%"><col style="width:36%"><col style="width:14%"><col style="width:14%"><col style="width:30%"></colgroup>
+              <thead><tr><th>차시</th><th>Q-Focus (진술문·이미지)</th><th>출처</th><th>장면 유형</th><th>예상 학생 질문</th></tr></thead>
               <tbody data-rows="s2b"></tbody>
             </table>
-            <button type="button" class="addrow" data-add="s2b"><svg class="ic" data-i="plus"></svg>차시 추가</button>
+            <button type="button" class="addrow no-export" data-add="s2b"><svg class="ic" data-i="plus"></svg>차시 추가</button>
           </div>
+
           <div class="sh-sec">
-            <h4>짝 점검 <span>짝과 바꿔 보고 해당하면 체크</span></h4>
+            <h4>⑤ 짝 점검 <span>짝과 바꿔 보고 Q-Focus가 충족하면 체크</span></h4>
             <div class="checks">
-              <label><input type="checkbox" data-k="s2.chk1">각 Q-Focus가 EQ에 대한 답에 도움을 주나요?</label>
-              <label><input type="checkbox" data-k="s2.chk2">세부 질문을 유도하도록 설계되었나요?</label>
-              <label><input type="checkbox" data-k="s2.chk3">EQ의 다양한 측면을 자극하나요?</label>
-              <label><input type="checkbox" data-k="s2.chk4">교사의 선호가 드러나지 않는 중립적인 주제인가요?</label>
+              <label><input type="checkbox" data-k="s2.chk1">명확한 초점이 있다.</label>
+              <label><input type="checkbox" data-k="s2.chk2">의문문이 아니다 (진술문·이미지).</label>
+              <label><input type="checkbox" data-k="s2.chk3">새로운 방식의 사고를 자극한다.</label>
+              <label><input type="checkbox" data-k="s2.chk4">교사의 선호나 답을 드러내지 않는다.</label>
+              <label><input type="checkbox" data-k="s2.chk5">사실·개념·추론·평가 질문이 다 나올 만큼 열려 있다.</label>
             </div>
             <textarea id="s2-peer" data-k="s2.peer" rows="1" placeholder="짝의 한 줄 피드백"></textarea>
           </div>
-          <div class="sh-foot"><span>질문 중심 영어 수업·평가의 이해와 실제 · 1일차</span><span>2차시 산출물 · 4차시 설계표 Step 1~3으로 이어짐</span></div>
+
+          <div class="sh-sec">
+            <h4>모둠 토의 메모 <span>선택</span></h4>
+            <textarea id="s2-memo" data-k="s2.memo" rows="2"></textarea>
+          </div>
+          <div class="sh-foot"><span>질문 중심 영어 수업·평가의 이해와 실제 · 1일차</span><span>2차시 산출물 · 3·4차시로 이어짐</span></div>
         </div>
       </div>
     </div>
@@ -791,10 +926,10 @@ body.is-teacher .views{padding-right:400px}
       <div class="panel crit-card">
         <div class="panel-head"><h3>완성 기준 점검</h3><small>진행률에 반영</small></div>
         <ul class="crit">
-          <li><label><input type="checkbox" data-k="c2.1">단원의 주제와 성취기준을 적었다.</label></li>
-          <li><label><input type="checkbox" data-k="c2.2"><span>최종 EQ가 정답이 하나가 아니고, 여러 관점이 가능하며, 단원 밖 삶으로 전이된다.<span class="auto" id="c2-auto"></span></span></label></li>
-          <li><label><input type="checkbox" data-k="c2.3">차시별 Q-Focus 2~3개가 의문문이 아닌 진술문(또는 이미지)이다.</label></li>
-          <li><label><input type="checkbox" data-k="c2.4">Q-Focus를 모으면 EQ에 대한 답이 된다.</label></li>
+          <li><label><input type="checkbox" data-k="c2.1">EQ, Q-Focus, 전시형 질문의 차이를 내 말로 설명할 수 있다.</label></li>
+          <li><label><input type="checkbox" data-k="c2.2">단원 소재와 가치를 연결해 EQ 후보를 만들었다.</label></li>
+          <li><label><input type="checkbox" data-k="c2.3"><span>EQ를 7원칙으로 점검하고 의문문·명사구로 다듬었다.<span class="auto" id="c2-auto"></span></span></label></li>
+          <li><label><input type="checkbox" data-k="c2.4">차시별 Q-Focus 2~3개와 예상 학생 질문을 적고 짝 점검을 받았다.</label></li>
         </ul>
       </div>
     </div>
@@ -802,12 +937,12 @@ body.is-teacher .views{padding-right:400px}
 </section>
 
 <!-- ========== 3차시 ========== -->
-<section class="view" id="v-s3" data-title="3차시 · 질문 생성과 개선">
+<section class="view" id="v-s3" data-title="3차시 · 학생이 되어 질문 만들기">
   <div class="vgrid">
     <div class="v-head">
-      <div class="meta"><span class="chip"><svg class="ic" data-i="globe"></svg>웹 활동지</span><span class="chip"><svg class="ic" data-i="clock"></svg>약 20분</span><span class="chip">3-1 QFT · 3-2 9 STAR 렌즈 · 3-3 질문 업그레이드</span></div>
-      <h2>교과서 텍스트로 질문 생성·개선하기</h2>
-      <p>교과서 문장이나 그림을 Q-Focus로 정하고 QFT 순서대로 질문을 쏟아낸 뒤, 닫힌/열린 질문으로 분류하고 STAR 렌즈 2개 이상으로 개선해 우선 질문 3개를 고릅니다. 2차시에 정한 Q-Focus를 그대로 써도 좋습니다.</p>
+      <div class="meta"><span class="chip"><svg class="ic" data-i="globe"></svg>웹 활동지</span><span class="chip"><svg class="ic" data-i="users"></svg>모둠 활동</span><span class="chip">3-1 QFT · 3-2 9 STAR 렌즈 · 3-3 질문 업그레이드 · 3-5 질문 생성 실습</span></div>
+      <h2>3차시 · 학생이 되어 질문 만들기</h2>
+      <p>모둠이 받은 Q-Focus로 학생이 되어 QFT를 직접 해 보고, 렌즈로 질문을 업그레이드합니다. 마지막에는 교사로 돌아와 내 수업에서 학생에게 필요한 비계를 정합니다.</p>
     </div>
 
     <div class="info panel" data-tabs="s3">
@@ -818,20 +953,22 @@ body.is-teacher .views{padding-right:400px}
       </div>
       <div class="tabpanel" role="tabpanel" id="s3-guide-panel" aria-labelledby="s3-guide-tab">
         <ol class="steps">
-          <li>Q-Focus 정하기<span>교과서 문장 · 그림</span></li>
-          <li>질문 쏟아내기<span>답하지 않고, 판단하지 않고, 그대로 적기</span></li>
-          <li>분류하고 개선하기<span>C/O 표시 → 렌즈로 고쳐 쓰기</span></li>
-          <li>우선 질문 3개<span>학습 목표와 가장 잘 맞는 질문</span></li>
+          <li>모둠 Q-Focus 받기<span>강사가 정해 준 번호 고르기 · 역할 나누기</span></li>
+          <li>질문 쏟아내기<span>QFT 4규칙 지키기</span></li>
+          <li>닫힌·열린 질문 나누고 바꾸기<span>C/O 표시 · 서로 바꿔 보기</span></li>
+          <li>렌즈로 업그레이드<span>서로 다른 렌즈 2개 이상</span></li>
+          <li>우선 질문 3개<span>EQ와 가장 가까운 질문</span></li>
+          <li>교사로 돌아오기<span>내 수업에 필요한 비계</span></li>
         </ol>
         <div class="subhead">질문 만들기 4가지 규칙</div>
-        <div class="pill-row"><span>1 모든 의문은 질문의 형태로 적는다</span><span>2 판단하거나 비판하지 않는다</span><span>3 말한 그대로 기록한다</span><span>4 평서문·감탄문을 질문으로 바꾼다</span></div>
+        <div class="pill-row"><span>1 모든 의문은 질문의 형태로 적는다 (답하지 않음)</span><span>2 판단하거나 비판하지 않는다</span><span>3 말한 그대로 기록한다</span><span>4 평서문·감탄문을 질문으로 바꾼다</span></div>
       </div>
       <div class="tabpanel" role="tabpanel" id="s3-ref-panel" aria-labelledby="s3-ref-tab" hidden>
         <div class="subhead">QFT 4단계 실행 프로세스</div>
         <div class="tbl"><table>
           <thead><tr><th style="width:18%">단계</th><th>주요 활동 · 영어 수업 적용 Tip</th><th style="width:22%">사고 효과</th></tr></thead>
           <tbody>
-            <tr><td>1 Q-Focus 제시</td><td>질문을 유발하는 강력한 자극물(이미지, 문구, 도표, 영상 등) 제시</td><td>호기심 유발, 배경지식 활성화</td></tr>
+            <tr><td>1 Q-Focus 제시</td><td>질문을 유발하는 자극물(이미지, 문구, 도표, 영상 등) 제시</td><td>호기심 유발, 배경지식 활성화</td></tr>
             <tr><td>2 질문 생성</td><td>규칙을 지키며 최대한 많은 질문 쏟아내기 (모둠 전지 또는 Padlet)</td><td>발산적 사고, 자유로운 표현</td></tr>
             <tr><td>3 질문 개선</td><td>폐쇄형(Yes/No)과 개방형 구분 및 전환 · “Can we win the game?” → “Why should we win the game?”, “How can we win the game?”, “What if we win(lose) the game?”</td><td>메타인지적 판단, 문장 구조 학습</td></tr>
             <tr><td>4 우선순위 정하기</td><td>학습 목표에 가장 부합하는 질문 3가지 선정 후 탐구 활동 시작</td><td>수렴적 사고, 탐구 목표 설정</td></tr>
@@ -839,23 +976,19 @@ body.is-teacher .views{padding-right:400px}
         </table></div>
         <div class="subhead">STAR 9 질문 렌즈 (ADAPTIVE-C)</div>
         <div class="lens-grid" data-lens-cards></div>
-        <div class="subhead">STAR 단계별 렌즈 배치</div>
+        <div class="subhead">학생에게 줄 수 있는 비계</div>
         <div class="tbl"><table>
-          <thead><tr><th style="width:16%">STAR 단계</th><th style="width:22%">렌즈</th><th>질문 예시</th></tr></thead>
           <tbody>
-            <tr><td>S 기초</td><td>Definition</td><td>이 개념의 구체적 범위는?</td></tr>
-            <tr><td>S 기초</td><td>Assumption</td><td>이 주장이 성립하기 위한 전제는?</td></tr>
-            <tr><td>T 심화</td><td>Chain of Thought</td><td>빠진 논리의 연결 고리는?</td></tr>
-            <tr><td>T 심화</td><td>Evidence</td><td>주장을 입증할 구체적 증거는?</td></tr>
-            <tr><td>A 확장</td><td>Perspective</td><td>배제된 관점이나 인물은 누구인가?</td></tr>
-            <tr><td>R 수렴</td><td>Value</td><td>충돌하는 가치와 우선순위 기준은?</td></tr>
+            <tr><td style="width:20%">언어적 비계</td><td>문형 카드, 주제 어휘 카드, 유용한 표현 뱅크 (중학생에게는 질문 생성의 첫 관문)</td></tr>
+            <tr><td>절차적 비계</td><td>Think Aloud 모델링, QFT 4단계 카드, 질문 위계 가이드</td></tr>
+            <tr><td>인지적 비계</td><td>렌즈 카드, 질문 주사위(렌즈 이름 대신 “‘왜’로 시작해 보기”, “‘만약’을 넣어 보기” 같은 문구), Q-Focus 시각 자료</td></tr>
           </tbody>
         </table></div>
       </div>
       <div class="tabpanel" role="tabpanel" id="s3-ex-panel" aria-labelledby="s3-ex-tab" hidden>
         <div class="subhead">We Have a Cat on Our Team · Q-Focus “Only dogs can play fetch.”</div>
         <div class="tbl"><table>
-          <thead><tr><th style="width:4%"></th><th>쏟아낸 질문</th><th style="width:9%">C / O</th><th>렌즈로 개선한 질문</th><th style="width:16%">사용 렌즈</th></tr></thead>
+          <thead><tr><th style="width:4%"></th><th>쏟아낸 질문</th><th style="width:9%">C / O</th><th>렌즈로 업그레이드한 질문</th><th style="width:16%">렌즈</th></tr></thead>
           <tbody>
             <tr><td>1</td><td>Can only dogs play fetch?</td><td>C</td><td>Why do people believe only dogs can play fetch?</td><td>Assumption</td></tr>
             <tr><td>2</td><td>Who said this?</td><td>C</td><td>How would Cathy feel when she heard this?</td><td>Perspective</td></tr>
@@ -863,51 +996,97 @@ body.is-teacher .views{padding-right:400px}
             <tr><td>4</td><td>What if a cat plays fetch better than a dog?</td><td>O</td><td>What could the team do differently if they let Cathy play?</td><td>Alternative</td></tr>
           </tbody>
         </table></div>
-        <p class="note">‘도발적 단정’ 문장에 Assumption·Evidence 렌즈를 쓰면 “정말 그럴까?”라는 반대 사례 찾기로 이어집니다. 위 질문은 작성 방법을 보여 주는 예시입니다.</p>
-        <div class="subhead">시장 단원 · 닫힌 질문을 열린 질문으로</div>
         <div class="tbl"><table>
-          <thead><tr><th>Before (전시형)</th><th style="width:28%">렌즈 (비계 문구)</th><th>After (열린 질문)</th></tr></thead>
           <tbody>
-            <tr><td>Is this market famous?</td><td>Evidence (Think about evidence.)</td><td>What part of the market shows this country’s culture is unique?</td></tr>
-            <tr><td>What does the market look like?</td><td>Perspective (Try a different perspective.)</td><td>If I were a local seller, what would I sell? Why?</td></tr>
-            <tr><td>Is this item expensive?</td><td>Value (Think about value.)</td><td>Why is this item important in this country?</td></tr>
+            <tr><td style="width:24%">닫힌 → 열린</td><td>Is it true? → Why do some people think it is true?</td></tr>
+            <tr><td>열린 → 닫힌</td><td>How would Cathy feel? → Is Cathy sad?</td></tr>
+            <tr><td>교사로 돌아오기</td><td>모둠원 모두 Assumption 질문을 어려워했다. 학생에게는 렌즈 이름 대신 “‘정말 그럴까?’로 시작해 보기” 문구와 Is it true that…? 문형 카드를 준다.</td></tr>
           </tbody>
         </table></div>
+        <p class="note">위 질문은 작성 방법을 보여 주는 예시입니다.</p>
       </div>
     </div>
 
     <div class="sheet-area" id="s3-sheet-anchor">
       <div class="sheet-bar" data-for="sheet3"></div>
       <div class="sheet-scroll">
-        <div class="sheet" id="sheet3" data-file="3차시_질문생성개선">
+        <div class="sheet" id="sheet3" data-file="3차시_학생이되어질문만들기">
           <div class="sh-head">
             <span class="sh-no">3차시</span>
-            <div class="sh-title">교과서 텍스트로 질문 생성·개선하기<small>QFT: 쏟아내기 → 분류하기(C/O) → 렌즈로 개선하기 → 우선순위 정하기</small></div>
+            <div class="sh-title">학생이 되어 질문 만들기<small>모둠 Q-Focus → 쏟아내기 → 나누고 바꾸기 → 렌즈 업그레이드 → 우선 질문 → 교사로 돌아오기</small></div>
             <label class="who" for="s3-who">작성자(개인 또는 모둠) <input id="s3-who" data-k="s3.who" placeholder="이름 / 모둠명"></label>
           </div>
-          <div class="fields">
-            <label for="s3-qf" style="grid-column:span 2">Q-Focus (교과서 문장 · 그림)<input id="s3-qf" data-k="s3.qf" placeholder="예: Only dogs can play fetch."></label>
-            <label for="s3-src">출처 (교과서 · 단원 · 쪽)<input id="s3-src" data-k="s3.src" placeholder="예: Lesson 3 · Part 2 · p.52"></label>
-          </div>
+
           <div class="sh-sec">
+            <h4>① 우리 모둠 Q-Focus <span>강사가 알려 준 번호를 고르세요</span></h4>
+            <div class="fields">
+              <label for="s3-qfpick">Q-Focus 번호<select id="s3-qfpick" data-k="s3.qfpick"></select></label>
+              <label for="s3-group">모둠<input id="s3-group" data-k="s3.group" placeholder="예: 3모둠"></label>
+            </div>
+            <div class="fields" style="grid-template-columns:1fr">
+              <label for="s3-qf">Q-Focus<textarea id="s3-qf" data-k="s3.qf" rows="1"></textarea></label>
+            </div>
+            <div class="fields">
+              <label for="s3-ctx">한 줄 맥락<input id="s3-ctx" data-k="s3.ctx"></label>
+              <label for="s3-eq">연결 EQ<input id="s3-eq" data-k="s3.eq"></label>
+            </div>
+            <div class="roles">
+              <label for="s3-r1">기록자 <small>말한 그대로 적기</small><input id="s3-r1" data-k="s3.r1"></label>
+              <label for="s3-r2">규칙 지킴이 <small>답하거나 판단하면 멈추기</small><input id="s3-r2" data-k="s3.r2"></label>
+              <label for="s3-r3">질문 바꾸기 <small>평서문을 질문으로</small><input id="s3-r3" data-k="s3.r3"></label>
+              <label for="s3-r4">발표자 <small>전체 공유</small><input id="s3-r4" data-k="s3.r4"></label>
+            </div>
+          </div>
+
+          <div class="sh-sec">
+            <h4>② 질문 쏟아내기 → C/O 나누기 → 렌즈로 업그레이드 <span>쏟아낼 때는 왼쪽 칸만, 업그레이드는 나중에</span></h4>
+            <div class="say"><svg class="ic" data-i="users"></svg><span><b>함께 이야기해요</b><span data-c="say.s3qft"></span></span></div>
             <table>
-              <colgroup><col style="width:4%"><col style="width:33%"><col style="width:9%"><col style="width:37%"><col style="width:17%"></colgroup>
-              <thead><tr><th></th><th>쏟아낸 질문</th><th>닫힌(C) /<br>열린(O)</th><th>렌즈로 개선한 질문</th><th>사용 렌즈</th></tr></thead>
+              <colgroup><col style="width:4%"><col style="width:35%"><col style="width:9%"><col style="width:35%"><col style="width:17%"></colgroup>
+              <thead><tr><th></th><th>쏟아낸 질문</th><th>닫힌(C) /<br>열린(O)</th><th>렌즈로 업그레이드한 질문</th><th>렌즈</th></tr></thead>
               <tbody data-rows="s3"></tbody>
             </table>
-            <button type="button" class="addrow" data-add="s3"><svg class="ic" data-i="plus"></svg>질문 줄 추가</button>
+            <button type="button" class="addrow no-export" data-add="s3"><svg class="ic" data-i="plus"></svg>질문 줄 추가</button>
             <div class="tally" id="s3-tally"></div>
           </div>
+
           <div class="sh-sec">
-            <h4>우선 질문 3개 <span>학습 목표와 가장 잘 맞는 질문</span></h4>
+            <h4>③ 서로 바꿔 보기 <span>닫힌 질문과 열린 질문은 각각 언제 쓸모 있을까요?</span></h4>
+            <div class="fields">
+              <label for="s3-c2o">닫힌 → 열린<textarea id="s3-c2o" data-k="s3.c2o" rows="1" placeholder="원래 질문 → 바꾼 질문"></textarea></label>
+              <label for="s3-o2c">열린 → 닫힌<textarea id="s3-o2c" data-k="s3.o2c" rows="1" placeholder="원래 질문 → 바꾼 질문"></textarea></label>
+            </div>
+          </div>
+
+          <div class="sh-sec">
+            <h4>④ 우선 질문 3개 <span>EQ와 가장 가까운 질문</span></h4>
             <div class="prio">
               <label for="s3-p1">①<textarea id="s3-p1" data-k="s3.p1" rows="2"></textarea></label>
               <label for="s3-p2">②<textarea id="s3-p2" data-k="s3.p2" rows="2"></textarea></label>
               <label for="s3-p3">③<textarea id="s3-p3" data-k="s3.p3" rows="2"></textarea></label>
             </div>
-            <textarea id="s3-why" data-k="s3.why" rows="1" placeholder="이 세 질문을 고른 이유 (연결되는 학습 목표)"></textarea>
+            <textarea id="s3-why" data-k="s3.why" rows="1" placeholder="이 세 질문을 고른 이유"></textarea>
           </div>
-          <div class="sh-foot"><span>질문 중심 영어 수업·평가의 이해와 실제 · 1일차</span><span>3차시 산출물</span></div>
+
+          <div class="sh-sec">
+            <h4>⑤ 교사로 돌아오기 <span>각자 내 단원을 떠올리며</span></h4>
+            <div class="say"><svg class="ic" data-i="users"></svg><span><b>함께 이야기해요</b><span data-c="say.s3back"></span></span></div>
+            <div class="carry" id="s3-mine"></div>
+            <div class="fields" style="grid-template-columns:1fr">
+              <label for="s3-stuck">질문을 만들 때 어디서 막혔나요?<textarea id="s3-stuck" data-k="s3.stuck" rows="1"></textarea></label>
+              <label for="s3-scaffold">내 수업에서 학생에게 줄 비계<textarea id="s3-scaffold" data-k="s3.scaffold" rows="1" placeholder="예: Is it true that…? 문형 카드, ‘왜’로 시작해 보기 질문 주사위"></textarea></label>
+            </div>
+            <div class="fields">
+              <label for="s3-lensA">내 수업에 쓰고 싶은 렌즈 1<select id="s3-lensA" data-k="s3.lensA"></select></label>
+              <label for="s3-lensB">내 수업에 쓰고 싶은 렌즈 2<select id="s3-lensB" data-k="s3.lensB"></select></label>
+            </div>
+          </div>
+
+          <div class="sh-sec">
+            <h4>모둠 토의 메모 <span>선택</span></h4>
+            <textarea id="s3-memo" data-k="s3.memo" rows="2"></textarea>
+          </div>
+          <div class="sh-foot"><span>질문 중심 영어 수업·평가의 이해와 실제 · 1일차</span><span>3차시 산출물 · 4차시 STAR 설계로 이어짐</span></div>
         </div>
       </div>
     </div>
@@ -920,10 +1099,10 @@ body.is-teacher .views{padding-right:400px}
       <div class="panel crit-card">
         <div class="panel-head"><h3>완성 기준 점검</h3><small>진행률에 반영</small></div>
         <ul class="crit">
-          <li><label><input type="checkbox" data-k="c3.1">질문을 쏟아낼 때 답하거나 판단하지 않고 그대로 적었다.</label></li>
-          <li><label><input type="checkbox" data-k="c3.2">모든 질문을 닫힌(C)/열린(O)으로 분류했다.</label></li>
-          <li><label><input type="checkbox" data-k="c3.3"><span>개선 단계에서 STAR 렌즈를 2개 이상 사용했다.<span class="auto" id="c3-auto"></span></span></label></li>
-          <li><label><input type="checkbox" data-k="c3.4">우선 질문 3개를 학습 목표와 연결해 골랐다.</label></li>
+          <li><label><input type="checkbox" data-k="c3.1">QFT 규칙을 지키며 모둠 질문을 쏟아냈다.</label></li>
+          <li><label><input type="checkbox" data-k="c3.2">모든 질문을 C/O로 나누고 서로 바꿔 보았다.</label></li>
+          <li><label><input type="checkbox" data-k="c3.3"><span>서로 다른 렌즈 2개 이상으로 질문을 업그레이드했다.<span class="auto" id="c3-auto"></span></span></label></li>
+          <li><label><input type="checkbox" data-k="c3.4">우선 질문 3개와 내 수업에 줄 비계를 정했다.</label></li>
         </ul>
       </div>
     </div>
@@ -977,6 +1156,50 @@ body.is-teacher .views{padding-right:400px}
         <div class="meter" data-meter="s4"><div class="meter-top"><span>완성 기준 점검</span><b class="num"><span data-val>0</span><small>%</small></b></div><div class="track"><div class="fillbar"></div></div><div class="detail" data-detail></div></div>
         <div class="timer mini" data-timer-mini></div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== 예시·문장 편집 (강사) ========== -->
+<section class="view" id="v-content" data-title="예시·문장 편집">
+  <div class="v-head" style="margin-bottom:18px">
+    <div class="meta"><span class="chip"><svg class="ic" data-i="edit"></svg>강사용</span></div>
+    <h2>예시·문장 편집</h2>
+    <p>토의 질문, 2차시 구별하기 문장, 3차시 모둠 Q-Focus를 고칠 수 있어요. 저장하면 이 페이지를 연 모든 연수생 화면에 바로 반영됩니다. 연수생이 이미 고른 답은 같은 번호 자리에 그대로 남습니다.</p>
+  </div>
+  <div class="ed-status" id="ed-status"></div>
+  <div class="tools-grid" style="grid-template-columns:minmax(0,1fr)">
+    <div class="panel">
+      <div class="panel-head"><h3>함께 이야기해요 (토의 질문)</h3><small>차시별 활동지의 말풍선 칸</small></div>
+      <div class="ed-says" id="ed-says"></div>
+    </div>
+    <div class="panel">
+      <div class="panel-head"><h3>2차시 · 구별하기 문장</h3><small>정답: 전시형 질문 / EQ / Q-Focus / 토의거리</small></div>
+      <div class="tbl"><table class="ed-table">
+        <thead><tr><th style="width:5%">#</th><th>문장</th><th style="width:16%">정답</th><th style="width:30%">이유</th><th style="width:44px"></th></tr></thead>
+        <tbody id="ed-cls"></tbody>
+      </table></div>
+      <div><button type="button" class="btn sm" id="ed-cls-add"><svg class="ic" data-i="plus"></svg>문장 추가</button></div>
+    </div>
+    <div class="panel">
+      <div class="panel-head"><h3>3차시 · 모둠 Q-Focus</h3><small>활동지의 'Q-Focus 번호' 목록</small></div>
+      <div class="tbl"><table class="ed-table">
+        <thead><tr><th style="width:5%">#</th><th>Q-Focus</th><th style="width:22%">한 줄 맥락</th><th style="width:24%">연결 EQ</th><th style="width:16%">질문이 나올 방향</th><th style="width:44px"></th></tr></thead>
+        <tbody id="ed-qf"></tbody>
+      </table></div>
+      <div><button type="button" class="btn sm" id="ed-qf-add"><svg class="ic" data-i="plus"></svg>Q-Focus 추가</button></div>
+    </div>
+    <div class="panel">
+      <div class="trow">
+        <label class="fld" for="ed-key" id="ed-keywrap" style="flex:1;min-width:200px"><span>강사 비밀번호 (이 브라우저가 강사로 등록되지 않았을 때만)</span><input id="ed-key" class="inp" type="password" maxlength="64" autocomplete="current-password"></label>
+      </div>
+      <div class="trow">
+        <button type="button" class="btn" id="ed-reset"><svg class="ic" data-i="reset"></svg>기본값으로 되돌리기</button>
+        <span class="spacer" style="flex:1"></span>
+        <button type="button" class="btn primary" id="ed-save"><svg class="ic" data-i="save"></svg>저장하고 모두에게 반영</button>
+      </div>
+      <p class="jerr" id="ed-err" role="alert"></p>
+      <p class="jdetail" id="ed-detail"></p>
     </div>
   </div>
 </section>
@@ -1213,6 +1436,11 @@ const LENSES = [
 ];
 const LENS_NAMES = LENSES.map(l=>l[1]);
 const BLOOM = ["지식","이해","추론","분석","평가","창조"];
+const UPTOOLS = ["질문 사다리","Kagan: 짧은 대답 → 정교한 대답","Kagan: 고정된 정답 → 다양한 정답","Just One Thing (피드백 질문)"];
+const PASS = ["순서의 역전 (답 먼저, 질문 역추적)","타이밍의 역전 (읽기 전 질문 생성)","주체의 역전 (학생 질문바구니)","관점의 역전 (다른 관점에서 다시 묻기)","형식의 역전 (재질문으로 되묻기)"];
+const SRC = ["교과서 원문","직접 만든 문장","그림·장면"];
+const QTYPES = ["도발적 단정","감정적 결핍","인과 미스터리","시각적 대비","미완성 확장","기타"];
+const VALUES = ["전통","문화적 차이","다양성","존중","공동체","협력","책임감","정직","공감","창의성","도전","성장","신뢰","배려","정의","소통"];
 const PRINCIPLES = ["전이","개념","논쟁","고차원","흥미·삶","지속","자기주도"];
 const CRIT4 = [
   "선정한 단원의 주제와 성취기준이 명확하게 제시되어 있는가?",
@@ -1237,27 +1465,40 @@ const $=id=>document.getElementById(id);
 
 /* ---------- 행 ---------- */
 const lensOptions=()=>`<option value="">렌즈 선택</option>`+LENSES.map(l=>`<option value="${l[1]}">${l[1]} (${l[2]})</option>`).join("");
+const opts=(arr,ph)=>`<option value="">${ph||"선택"}</option>`+arr.map(x=>`<option>${x}</option>`).join("");
 const ROWDEF={
-  s1:{min:5,max:8,make:i=>`<td class="no">${i}</td>
+  s1:{min:3,max:3,make:i=>`<td class="no">${i}</td>
     <td><textarea id="s1-q${i}" data-k="s1.q${i}" rows="1" placeholder="${i===1?"예: What is the title of the story?":""}"></textarea></td>
-    <td><select id="s1-t${i}" data-k="s1.t${i}"><option value="">선택</option><option>전시형</option><option>참조형</option></select></td>
-    <td><select id="s1-b${i}" data-k="s1.b${i}"><option value="">선택</option>${BLOOM.map(b=>`<option>${b}</option>`).join("")}</select></td>
-    <td><textarea id="s1-n${i}" data-k="s1.n${i}" rows="1"></textarea></td>
-    <td><select id="s1-l${i}" data-k="s1.l${i}">${lensOptions()}</select></td>`},
+    <td><select id="s1-t${i}" data-k="s1.t${i}">${opts(["전시형","참조형"])}</select></td>
+    <td><select id="s1-b${i}" data-k="s1.b${i}">${opts(BLOOM)}</select></td>`},
   s2a:{min:3,max:3,make:i=>`<td class="no">${i}</td>
     <td><textarea id="s2a-q${i}" data-k="s2a.q${i}" rows="1"></textarea></td>
     ${PRINCIPLES.map((p,j)=>`<td><button type="button" class="tog" id="s2a-p${i}-${j}" data-k="s2a.p${i}.${j}" data-group="s2a-${i}" aria-label="${i}번 후보 ${p}"></button></td>`).join("")}
     <td class="score num" id="s2a-sc${i}">0</td>`},
-  s2b:{min:3,max:6,make:i=>`<td><input id="s2b-c${i}" data-k="s2b.c${i}" data-np="1" value="${i}" style="text-align:center"></td>
-    <td><input id="s2b-s${i}" data-k="s2b.s${i}" placeholder="예: S·T"></td>
+  s2b:{min:3,max:4,make:i=>`<td><input id="s2b-c${i}" data-k="s2b.c${i}" data-np="1" value="${i}" style="text-align:center"></td>
     <td><textarea id="s2b-q${i}" data-k="s2b.q${i}" rows="1"></textarea></td>
-    <td><textarea id="s2b-n${i}" data-k="s2b.n${i}" rows="1"></textarea></td>`},
-  s3:{min:6,max:12,make:i=>`<td class="no">${i}</td>
-    <td><textarea id="s3-q${i}" data-k="s3.q${i}" rows="1"></textarea></td>
-    <td><select id="s3-c${i}" data-k="s3.c${i}"><option value="">-</option><option>C</option><option>O</option></select></td>
-    <td><textarea id="s3-n${i}" data-k="s3.n${i}" rows="1"></textarea></td>
-    <td><select id="s3-l${i}" data-k="s3.l${i}">${lensOptions()}</select></td>`}
+    <td><select id="s2b-src${i}" data-k="s2b.src${i}">${opts(SRC)}</select></td>
+    <td><select id="s2b-type${i}" data-k="s2b.type${i}">${opts(QTYPES)}</select></td>
+    <td><textarea id="s2b-pred${i}" data-k="s2b.pred${i}" rows="1"></textarea></td>`},
+  s3:{min:8,max:20,make:i=>`<td class="no">${i}</td>
+    <td><textarea id="s3-q${i}" data-k="s3.q${i}" data-group="s3r${i}" rows="1"></textarea></td>
+    <td><select id="s3-c${i}" data-k="s3.c${i}" data-group="s3r${i}"><option value="">-</option><option>C</option><option>O</option></select></td>
+    <td><textarea id="s3-n${i}" data-k="s3.n${i}" data-group="s3r${i}" rows="1"></textarea></td>
+    <td><select id="s3-l${i}" data-k="s3.l${i}" data-group="s3r${i}">${lensOptions()}</select></td>`}
 };
+function setReveal(on){
+  $("sheet2").classList.toggle("reveal",on);
+  const b=$("s2-reveal"); b.querySelector("span").textContent=on?"정답과 이유 숨기기":"정답과 이유 보기";
+  try{ localStorage.setItem(NS+"ui.s2reveal",on?"1":"0"); }catch(e){}
+  refresh();
+}
+function fillStaticSelects(){
+  $("s1-uptool").innerHTML=opts(UPTOOLS); $("s1-pass").innerHTML=opts(PASS);
+  $("s3-lensA").innerHTML=lensOptions(); $("s3-lensB").innerHTML=lensOptions();
+  $("s2-vchips").innerHTML=VALUES.map(v=>`<button type="button" class="vchip" data-v="${v}">${v}</button>`).join("");
+  $("s2-vchips").addEventListener("click",e=>{ const b=e.target.closest("[data-v]"); if(!b) return; const i=$("s2-value"); i.value=b.dataset.v; store.set("s2.value",i.value); refresh(); stamp(); });
+  ["s1-memo","s2-memo","s3-memo","s3-qfpick"].forEach(id=>$(id).dataset.np="1");
+}
 function rowCount(n){ const d=ROWDEF[n]; const v=parseInt(store.get("rows."+n),10); return Math.min(d.max,Math.max(d.min,isNaN(v)?d.min:v)); }
 function renderRows(n){
   const tb=document.querySelector(`[data-rows="${n}"]`), c=rowCount(n);
@@ -1300,7 +1541,7 @@ function unitsFor(s){
   view.querySelectorAll("[data-k]").forEach(el=>{
     if(el.dataset.np) return;
     if(el.dataset.group){ if(seen.has(el.dataset.group)) return; seen.add(el.dataset.group);
-      total++; if([...view.querySelectorAll(`[data-group="${el.dataset.group}"]`)].some(b=>b.textContent)) done++; return; }
+      total++; if([...view.querySelectorAll(`[data-group="${el.dataset.group}"]`)].some(b=>b.classList.contains("tog")?b.textContent:(b.value&&b.value.trim()))) done++; return; }
     total++;
     if(el.type==="checkbox"){ if(el.checked) done++; }
     else if(el.value && el.value.trim()) done++;
@@ -1326,21 +1567,33 @@ function setMeter(m,pct,detail){
 }
 function refresh(){
   const val=id=>{ const e=$(id); return e?e.value.trim():""; };
-  // 1차시 집계
-  let dis=0,ref=0,l1=new Set(),f1=0;
-  for(let i=1;i<=rowCount("s1");i++){ const t=val(`s1-t${i}`); if(t==="전시형")dis++; if(t==="참조형")ref++; const l=val(`s1-l${i}`); if(l)l1.add(l); if(val(`s1-q${i}`))f1++; }
-  $("s1-tally").innerHTML=`<span>적은 발문 <b>${f1}</b>개</span><span>전시형 <b>${dis}</b></span><span>참조형 <b>${ref}</b></span><span>사용한 렌즈 <b>${l1.size}</b>종</span>`;
-  // 2차시 점수
+  const carry=(id,html)=>{ const e=$(id); if(!e) return; e.innerHTML=html; e.hidden=!html; };
+  // 1차시
+  let dis=0,ref=0,f1=0,hots=0;
+  for(let i=1;i<=3;i++){ const t=val(`s1-t${i}`); if(t==="전시형")dis++; if(t==="참조형")ref++; if(val(`s1-q${i}`))f1++; if(["추론","분석","평가","창조"].includes(val(`s1-b${i}`)))hots++; }
+  $("s1-tally").innerHTML=`<span>적은 발문 <b>${f1}</b>/3</span><span>전시형 <b>${dis}</b></span><span>참조형 <b>${ref}</b></span><span>상위사고(HOTS) <b>${hots}</b></span>`;
+  const pk=val("s1-uppick"); carry("s1-upfrom", pk&&val(`s1-q${pk}`)?`<b>고른 발문</b> ${esc(val(`s1-q${pk}`))}`:"");
+  // 2차시
+  const unit=[val("s1-book"),val("s1-grade"),val("s1-unit")].filter(Boolean).join(" · ");
+  carry("s2-unit", unit?`<b>1차시에서 고른 단원</b> ${esc(unit)}`:`<b>1차시에서 고른 단원</b> <span class="muted">아직 없어요. 1차시 ② 단원 칸을 먼저 채워 주세요.</span>`);
+  carry("s2-tv", val("s2-topic")||val("s2-value")?`<b>소재 + 가치</b> ‘${esc(val("s2-topic")||"___")}’ + ‘${esc(val("s2-value")||"___")}’`:"");
   let best=-1,bi=0;
-  for(let i=1;i<=3;i++){ let s=0; for(let j=0;j<7;j++){ const t=$(`s2a-p${i}-${j}`).textContent; s+= t==="○"?1:t==="△"?.5:0; } $(`s2a-sc${i}`).textContent=s%1?s.toFixed(1):s; if(s>best&&s>0){best=s;bi=i;} }
+  for(let i=1;i<=3;i++){ let sc=0; for(let j=0;j<7;j++){ const t=$(`s2a-p${i}-${j}`).textContent; sc+= t==="○"?1:t==="△"?.5:0; } $(`s2a-sc${i}`).textContent=sc%1?sc.toFixed(1):sc; if(sc>best&&sc>0){best=sc;bi=i;} }
   document.querySelectorAll('[data-rows="s2a"] tr').forEach((tr,i)=>tr.classList.toggle("best",i+1===bi));
-  $("s2-eq").textContent = val("s2-final") ? "EQ  "+val("s2-final") : "";
+  const eq=val("s2-final"), np=val("s2-finalnp");
+  $("s2-eq").textContent = eq||np ? "EQ  "+eq+(np?`  (${np})`:"") : "";
   $("c2-auto").textContent = bi ? `점검표 최고 점수: ${bi}번 후보 (${best}점)` : "";
-  // 3차시 집계
-  let c=0,o=0,l3=new Set(),q3=0;
-  for(let i=1;i<=rowCount("s3");i++){ const t=val(`s3-c${i}`); if(t==="C")c++; if(t==="O")o++; const l=val(`s3-l${i}`); if(l)l3.add(l); if(val(`s3-q${i}`))q3++; }
-  $("s3-tally").innerHTML=`<span>쏟아낸 질문 <b>${q3}</b>개</span><span>닫힌(C) <b>${c}</b></span><span>열린(O) <b>${o}</b></span><span>사용 렌즈 <b>${l3.size}</b>종${l3.size>=2?" · 2개 이상 충족":""}</span>`;
+  // 구별하기 채점
+  const rev=$("sheet2").classList.contains("reveal"); let ok=0,tot=0;
+  document.querySelectorAll("[data-cls] tr").forEach((tr,i)=>{ const a=tr.dataset.ans, v=val(`s2-cls${i+1}`); tr.classList.remove("ok","no"); if(!rev||!v) return; if(a==="토의거리"){ tr.classList.add("talk"); return; } tot++; if(v===a){ ok++; tr.classList.add("ok"); } else tr.classList.add("no"); });
+  $("s2-clsscore").textContent = rev ? (tot?`맞힌 문장 ${ok} / ${tot} · 토의거리는 채점하지 않아요`:"분류를 고른 뒤 다시 보세요") : "";
+  // 3차시
+  let c=0,o=0,l3=new Set(),q3=0,up=0;
+  for(let i=1;i<=rowCount("s3");i++){ const t=val(`s3-c${i}`); if(t==="C")c++; if(t==="O")o++; const l=val(`s3-l${i}`); if(l)l3.add(l); if(val(`s3-q${i}`))q3++; if(val(`s3-n${i}`))up++; }
+  $("s3-tally").innerHTML=`<span>쏟아낸 질문 <b>${q3}</b>개</span><span>닫힌(C) <b>${c}</b></span><span>열린(O) <b>${o}</b></span><span>업그레이드 <b>${up}</b>개</span><span>렌즈 <b>${l3.size}</b>종${l3.size>=2?" · 2개 이상 충족":""}</span>`;
   $("c3-auto").textContent = l3.size ? `현재 ${l3.size}종 사용` : "";
+  const qfs=[1,2,3,4].map(i=>val(`s2b-q${i}`)).filter(Boolean), preds=[1,2,3,4].map(i=>val(`s2b-pred${i}`)).filter(Boolean);
+  carry("s3-mine", (eq||qfs.length)?`<b>내 2차시 설계</b><span>EQ: ${esc(eq||"—")}</span><span>Q-Focus: ${qfs.length?qfs.map(esc).join(" / "):"—"}</span><span>예상 학생 질문: ${preds.length?preds.map(esc).join(" / "):"—"}</span><small>모둠에서 실제로 나온 질문과 비교해 보세요.</small>`:`<b>내 2차시 설계</b> <span class="muted">2차시 EQ와 Q-Focus를 쓰면 여기에 함께 보여요.</span>`);
   // 진행률
   const res={}; let sum=0;
   ["s1","s2","s3","s4"].forEach(s=>{ res[s]=unitsFor(s); sum+=res[s].pct; });
@@ -1402,7 +1655,9 @@ function buildClone(sheet){
     if(s.tagName==="SELECT"&&s.options.length<5) div.classList.add("center");
     d.replaceWith(div); });
   clone.querySelectorAll(".tog").forEach(b=>{ const x=document.createElement("div"); x.className="fill center"; x.textContent=b.textContent; b.replaceWith(x); });
-  clone.querySelectorAll(".addrow").forEach(b=>b.remove());
+  clone.querySelectorAll(".addrow,.no-export").forEach(b=>b.remove());
+  if(!sheet.classList.contains("reveal")) clone.querySelectorAll(".ans,.ans-col").forEach(b=>b.remove());
+  clone.querySelectorAll(".carry[hidden]").forEach(b=>b.remove());
   return clone;
 }
 function fileName(sheet,ext){ const w=(sheet.querySelector('[data-k$=".who"]')||{}).value||""; const s=w.trim().replace(/[\\/:*?"<>|]/g,"").slice(0,30); return `${sheet.dataset.file}${s?"_"+s:""}.${ext}`; }
@@ -1428,7 +1683,7 @@ async function exportSheet(id,kind,btn){
 }
 
 /* ---------- 활동지 툴바 ---------- */
-const CLEAR_PREFIX={ "1":["s1.","rows.s1","c1."], "2":["s2.","s2a.","s2b.","rows.s2b","c2."], "3":["s3.","rows.s3","c3."] };
+const CLEAR_PREFIX={ "1":["s1.","c1."], "2":["s2.","s2a.","s2b.","rows.s2b","c2."], "3":["s3.","rows.s3","c3."] };
 function setupSheetBars(){
   document.querySelectorAll(".sheet-bar[data-for]").forEach(bar=>{
     const id=bar.dataset.for, n=id.replace("sheet","");
@@ -1470,7 +1725,7 @@ function setupTabs(){
 }
 
 /* ---------- 화면 전환 · 사이드바 ---------- */
-const VIEWS=["home","s1","s2","s3","s4","timer","backup"];
+const VIEWS=["home","s1","s2","s3","s4","content","timer","backup"];
 function markSub(key){ document.querySelectorAll(".tree .sub a").forEach(a=>a.classList.toggle("cur",a.dataset.sub===key)); }
 function route(){
   const h=(location.hash||"#home").slice(1);
@@ -1487,6 +1742,7 @@ function route(){
     else { markSub(sub); scrollToEl($(sub+"-anchor")); }
   } else { window.scrollTo({top:0}); }
   requestAnimationFrame(()=>$("v-"+view).querySelectorAll("textarea").forEach(grow));
+  if(view==="content"&&typeof edStatus==="function"){ edStatus(); renderEditor(); }
   if(typeof onPosChange==="function") onPosChange();
 }
 function scrollToEl(el){ if(!el) return; const y=el.getBoundingClientRect().top+window.scrollY-72; window.scrollTo({top:y,behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth"}); }
@@ -1519,23 +1775,30 @@ function setupDoc(){
 }
 
 /* ---------- 백업 (JSON) ---------- */
-const SCHEMA="qcd1-day1-worksheets", SCHEMA_VERSION=1;
+const SCHEMA="qcd1-day1-worksheets", SCHEMA_VERSION=2;
+const N20="([1-9]|1[0-9]|20)";
 const KEY_RULES=[
-  [/^s1\.(who|class|reflect|q[1-8]|n[1-8])$/,"text"],
-  [/^s1\.t[1-8]$/,["","전시형","참조형"]],
-  [/^s1\.b[1-8]$/,["",...BLOOM]],
-  [/^(s1\.l[1-8]|s3\.l([1-9]|1[0-2]))$/,["",...LENS_NAMES]],
-  [/^s2\.(who|unit|std|final|peer)$/,"text"],
-  [/^s2\.chk[1-4]$/,["0","1"]],
+  [/^s1\.(who|open|book|grade|unit|q[1-3]|up|passhow|memo)$/,"text"],
+  [/^s1\.t[1-3]$/,["","전시형","참조형"]],
+  [/^s1\.b[1-3]$/,["",...BLOOM]],
+  [/^s1\.uppick$/,["","1","2","3"]],
+  [/^s1\.uptool$/,["",...UPTOOLS]],
+  [/^s1\.pass$/,["",...PASS]],
+  [/^s2\.(who|std|topic|value|valuewhy|final|finalnp|peer|memo)$/,"text"],
+  [new RegExp("^s2\\.cls"+N20+"$"),["","전시형 질문","EQ","Q-Focus"]],
+  [/^s2\.chk[1-5]$/,["0","1"]],
   [/^s2a\.q[1-3]$/,"text"],
   [/^s2a\.p[1-3]\.[0-6]$/,["","○","△"]],
-  [/^s2b\.(c|s|q|n)[1-6]$/,"text"],
-  [/^s3\.(who|qf|src|why|p[1-3])$/,"text"],
-  [/^s3\.(q|n)([1-9]|1[0-2])$/,"text"],
-  [/^s3\.c([1-9]|1[0-2])$/,["","C","O"]],
+  [/^s2b\.(c|q|pred)[1-4]$/,"text"],
+  [/^s2b\.src[1-4]$/,["",...SRC]],
+  [/^s2b\.type[1-4]$/,["",...QTYPES]],
+  [/^s3\.(who|group|qf|ctx|eq|r[1-4]|c2o|o2c|why|p[1-3]|stuck|scaffold|memo|qfpick)$/,"text"],
+  [new RegExp("^s3\\.(q|n)"+N20+"$"),"text"],
+  [new RegExp("^s3\\.c"+N20+"$"),["","C","O"]],
+  [new RegExp("^s3\\.(l"+N20+"|lensA|lensB)$"),["",...LENS_NAMES]],
   [/^c[1-3]\.[1-4]$/,["0","1"]],
   [/^c4\.(m|p)[0-5]$/,["0","1"]],
-  [/^rows\.s1$/,"int:5-8"],[/^rows\.s2b$/,"int:3-6"],[/^rows\.s3$/,"int:6-12"]
+  [/^rows\.s2b$/,"int:3-4"],[/^rows\.s3$/,"int:8-20"]
 ];
 function validateBackup(obj){
   const errs=[];
@@ -1777,6 +2040,9 @@ function renderLive(){
   const r=L.role;
   document.body.classList.toggle("is-student",r==="student");
   document.body.classList.toggle("is-teacher",r==="teacher");
+  if(r==="teacher"&&!renderLive._init){ renderLive._init=true; let m=false; try{ m=localStorage.getItem(NS+"ui.tpmin")==="1"; }catch(e){} $("tpanel").classList.toggle("min",m); }
+  if(r!=="teacher") renderLive._init=false;
+  document.body.classList.toggle("tp-open",r==="teacher"&&!$("tpanel").classList.contains("min"));
   const lb=$("live-btn");
   if(r==="teacher"){ lb.innerHTML=`${ic("users")}<span><i class="lb-t">수업 </i><b class="num">${L.code}</b></span>`; lb.className="btn live-on"; lb.setAttribute("aria-label",`수업 ${L.code} 운영 패널 열기`); }
   else if(r==="student"){ lb.innerHTML=`${ic("users")}<span><i class="lb-t">참여 중 </i><b class="num">${L.code}</b></span>`; lb.className="btn live-on"; lb.setAttribute("aria-label","수업 참여 상태"); }
@@ -1882,11 +2148,11 @@ $("j-resume").addEventListener("click",async()=>{
 });
 [["j-code","j-go"],["j-name","j-go"],["j-label","j-open"],["j-key","j-open"],["j-tcode","j-resume"]].forEach(([i,b])=>$(i).addEventListener("keydown",e=>{ if(e.key==="Enter"&&!e.isComposing){ e.preventDefault(); $(b).click(); } }));
 $("live-btn").addEventListener("click",()=>{
-  if(L.role==="teacher"){ $("tpanel").classList.remove("min"); return; }
+  if(L.role==="teacher"){ setPanelMin(false); return; }
   if(L.role==="student"){ toast(`수업 ${L.code}에 참여 중이에요. 나가려면 아래 막대의 나가기를 누르세요.`); return; }
   openJoin("s");
 });
-$("nav-live").addEventListener("click",e=>{ e.preventDefault(); closeDrawer(); if(L.role==="teacher") $("tpanel").classList.remove("min"); else if(!L.role) openJoin("s"); else toast(`수업 ${L.code}에 참여 중이에요.`); });
+$("nav-live").addEventListener("click",e=>{ e.preventDefault(); closeDrawer(); if(L.role==="teacher") setPanelMin(false); else if(!L.role) openJoin("s"); else toast(`수업 ${L.code}에 참여 중이에요.`); });
 
 /* 연수생 막대 */
 $("sb-free").addEventListener("click",()=>{ L.free=!L.free; lsave(); if(!L.free&&L.st&&L.st.pos) goPos(L.st.pos); rdb.ref(`${base()}/members/${L.uid}`).update({free:L.free,pos:getPos()}).catch(()=>{}); renderLive(); });
@@ -1908,8 +2174,15 @@ $("tp-close").addEventListener("click",()=>{ rdb.ref(base()+"/closed").set(!L.cl
 $("tp-doneclr").addEventListener("click",async()=>{ const v=getPos().view, t=($("v-"+v)||{dataset:{}}).dataset.title;
   const ok=await confirmBox("완료 표시를 지울까요?",`<p>${esc(t)} 화면에 표시된 모든 연수생의 완료 표시를 지웁니다.</p>`,"지우기",true); if(!ok) return;
   const u={}; Object.keys(L.members||{}).forEach(sid=>u[`members/${sid}/done/${v}`]=null); rdb.ref(base()).update(u).then(()=>toast("완료 표시를 지웠어요.")).catch(()=>{}); });
-$("tp-min").addEventListener("click",()=>$("tpanel").classList.add("min"));
-$("tp-pill").addEventListener("click",()=>$("tpanel").classList.remove("min"));
+function setPanelMin(min){
+  $("tpanel").classList.toggle("min",min);
+  document.body.classList.toggle("tp-open",L.role==="teacher"&&!min);
+  try{ localStorage.setItem(NS+"ui.tpmin",min?"1":"0"); }catch(e){}
+  requestAnimationFrame(()=>document.querySelectorAll(".view.on textarea").forEach(grow));
+  if(!min) setTimeout(()=>$("tp-min").focus(),50); else setTimeout(()=>$("tp-pill").focus(),50);
+}
+$("tp-min").addEventListener("click",()=>setPanelMin(true));
+$("tp-pill").addEventListener("click",()=>setPanelMin(false));
 $("tp-codebtn").addEventListener("click",async()=>{ try{ await navigator.clipboard.writeText(L.code); toast("코드를 복사했어요."); }catch(e){ toast("복사하지 못했어요. 코드를 직접 알려 주세요."); } });
 $("tp-proj").addEventListener("click",()=>{ $("proj-code").textContent=L.code; const u=location.origin+location.pathname+"?class="+L.code; $("proj-url").textContent=location.host+location.pathname.replace(/index\.html$/,""); $("proj-link").textContent=u; $("proj").hidden=false; $("proj-x").focus(); });
 $("proj-x").addEventListener("click",()=>{ $("proj").hidden=true; });
@@ -2025,6 +2298,146 @@ async function initLive(){
   if(q&&/^[A-Z2-9]{6}$/i.test(q)){ $("j-code").value=q.toUpperCase(); if(saved.name) $("j-name").value=saved.name; openJoin("s"); }
 }
 
+/* ---------- 강사가 고칠 수 있는 예시·문장 ---------- */
+const SAY_LABELS = {
+  s1open:"1차시 ① 열기", s1diag:"1차시 ③ 내 발문 진단하기", s1pass:"1차시 ⑤ 학생에게 넘겨주기",
+  s2cls:"2차시 ① 구별하기", s2eq:"2차시 ③ EQ 만들기", s2qf:"2차시 ④ Q-Focus 만들기",
+  s3qft:"3차시 ② 질문 쏟아내기", s3back:"3차시 ⑤ 교사로 돌아오기"
+};
+const DEFAULT_CONTENT = {
+  say:{
+    s1open:"세 가지 수업(학습 문제 중심 · 탐구 질문 중심 · 학생 질문 중심)은 무엇이 다를까요? 내 수업은 지금 어디에 가까울까요?",
+    s1diag:"정답을 아는 질문은 나쁜 질문일까요? 전시형 질문이 꼭 필요한 순간은 언제일까요?",
+    s1pass:"학생이 질문의 주인이 되면 수업에서 무엇이 달라질까요? 서로의 아이디어를 들어 보세요.",
+    s2cls:"EQ와 Q-Focus는 무엇이 다를까요? Q-Focus는 왜 질문이 아니라 문장일까요?",
+    s2eq:"이 EQ가 7원칙 중 가장 잘 충족하는 원칙과 부족한 원칙은 무엇일까요?",
+    s2qf:"이 Q-Focus를 보면 학생에게서 어떤 질문이 나올까요? Q-Focus를 모으면 EQ에 대한 답이 될까요?",
+    s3qft:"질문을 쏟아낼 때 어디서 막혔나요? 4가지 규칙 중 가장 지키기 어려웠던 것은 무엇인가요?",
+    s3back:"같은 EQ라도 Q-Focus가 달라지면 질문이 어떻게 달라졌나요? 우리 반 학생이라면 어떤 도움이 필요할까요?"
+  },
+  cls:[
+    {t:"What are the most famous markets around the world?", a:"전시형 질문", w:"시장 이름을 나열하면 답이 끝나요. 교사가 이미 답을 알고 있어요."},
+    {t:"What makes a culture worth sharing?", a:"EQ", w:"단원 전체를 관통하고, 정답이 하나가 아니며, 교실 밖 삶으로 이어져요."},
+    {t:"They kept the tradition alive.", a:"Q-Focus", w:"의문문이 아닌 진술문이에요. ‘왜?’, ‘어떻게?’ 같은 학생 질문을 끌어내요."},
+    {t:"Is this item expensive?", a:"전시형 질문", w:"예/아니요로 답이 끝나는 닫힌 질문이에요."},
+    {t:"How do you communicate in the digital world?", a:"EQ", w:"학교·가족·사회 관계로 전이되고, 차시마다 답이 깊어져요."},
+    {t:"Only dogs can play fetch.", a:"Q-Focus", w:"편견이 담긴 도발적 단정이에요. ‘정말 그럴까?’라는 질문을 부르죠."},
+    {t:"What do you think about this market?", a:"토의거리", w:"생각을 묻는 참조형 질문이지만, 단원 전체를 관통하지는 않아요. 참조형 질문이면 모두 EQ일까요?"}
+  ],
+  qf:[
+    {q:"Only dogs can play fetch.", c:"고양이가 강아지 팀에 들어오려 하자 누군가 한 말", e:"What does it really mean to belong to a team?", l:"Assumption · Evidence"},
+    {q:"Cathy watched silently.", c:"팀 놀이에 끼지 못한 고양이 Cathy", e:"What does it really mean to belong to a team?", l:"Perspective"},
+    {q:"They bumped into each other and fell down.", c:"공을 쫓던 강아지들에게 생긴 일", e:"What does it really mean to belong to a team?", l:"Alternative · Chain of Thought"},
+    {q:"We connect, but we sometimes hurt each other.", c:"디지털 소통 단원 도입 문장", e:"How do you communicate in the digital world?", l:"Definition · Value"},
+    {q:"They kept the tradition alive.", c:"오래된 전통 시장을 지켜 온 사람들", e:"What makes a culture worth sharing?", l:"Chain of Thought · Value"},
+    {q:"People choose jobs for reasons we cannot always see.", c:"직업을 고른 사람들의 인터뷰", e:"How do my interests, strengths, and reasons shape my future job story?", l:"Implicature · Perspective"},
+    {q:"The dirty spot on the tablecloth was cleaned by the lamp oil! (식탁보 그림)", c:"우연한 사건에서 발명이 시작된 이야기", e:"When can an unexpected event lead to a change?", l:"Alternative · Tree of Thought"},
+    {q:"About a third of the Netherlands sits below sea level.", c:"물보다 낮은 땅에 사는 나라", e:"What makes a culture worth sharing?", l:"Assumption · Evidence"}
+  ]
+};
+const CLS_ANS=["전시형 질문","EQ","Q-Focus","토의거리"];
+const clone=o=>JSON.parse(JSON.stringify(o));
+const toArr=v=>Array.isArray(v)?v.filter(Boolean):(v&&typeof v==="object"?Object.keys(v).sort((a,b)=>a-b).map(k=>v[k]).filter(Boolean):[]);
+function normContent(v){
+  const d=clone(DEFAULT_CONTENT); if(!v||typeof v!=="object") return d;
+  const say={...d.say}; if(v.say&&typeof v.say==="object") Object.keys(say).forEach(k=>{ if(typeof v.say[k]==="string") say[k]=v.say[k].slice(0,300); });
+  const cls=toArr(v.cls).map(x=>({t:String(x.t||"").slice(0,200),a:CLS_ANS.includes(x.a)?x.a:"토의거리",w:String(x.w||"").slice(0,300)})).filter(x=>x.t).slice(0,20);
+  const qf=toArr(v.qf).map(x=>({q:String(x.q||"").slice(0,200),c:String(x.c||"").slice(0,120),e:String(x.e||"").slice(0,200),l:String(x.l||"").slice(0,80)})).filter(x=>x.q).slice(0,16);
+  return {say,cls:cls.length?cls:d.cls,qf:qf.length?qf:d.qf};
+}
+let C=(()=>{ try{ const s=JSON.parse(localStorage.getItem(NS+"ui.content")||"null"); if(s) return normContent(s); }catch(e){} return clone(DEFAULT_CONTENT); })();
+const CIRC="①②③④⑤⑥⑦⑧⑨⑩⑪⑫⑬⑭⑮⑯";
+
+function applyContent(v,fromServer){
+  C=normContent(v);
+  if(fromServer){ try{ localStorage.setItem(NS+"ui.content",JSON.stringify(C)); }catch(e){} }
+  renderContent();
+  if(!ED.dirty) renderEditor();
+}
+function renderContent(){
+  document.querySelectorAll("[data-c]").forEach(el=>{ const k=el.dataset.c.split(".")[1]; el.textContent=C.say[k]||""; });
+  // 2차시 구별하기
+  const tb=document.querySelector("[data-cls]");
+  tb.innerHTML=C.cls.map((x,i)=>`<tr data-ans="${esc(x.a)}"><td class="no">${i+1}</td><td class="en">${esc(x.t)}</td>
+    <td><select id="s2-cls${i+1}" data-k="s2.cls${i+1}"><option value="">선택</option>${CLS_ANS.slice(0,3).map(a=>`<option>${a}</option>`).join("")}</select></td>
+    <td class="ans a">${esc(x.a)}</td><td class="ans w">${esc(x.w)}</td></tr>`).join("");
+  bindAll(tb);
+  // 3차시 Q-Focus 목록
+  const sel=$("s3-qfpick"), cur=store.get("s3.qfpick")||sel.value||"";
+  sel.innerHTML=`<option value="">선택</option>`+C.qf.map((x,i)=>`<option value="${i+1}">${CIRC[i]||i+1} ${esc(x.q.length>46?x.q.slice(0,46)+"…":x.q)}</option>`).join("")+`<option value="custom">직접 입력</option>`;
+  sel.value=cur; if(sel.value!==cur) sel.value="";
+  refresh();
+}
+function onQfPick(){
+  const v=$("s3-qfpick").value; if(!v||v==="custom") return;
+  const x=C.qf[+v-1]; if(!x) return;
+  [["s3-qf",x.q],["s3-ctx",x.c],["s3-eq",x.e]].forEach(([id,val])=>{ const el=$(id); el.value=val; store.set(el.dataset.k,val); if(el.tagName==="TEXTAREA") grow(el); });
+  refresh(); stamp();
+}
+
+/* 편집 화면 */
+const ED={ w:clone(C), dirty:false, teacher:null };
+function renderEditor(){
+  if(!ED.dirty) ED.w=clone(C);
+  const w=ED.w;
+  $("ed-says").innerHTML=Object.keys(SAY_LABELS).map(k=>`<label class="fld" for="ed-say-${k}"><span>${SAY_LABELS[k]}</span><textarea id="ed-say-${k}" class="inp" rows="2" maxlength="300" data-ed="say.${k}">${esc(w.say[k]||"")}</textarea></label>`).join("");
+  $("ed-cls").innerHTML=w.cls.map((x,i)=>`<tr><td class="no">${i+1}</td>
+    <td><textarea class="inp" rows="1" maxlength="200" data-ed="cls.${i}.t" aria-label="${i+1}번 문장">${esc(x.t)}</textarea></td>
+    <td><select class="inp" data-ed="cls.${i}.a" aria-label="${i+1}번 정답">${CLS_ANS.map(a=>`<option${a===x.a?" selected":""}>${a}</option>`).join("")}</select></td>
+    <td><textarea class="inp" rows="1" maxlength="300" data-ed="cls.${i}.w" aria-label="${i+1}번 이유">${esc(x.w)}</textarea></td>
+    <td><button type="button" class="ibtn sm" data-eddel="cls.${i}" data-tip="이 문장 지우기" data-tip-pos="left" aria-label="${i+1}번 문장 지우기">${ic("trash")}</button></td></tr>`).join("");
+  $("ed-qf").innerHTML=w.qf.map((x,i)=>`<tr><td class="no">${CIRC[i]||i+1}</td>
+    <td><textarea class="inp" rows="1" maxlength="200" data-ed="qf.${i}.q" aria-label="${i+1}번 Q-Focus">${esc(x.q)}</textarea></td>
+    <td><textarea class="inp" rows="1" maxlength="120" data-ed="qf.${i}.c" aria-label="${i+1}번 맥락">${esc(x.c)}</textarea></td>
+    <td><textarea class="inp" rows="1" maxlength="200" data-ed="qf.${i}.e" aria-label="${i+1}번 연결 EQ">${esc(x.e)}</textarea></td>
+    <td><input class="inp" maxlength="80" data-ed="qf.${i}.l" value="${esc(x.l)}" aria-label="${i+1}번 질문 방향"></td>
+    <td><button type="button" class="ibtn sm" data-eddel="qf.${i}" data-tip="이 Q-Focus 지우기" data-tip-pos="left" aria-label="${i+1}번 Q-Focus 지우기">${ic("trash")}</button></td></tr>`).join("");
+  document.querySelectorAll("#v-content textarea.inp").forEach(t=>{ t.style.height="auto"; requestAnimationFrame(()=>{ if(t.offsetParent){ t.style.height="auto"; t.style.height=(t.scrollHeight+2)+"px"; } }); });
+}
+document.getElementById("v-content").addEventListener("input",e=>{
+  const el=e.target.closest("[data-ed]"); if(!el) return;
+  const p=el.dataset.ed.split("."); ED.dirty=true;
+  if(p[0]==="say") ED.w.say[p[1]]=el.value; else ED.w[p[0]][+p[1]][p[2]]=el.value;
+  if(el.tagName==="TEXTAREA"){ el.style.height="auto"; el.style.height=(el.scrollHeight+2)+"px"; }
+});
+document.getElementById("v-content").addEventListener("change",e=>{ const el=e.target.closest("select[data-ed]"); if(!el) return; const p=el.dataset.ed.split("."); ED.dirty=true; ED.w[p[0]][+p[1]][p[2]]=el.value; });
+document.getElementById("v-content").addEventListener("click",e=>{
+  const d=e.target.closest("[data-eddel]"); if(!d) return;
+  const [k,i]=d.dataset.eddel.split("."); if(ED.w[k].length<=1){ toast("최소 한 개는 남겨 두세요."); return; }
+  ED.w[k].splice(+i,1); ED.dirty=true; renderEditor();
+});
+$("ed-cls-add").addEventListener("click",()=>{ if(ED.w.cls.length>=20) return toast("문장은 20개까지 넣을 수 있어요."); ED.w.cls.push({t:"",a:"EQ",w:""}); ED.dirty=true; renderEditor(); });
+$("ed-qf-add").addEventListener("click",()=>{ if(ED.w.qf.length>=16) return toast("Q-Focus는 16개까지 넣을 수 있어요."); ED.w.qf.push({q:"",c:"",e:"",l:""}); ED.dirty=true; renderEditor(); });
+$("ed-reset").addEventListener("click",async()=>{
+  const ok=await confirmBox("기본값으로 되돌릴까요?","<p>편집 화면의 내용이 처음 제공된 예시로 바뀝니다. <b>저장하고 모두에게 반영</b>을 눌러야 연수생 화면에도 적용돼요.</p>","되돌리기",false);
+  if(!ok) return; ED.w=clone(DEFAULT_CONTENT); ED.dirty=true; renderEditor(); toast("기본값을 불러왔어요. 저장을 눌러야 반영돼요.");
+});
+$("ed-save").addEventListener("click",async()=>{
+  const er=$("ed-err"), dt=$("ed-detail"); er.textContent=""; dt.textContent="";
+  const data=normContent(ED.w);
+  if(data.cls.length!==ED.w.cls.filter(x=>x.t.trim()).length||data.qf.length!==ED.w.qf.filter(x=>x.q.trim()).length){}
+  const ok=await confirmBox("모두에게 반영할까요?",`<p>구별하기 문장 ${data.cls.length}개, 모둠 Q-Focus ${data.qf.length}개, 토의 질문 ${Object.keys(data.say).length}개가 이 페이지를 연 모든 화면에 바로 바뀝니다. 비어 있는 줄은 빠집니다.</p>`,"저장하고 반영",false);
+  if(!ok) return;
+  try{
+    await busy($("ed-save"),async()=>{ await ensureTeacher($("ed-key").value.trim()); await rdb.ref("content").set({...data,updatedAt:TS()}); });
+    $("ed-key").value=""; ED.dirty=false; applyContent(data,true); edStatus(); toast("저장했어요. 모든 화면에 반영됩니다.");
+  }catch(e){ console.error(e); er.textContent=errText(e); dt.textContent=errDetail(e); }
+});
+async function edStatus(){
+  const box=$("ed-status");
+  if(!rdb){ box.innerHTML=`<div class="linkbox">${ic("info")}<span>실시간 연결이 없어 지금은 저장할 수 없어요. 인터넷 연결을 확인하고 새로고침해 주세요. 화면에 보이는 내용은 기본값 또는 마지막으로 받은 내용이에요.</span></div>`; return; }
+  let reg=false; try{ const uid=await ensureAuth(); reg=(await rdb.ref("teachers/"+uid).once("value")).exists(); }catch(e){}
+  ED.teacher=reg; $("ed-keywrap").hidden=reg;
+  box.innerHTML=reg?`<div class="linkbox ok">${ic("check")}<span>이 브라우저는 강사로 등록되어 있어요. 고친 뒤 저장하면 바로 반영돼요.</span></div>`
+    :`<div class="linkbox">${ic("info")}<span>강사만 저장할 수 있어요. 처음 쓰는 브라우저라면 아래에 강사 비밀번호를 넣고 저장하세요. 연수생은 이 화면을 볼 수는 있지만 저장되지 않아요.</span></div>`;
+}
+async function initContent(){
+  renderContent(); renderEditor();
+  if(!fbReady()) return;
+  try{ await ensureAuth(); }catch(e){ return; }
+  rdb.ref("content").on("value",s=>{ applyContent(s.val()||DEFAULT_CONTENT,true); },()=>{});
+}
+
 /* ---------- 렌즈 카드 ---------- */
 function setupLensCards(){
   const h=LENSES.map(l=>`<div class="lens"><b><i>${l[0]}</i>${l[1]} <small>${l[2]}</small></b><small>${l[3]}</small><code>${esc(l[4])}</code></div>`).join("");
@@ -2036,13 +2449,18 @@ hydrateIcons();
 paintHero();
 setupLensCards();
 setupDoc();
+fillStaticSelects();
 ["s1","s2a","s2b","s3"].forEach(renderRows);
 bindAll(document);
+$("s3-qfpick").addEventListener("change",onQfPick);
+(function(){ let r=false; try{ r=localStorage.getItem(NS+"ui.s2reveal")==="1"; }catch(e){} setReveal(r); })();
+$("s2-reveal").addEventListener("click",()=>setReveal(!$("sheet2").classList.contains("reveal")));
 setupSheetBars();
 setupTabs();
 route();
 refresh();
 initLive();
+initContent();
 if(document.fonts&&document.fonts.ready) document.fonts.ready.then(paintHero);
 window.addEventListener("resize",()=>document.querySelectorAll(".view.on textarea").forEach(grow));
 </script>
