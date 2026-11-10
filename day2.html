@@ -510,12 +510,6 @@ body.is-teacher.tp-open .views{padding-right:400px}
 }
 @media (prefers-reduced-motion: reduce){ .side,.scrim{transition:none} }
 /* ---------- 2일차 보조 요소 ---------- */
-.modebar{display:flex;flex-wrap:wrap;gap:8px 18px;align-items:center;font-size:13px;color:#525a5d}
-.modebar label{display:flex;gap:8px;align-items:center;white-space:nowrap}
-.modebar select{width:auto;min-width:92px;font-family:var(--display)}
-.modebar input{width:260px;max-width:100%}
-.sheet[data-mode="개인"] .only-group,.sheet:not([data-mode="개인"]) .only-solo{display:none}
-.export-host .modebar .fill{min-width:80px;border-bottom:1px solid var(--paper-line)}
 .carry-card{margin-top:16px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:14px 16px;display:flex;flex-wrap:wrap;gap:6px 16px;align-items:baseline;font-size:14px}
 .carry-card b{font-family:var(--display);font-weight:400}
 .carry-card .muted{color:var(--muted)}
@@ -553,6 +547,57 @@ body.is-teacher.tp-open .views{padding-right:400px}
 }
 
 .sheet td select{font-size:13px;padding:5px 3px}
+body.is-student .self-reveal{display:none}
+.sample{border:1px solid var(--paper-line);border-radius:10px;padding:10px 14px;background:#fbfcfb;display:grid;gap:6px;font-size:14px;line-height:1.6}
+.sample p{margin:0;display:grid;grid-template-columns:52px 1fr;gap:8px}
+.sample-ctx{font-size:12.5px;color:#646d70}
+.stag{font-family:var(--display);font-weight:400;font-size:12.5px;border:1px solid var(--paper-line);border-radius:6px;text-align:center;align-self:start;padding:1px 4px;background:#fff}
+.rub-table td{font-size:12.5px;line-height:1.5;vertical-align:top}
+.rub-table td.el b{font-family:var(--display);font-weight:400;font-size:14px;display:block}
+.rub-table td.el small{color:#646d70}
+.rub-table .ans{display:none}
+.reveal .rub-table .ans{display:table-cell}
+.rub-table td.ans.a{font-family:var(--display);text-align:center;vertical-align:middle;font-size:16px;background:#fafbfa}
+.rub-table tr.ok td.ans.a{color:var(--accent)} .rub-table tr.no td.ans.a{color:var(--crit)}
+.rub-table tr.ok td.ans.a::after{content:" ✓"} .rub-table tr.no td.ans.a::after{content:" ✗"}
+.rub-table td.e-row{font-size:12.5px;color:#525a5d}
+.rub-table td.e-row b{font-family:var(--display);font-weight:400}
+.rub-table td.score{text-align:center;font-family:var(--display);color:var(--accent);vertical-align:middle}
+.ans-box{display:none;border-left:3px solid var(--accent);background:#f6f7f6;border-radius:0 8px 8px 0;padding:8px 12px;font-size:13px}
+.reveal .ans-box{display:block}
+.ans-box ul{margin:4px 0 0;padding-left:18px;display:grid;gap:3px}
+.ans-box li b{font-family:var(--display);font-weight:400}
+.myrub textarea{font-size:12.5px}
+.c8tbl td{font-size:13.5px}
+.sheet td.c{text-align:center;vertical-align:middle}
+.sheet td.c input{width:18px;height:18px;accent-color:var(--accent)}
+.preview{display:grid;gap:10px}
+.pv-sec{border:1px solid var(--paper-line);border-radius:10px;overflow:hidden}
+.pv-sec h5{margin:0;font-family:var(--display);font-weight:400;font-size:14px;padding:6px 10px;background:var(--paper-head);border-bottom:1px solid var(--paper-line)}
+.pv-sec h5 small{color:#646d70;font-family:var(--body);font-size:11.5px;margin-left:6px}
+.pv-kv{margin:0;display:grid;grid-template-columns:120px 1fr}
+.pv-kv dt,.pv-kv dd{margin:0;padding:5px 10px;border-bottom:1px solid #eceeed;font-size:13px;line-height:1.55}
+.pv-kv dt{color:#525a5d;background:#fafbfa}
+.pv-kv dd{white-space:pre-line}
+.pv-kv>:nth-last-child(-n+2){border-bottom:0}
+.sheet table.pv-t{border:0}
+.pv-t th{font-size:12.5px}
+.pv-t td{font-size:12.5px;line-height:1.5;white-space:pre-line}
+.pv-empty{margin:0;padding:8px 10px;font-size:13px}
+.ed-table input.inp+input.inp{margin-top:4px}
+/* 강사 패널: 응답 분포 */
+.rs{display:grid;gap:4px;padding:6px 0;border-bottom:1px solid var(--line)}
+.rs:last-child{border-bottom:0}
+.rs-h{display:flex;justify-content:space-between;gap:8px;align-items:baseline;font-size:13px}
+.rs-h b{font-weight:400;font-family:var(--display)}
+.rs-h small{color:var(--muted);white-space:nowrap;font-size:11.5px}
+.rs-bar{display:flex;gap:2px;min-height:22px;position:relative}
+.rs-bar span{display:flex;align-items:center;justify-content:center;font-size:11px;border-radius:5px;background:var(--sunk);color:var(--ink);white-space:nowrap;overflow:hidden;min-width:0}
+.rs-bar span:not(:empty){min-width:30px}
+.rs-bar span.key{outline:2px solid var(--accent);outline-offset:-2px;color:var(--accent)}
+.rs-none{font-size:11.5px;color:var(--muted);font-style:normal;position:absolute;left:4px;top:3px}
+#tp-resp[hidden]{display:none}
+.myrub td select{font-size:12px;padding:5px 2px}
 
 </style>
 </head>
@@ -605,7 +650,7 @@ body.is-teacher.tp-open .views{padding-right:400px}
     <div class="hero-bg" id="hero-bg" aria-hidden="true"></div>
     <div class="eyebrow">질문 중심 영어 수업·평가의 이해와 실제 · 2일차 질문 중심 평가</div>
     <h1>2일차 활동지 안내</h1>
-    <p>1일차에 만든 수업 설계에 평가를 더합니다. 5~7차시 활동지는 이 페이지에서 쓰고, 8차시에 한데 모아 다듬은 뒤 구글 문서 설계표의 5·7단계에 옮겨 통합 설계안을 완성합니다. 모든 활동은 모둠으로도, 개인으로도 할 수 있어요.</p>
+    <p>1일차에 만든 수업 설계에 평가를 더합니다. 5~7차시 활동지는 이 페이지에서 쓰고, 8차시에 한데 모아 다듬은 뒤 구글 문서 설계표의 5·7단계에 옮겨 통합 설계안을 완성합니다.</p>
     <div class="overall">
       <div class="meter" id="m-all">
         <div class="meter-top"><span>2일차 전체 진행률</span><b class="num"><span data-val>0</span><small>%</small></b></div>
@@ -617,11 +662,11 @@ body.is-teacher.tp-open .views{padding-right:400px}
   <div class="cards">
     <a class="card" href="#d5"><span class="k"><svg class="ic" data-i="target"></svg>5차시 · 웹 활동지</span><b>평가 요소와 학습 증거 정하기</b><span class="f">증거 분류 → 평가 요소 고르기 → 학습 증거 수집 계획 → 정합성 점검</span><div class="meter" data-meter="d5"><div class="meter-top"><span>진행률</span><b class="num"><span data-val>0</span><small>%</small></b></div><div class="track"><div class="fillbar"></div></div></div></a>
     <a class="card" href="#d6"><span class="k"><svg class="ic" data-i="edit"></svg>6차시 · 웹 활동지</span><b>질문 중심 서·논술형 문항 만들기</b><span class="f">기존 문항과 비교 → 영역·유형 → 재구성 → 학생 관점 점검</span><div class="meter" data-meter="d6"><div class="meter-top"><span>진행률</span><b class="num"><span data-val>0</span><small>%</small></b></div><div class="track"><div class="fillbar"></div></div></div></a>
-    <a class="card" href="#d7"><span class="k"><svg class="ic" data-i="check"></svg>7차시 · 준비 중</span><b>루브릭과 피드백</b><span class="f">표본 채점 → 루브릭 → 피드백·성찰 계획</span><div class="meter" data-meter="d7"><div class="meter-top"><span>진행률</span><b class="num"><span data-val>0</span><small>%</small></b></div><div class="track"><div class="fillbar"></div></div></div></a>
-    <a class="card" href="#d8"><span class="k"><svg class="ic" data-i="layout"></svg>8차시 · 준비 중</span><b>모아서 다듬고 나누기</b><span class="f">통합 설계안 미리보기 → 점검 → 모둠 공유 → 성찰</span><div class="meter" data-meter="d8"><div class="meter-top"><span>진행률</span><b class="num"><span data-val>0</span><small>%</small></b></div><div class="track"><div class="fillbar"></div></div></div></a>
+    <a class="card" href="#d7"><span class="k"><svg class="ic" data-i="check"></svg>7차시 · 웹 활동지</span><b>루브릭과 피드백</b><span class="f">표본 채점 → 모범 답안과 루브릭 → 피드백·성찰 계획</span><div class="meter" data-meter="d7"><div class="meter-top"><span>진행률</span><b class="num"><span data-val>0</span><small>%</small></b></div><div class="track"><div class="fillbar"></div></div></div></a>
+    <a class="card" href="#d8"><span class="k"><svg class="ic" data-i="layout"></svg>8차시 · 웹 활동지 + 구글 문서</span><b>모아서 다듬고 나누기</b><span class="f">통합 설계안 모으기 → 완성 기준 점검 → 나눔 기록 → 성찰</span><div class="meter" data-meter="d8"><div class="meter-top"><span>진행률</span><b class="num"><span data-val>0</span><small>%</small></b></div><div class="track"><div class="fillbar"></div></div></div></a>
   </div>
   <div class="how">
-    <div><svg class="ic" data-i="users"></svg><span>활동지 위 '작성 방식'에서 모둠 또는 개인을 고르세요. 칸 구성이 맞춰 바뀝니다.</span></div>
+    <div><svg class="ic" data-i="users"></svg><span>모둠이든 개인이든 ‘작성자’ 칸에 이름이나 모둠명을 쓰면 저장 파일 이름에 들어가요.</span></div>
     <div><svg class="ic" data-i="link"></svg><span>같은 브라우저라면 1일차에 쓴 단원, EQ, Q-Focus, 렌즈가 자동으로 보여요.</span></div>
     <div><svg class="ic" data-i="download"></svg><span>다 쓰면 PNG 또는 PDF로 저장해 패들렛에 올립니다.</span></div>
     <div><svg class="ic" data-i="file"></svg><span>8차시에 모은 내용을 구글 문서 설계표 5·7단계에 옮겨 완성합니다.</span></div>
@@ -714,10 +759,6 @@ body.is-teacher.tp-open .views{padding-right:400px}
             <div class="sh-title">평가 요소와 학습 증거 정하기<small>열기 → 증거 나누기 → 평가 요소 고르기 → 수집 계획 → 정합성 점검</small></div>
             <label class="who" for="d5-who">작성자(개인 또는 모둠) <input id="d5-who" data-k="d5.who" placeholder="이름 / 모둠명"></label>
           </div>
-          <div class="modebar">
-            <label for="d5-mode">작성 방식 <select id="d5-mode" data-k="d5.mode" data-np="1" class="mode-sel"><option value="모둠">모둠</option><option value="개인">개인</option></select></label>
-            <label class="only-group" for="d5-members">모둠원 <input id="d5-members" data-k="d5.members" data-np="1" placeholder="모둠원 이름"></label>
-          </div>
           <div class="carry" id="d5-day1"></div>
 
           <div class="sh-sec">
@@ -737,7 +778,7 @@ body.is-teacher.tp-open .views{padding-right:400px}
               <thead><tr><th></th><th>학습 증거</th><th>내 분류</th><th class="ans">강사 예시</th><th class="ans">이유</th></tr></thead>
               <tbody data-cls="d5"></tbody>
             </table>
-            <div class="trow no-export"><button type="button" class="addrow" id="d5-reveal"><svg class="ic" data-i="eye"></svg><span>강사 예시와 이유 보기</span></button><span class="tally" id="d5-clsscore"></span></div>
+            <div class="trow no-export"><button type="button" class="addrow self-reveal" id="d5-reveal"><svg class="ic" data-i="eye"></svg><span>강사 예시와 이유 보기</span></button><span class="tally" id="d5-clsscore"></span></div>
           </div>
 
           <div class="sh-sec">
@@ -769,13 +810,9 @@ body.is-teacher.tp-open .views{padding-right:400px}
             </div>
           </div>
 
-          <div class="sh-sec only-group">
-            <h4>모둠 토의 기록 <span>선택</span></h4>
+          <div class="sh-sec">
+            <h4>토의 메모 <span>선택</span></h4>
             <textarea id="d5-memo" data-k="d5.memo" data-np="1" rows="2"></textarea>
-          </div>
-          <div class="sh-sec only-solo">
-            <h4>짝 피드백 <span>선택</span></h4>
-            <textarea id="d5-peer" data-k="d5.peer" data-np="1" rows="2"></textarea>
           </div>
           <div class="sh-foot"><span>질문 중심 영어 수업·평가의 이해와 실제 · 2일차</span><span>5차시 산출물 · 6·7차시로 이어짐</span></div>
         </div>
@@ -880,10 +917,6 @@ body.is-teacher.tp-open .views{padding-right:400px}
             <div class="sh-title">질문 중심 서·논술형 문항 만들기<small>비교하기 → 영역·유형 → 원 문항 → 네 방향으로 바꾸기 → 학생 관점 점검</small></div>
             <label class="who" for="d6-who">작성자(개인 또는 모둠) <input id="d6-who" data-k="d6.who" placeholder="이름 / 모둠명"></label>
           </div>
-          <div class="modebar">
-            <label for="d6-mode">작성 방식 <select id="d6-mode" data-k="d6.mode" data-np="1" class="mode-sel"><option value="모둠">모둠</option><option value="개인">개인</option></select></label>
-            <label class="only-group" for="d6-members">모둠원 <input id="d6-members" data-k="d6.members" data-np="1" placeholder="모둠원 이름"></label>
-          </div>
           <div class="carry" id="d6-carry"></div>
 
           <div class="sh-sec">
@@ -961,13 +994,9 @@ body.is-teacher.tp-open .views{padding-right:400px}
             <h4>마무리 토론</h4>
             <div class="say"><svg class="ic" data-i="users"></svg><span><b>함께 이야기해요</b><span data-c="say.d6end"></span></span></div>
           </div>
-          <div class="sh-sec only-group">
-            <h4>모둠 토의 기록 <span>선택</span></h4>
+          <div class="sh-sec">
+            <h4>토의 메모 <span>선택</span></h4>
             <textarea id="d6-memo" data-k="d6.memo" data-np="1" rows="2"></textarea>
-          </div>
-          <div class="sh-sec only-solo">
-            <h4>짝 피드백 <span>선택</span></h4>
-            <textarea id="d6-peer" data-k="d6.peer" data-np="1" rows="2"></textarea>
           </div>
           <div class="sh-foot"><span>질문 중심 영어 수업·평가의 이해와 실제 · 2일차</span><span>6차시 산출물 · 7차시 루브릭으로 이어짐</span></div>
         </div>
@@ -992,32 +1021,283 @@ body.is-teacher.tp-open .views{padding-right:400px}
   </div>
 </section>
 
-<!-- ========== 7차시 (준비 중) ========== -->
+<!-- ========== 7차시 ========== -->
 <section class="view" id="v-d7" data-title="7차시 · 루브릭과 피드백">
-  <div class="v-head" style="margin-bottom:18px">
-    <div class="meta"><span class="chip">준비 중</span></div>
-    <h2>7차시 · 루브릭과 피드백</h2>
-    <p>표본 채점(교안 81~82쪽 예시 답안), 6차시 문항의 루브릭, 피드백·성찰 계획 활동지가 이 자리에 들어옵니다.</p>
+  <div class="vgrid">
+    <div class="v-head">
+      <div class="meta"><span class="chip"><svg class="ic" data-i="globe"></svg>웹 활동지</span><span class="chip"><svg class="ic" data-i="users"></svg>모둠 · 개인</span><span class="chip">7-1 루브릭의 구성 · 7-2 표본 채점 · 7-3 피드백과 성찰</span></div>
+      <h2>7차시 · 루브릭과 피드백</h2>
+      <p>같은 답안을 각자 채점해 점수가 어디서 갈리는지 확인하고, 그 경험으로 내 문항의 모범 답안과 루브릭을 씁니다. 마지막으로 피드백을 언제, 어떻게 줄지 정합니다.</p>
+    </div>
+
+    <div class="info panel" data-tabs="d7">
+      <div class="tabs" role="tablist" aria-label="7차시 안내">
+        <button class="tab" role="tab" id="d7-guide-tab" aria-controls="d7-guide-panel" data-tab="d7-guide"><svg class="ic" data-i="list"></svg>활동 안내</button>
+        <button class="tab" role="tab" id="d7-ref-tab" aria-controls="d7-ref-panel" data-tab="d7-ref"><svg class="ic" data-i="book"></svg>참고 카드</button>
+        <button class="tab" role="tab" id="d7-ex-tab" aria-controls="d7-ex-panel" data-tab="d7-ex"><svg class="ic" data-i="eye"></svg>작성 예시</button>
+      </div>
+      <div class="tabpanel" role="tabpanel" id="d7-guide-panel" aria-labelledby="d7-guide-tab">
+        <ol class="steps">
+          <li>표본 채점<span>앞의 기준으로 혼자 채점</span></li>
+          <li>점수 비교<span>요소별 점수를 견주고, 갈린 요소의 수준 기술 다시 읽기</span></li>
+          <li>모범 답안<span>내 문항에 A 수준 답안 쓰기</span></li>
+          <li>루브릭<span>질문의 질 + 답안의 질, 수준마다 다른 행동으로</span></li>
+          <li>피드백·성찰 계획<span>언제, 어떻게 되묻고 돌아보게 할지</span></li>
+        </ol>
+        <p class="note">이 차시의 핵심: 루브릭은 점수를 매기는 표이기 전에, 학생과 교사가 ‘잘한 질문’과 ‘잘한 답’을 같은 말로 이해하게 만드는 약속입니다. 채점자끼리 점수가 갈리는 곳이 고쳐야 할 수준 기술입니다.</p>
+      </div>
+      <div class="tabpanel" role="tabpanel" id="d7-ref-panel" aria-labelledby="d7-ref-tab" hidden>
+        <div class="subhead">질문 중심 평가 루브릭의 구성</div>
+        <div class="tbl"><table>
+          <thead><tr><th style="width:18%">구분</th><th>무엇을 보나</th><th style="width:34%">평가 요소 예</th></tr></thead>
+          <tbody>
+            <tr><td>질문의 질</td><td>학생이 만든 질문이 다양하고, 깊고, 탐구를 이어 가게 하는가</td><td>질문의 다양성 · 질문의 깊이 · 탐구 지속력</td></tr>
+            <tr><td>답안의 질</td><td>고른 질문에 근거를 갖춰 영어로 분명하게 답했는가</td><td>의미 전달 · 비판적 사고 · 전이 · 정확성</td></tr>
+          </tbody>
+        </table></div>
+        <div class="subhead">수준 기술을 쓰는 요령</div>
+        <ul class="plain">
+          <li>A 수준을 먼저 관찰 가능한 행동으로 씁니다. ‘이해한다’보다 ‘정의한다, 고른다, 근거를 든다’.</li>
+          <li>B~D를 ‘정확하게 → 비교적 정확하게 → 대략적으로 → 부분적으로’처럼 부사만 바꾸면 채점자마다 판단이 갈리기 쉽습니다. 수준마다 보이는 행동이 무엇이 다른지 적어 보세요.</li>
+          <li>E 수준은 참여와 시도를 인정하는 공통 문장으로 둘 수 있습니다.</li>
+          <li>배점은 A 10 · B 8 · C 6 · D 4 · E 2처럼 요소마다 같게 두면 합산이 쉽습니다.</li>
+        </ul>
+        <div class="subhead">피드백과 성찰</div>
+        <ul class="plain">
+          <li>재질문: 답을 고쳐 주기보다 “그 근거는 지문 어디에 있나요?”처럼 되물어 학생이 다시 생각하게 합니다.</li>
+          <li>피드백 시점: 결과가 나온 뒤보다 질문을 고르고 근거를 찾는 도중(STAR의 T·A 단계)에 줄 때 수정으로 이어집니다.</li>
+          <li>자기·동료평가는 루브릭의 같은 말을 써야 피드백이 구체적입니다.</li>
+        </ul>
+      </div>
+      <div class="tabpanel" role="tabpanel" id="d7-ex-panel" aria-labelledby="d7-ex-tab" hidden>
+        <div class="subhead">재질문 피드백 예시</div>
+        <div class="tbl"><table>
+          <thead><tr><th style="width:30%">학생 답안</th><th>교사의 재질문</th></tr></thead>
+          <tbody>
+            <tr><td>I think being kind is important.</td><td>Important for whom? 누구에게, 어떤 상황에서 중요한지 한 문장 더 써 볼까요?</td></tr>
+            <tr><td>Yumin was wrong.</td><td>지문의 어느 장면이 그렇게 생각하게 했나요? 그 장면을 근거로 넣어 보세요.</td></tr>
+            <tr><td>질문: What is wise communication?</td><td>이 질문을 Value 렌즈로 바꾸면 어떻게 될까요? ‘무엇이 더 중요한가’로 물어보세요.</td></tr>
+          </tbody>
+        </table></div>
+        <p class="note">작성 방법을 보여 주는 예시입니다.</p>
+      </div>
+    </div>
+
+    <div class="sheet-area" id="d7-sheet-anchor">
+      <div class="sheet-bar" data-for="sheet7"></div>
+      <div class="sheet-scroll">
+        <div class="sheet" id="sheet7" data-file="7차시_루브릭과피드백">
+          <div class="sh-head">
+            <span class="sh-no">7차시</span>
+            <div class="sh-title">루브릭과 피드백<small>표본 채점 → 점수 비교 → 모범 답안 → 루브릭 → 피드백·성찰 계획</small></div>
+            <label class="who" for="d7-who">작성자(개인 또는 모둠) <input id="d7-who" data-k="d7.who" placeholder="이름 / 모둠명"></label>
+          </div>
+
+          <div class="sh-sec">
+            <h4>① 표본 채점 <span>아래 답안을 루브릭으로 혼자 채점해 보세요</span></h4>
+            <div class="sample" id="d7-sample"></div>
+            <table class="rub-table">
+              <thead><tr><th style="width:15%">평가 요소</th><th>A (10)</th><th>B (8)</th><th>C (6)</th><th>D (4)</th><th style="width:11%">내 채점</th><th class="ans" style="width:9%">강사 기준</th></tr></thead>
+              <tbody data-rub="d7"></tbody>
+              <tfoot><tr><td colspan="5" class="e-row" id="d7-ecommon"></td><td class="score num" id="d7-total"></td><td class="ans"></td></tr></tfoot>
+            </table>
+            <div class="trow no-export"><button type="button" class="addrow self-reveal" id="d7-reveal"><svg class="ic" data-i="eye"></svg><span>강사 기준과 이유 보기</span></button><span class="tally" id="d7-scscore"></span></div>
+            <div class="ans-box" id="d7-why"></div>
+          </div>
+
+          <div class="sh-sec">
+            <h4>② 점수 비교 <span>짝·모둠과 요소별 점수를 견주어 보세요</span></h4>
+            <div class="say"><svg class="ic" data-i="users"></svg><span><b>함께 이야기해요</b><span data-c="say.d7score"></span></span></div>
+            <div class="fields" style="grid-template-columns:1fr">
+              <label for="d7-diff">점수가 가장 갈린 요소와 그 이유<textarea id="d7-diff" data-k="d7.diff" rows="1"></textarea></label>
+              <label for="d7-note">채점 메모: 그 요소를 A로 보려면 답안에서 무엇이 보여야 할까요?<textarea id="d7-note" data-k="d7.note" rows="1"></textarea></label>
+            </div>
+          </div>
+
+          <div class="sh-sec">
+            <h4>③ 내 문항의 모범 답안 <span>6차시에 만든 문항에 A 수준으로 답해 보세요</span></h4>
+            <div class="carry" id="d7-carry"></div>
+            <textarea id="d7-model" data-k="d7.model" rows="3" placeholder="학생이 실제로 쓸 수 있는 영어로, 문항의 조건을 모두 지켜 써 보세요."></textarea>
+          </div>
+
+          <div class="sh-sec">
+            <h4>④ 내 문항의 루브릭 <span>질문의 질과 답안의 질을 함께 담아요</span></h4>
+            <div class="say"><svg class="ic" data-i="users"></svg><span><b>함께 이야기해요</b><span data-c="say.d7rub"></span></span></div>
+            <table class="myrub">
+              <colgroup><col style="width:12%"><col style="width:16%"><col><col><col><col></colgroup>
+              <thead><tr><th>구분</th><th>평가 요소</th><th>A (10)</th><th>B (8)</th><th>C (6)</th><th>D (4)</th></tr></thead>
+              <tbody data-rows="d7"></tbody>
+              <tfoot><tr><td colspan="2" class="no">E (2) 공통</td><td colspan="4"><textarea id="d7-e" data-k="d7.e" rows="1" placeholder="예: 활동에 참여하며 자신의 생각을 표현하려고 노력함."></textarea></td></tr></tfoot>
+            </table>
+            <div class="trow no-export">
+              <button type="button" class="addrow" data-add="d7"><svg class="ic" data-i="plus"></svg>줄 추가</button>
+              <button type="button" class="addrow" id="d7-draft"><svg class="ic" data-i="spark"></svg><span>빈 B~D·E 칸에 초안 넣기</span></button>
+              <span class="note sm">A 수준을 바탕으로 부사만 바꾼 초안이에요. 수준마다 다른 행동이 보이도록 고쳐 쓰세요.</span>
+            </div>
+          </div>
+
+          <div class="sh-sec">
+            <h4>⑤ 피드백과 성찰 계획</h4>
+            <div class="say"><svg class="ic" data-i="users"></svg><span><b>함께 이야기해요</b><span data-c="say.d7fb"></span></span></div>
+            <div class="fields">
+              <label for="d7-fbwhen">피드백 시점<select id="d7-fbwhen" data-k="d7.fbwhen"></select></label>
+              <label for="d7-fbhow">피드백 방법<select id="d7-fbhow" data-k="d7.fbhow"></select></label>
+            </div>
+            <div class="fields" style="grid-template-columns:1fr">
+              <label for="d7-fbq">학생에게 던질 재질문 예시<textarea id="d7-fbq" data-k="d7.fbq" rows="1"></textarea></label>
+              <label for="d7-self">자기·동료평가 방법<textarea id="d7-self" data-k="d7.self" rows="1" placeholder="예: 루브릭의 질문의 질 두 요소로 짝의 질문 3개에 ○△ 표시"></textarea></label>
+              <label for="d7-refl">성찰 활동<textarea id="d7-refl" data-k="d7.refl" rows="1" placeholder="예: 가장 도움이 된 질문과 이유 한 문장"></textarea></label>
+            </div>
+          </div>
+
+          <div class="sh-sec">
+            <h4>토의 메모 <span>선택</span></h4>
+            <textarea id="d7-memo" data-k="d7.memo" data-np="1" rows="2"></textarea>
+          </div>
+          <div class="sh-foot"><span>질문 중심 영어 수업·평가의 이해와 실제 · 2일차</span><span>7차시 산출물 · 8차시 통합 설계안으로 이어짐</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="rail">
+      <div class="panel prog-card">
+        <div class="meter" data-meter="d7"><div class="meter-top"><span>7차시 진행률</span><b class="num"><span data-val>0</span><small>%</small></b></div><div class="track"><div class="fillbar"></div></div><div class="detail" data-detail></div></div>
+        <div class="timer mini" data-timer-mini></div>
+      </div>
+      <div class="panel crit-card">
+        <div class="panel-head"><h3>완성 기준 점검</h3><small>진행률에 반영</small></div>
+        <ul class="crit">
+          <li><label><input type="checkbox" data-k="c7.1">표본 답안을 기준에 따라 채점하고 판단 근거를 말할 수 있다.</label></li>
+          <li><label><input type="checkbox" data-k="c7.2">내 문항의 모범 답안을 썼다.</label></li>
+          <li><label><input type="checkbox" data-k="c7.3">질문의 질과 답안의 질을 담은 루브릭에서 수준별 차이를 행동으로 구분했다.</label></li>
+          <li><label><input type="checkbox" data-k="c7.4">피드백 시점·방법과 자기·동료평가, 성찰 활동을 정했다.</label></li>
+        </ul>
+      </div>
+    </div>
   </div>
-  <div class="panel"><div class="meter" data-meter="d7"><div class="meter-top"><span>7차시 진행률</span><b class="num"><span data-val>0</span><small>%</small></b></div><div class="track"><div class="fillbar"></div></div></div></div>
 </section>
 
-<!-- ========== 8차시 (준비 중) ========== -->
+<!-- ========== 8차시 ========== -->
 <section class="view" id="v-d8" data-title="8차시 · 모아서 다듬고 나누기">
-  <div class="v-head" style="margin-bottom:18px">
-    <div class="meta"><span class="chip">준비 중</span></div>
-    <h2>8차시 · 모아서 다듬고 나누기</h2>
-    <p>1일차와 5~7차시 내용을 한 장으로 모은 통합 설계안 미리보기, 7단계 체크리스트, 2일차 완성 기준, 모둠 공유 기록지, 마무리 성찰이 이 자리에 들어옵니다.</p>
-  </div>
-  <div class="panel"><div class="meter" data-meter="d8"><div class="meter-top"><span>8차시 진행률</span><b class="num"><span data-val>0</span><small>%</small></b></div><div class="track"><div class="fillbar"></div></div></div></div>
-</section>
+  <div class="vgrid">
+    <div class="v-head">
+      <div class="meta"><span class="chip"><svg class="ic" data-i="globe"></svg>웹 활동지</span><span class="chip"><svg class="ic" data-i="file"></svg>구글 문서 설계표</span><span class="chip">8-1 통합 설계안 · 8-2 나눔과 피드백 · 8-3 마무리 성찰</span></div>
+      <h2>8차시 · 모아서 다듬고 나누기</h2>
+      <p>1일차와 5~7차시에 쓴 내용을 한 장으로 모아 봅니다. 완성 기준으로 점검하고, 모둠에서 나눈 뒤 받은 피드백을 반영해 구글 문서 설계표 5·7단계에 옮깁니다.</p>
+    </div>
 
+    <div class="info panel" data-tabs="d8">
+      <div class="tabs" role="tablist" aria-label="8차시 안내">
+        <button class="tab" role="tab" id="d8-guide-tab" aria-controls="d8-guide-panel" data-tab="d8-guide"><svg class="ic" data-i="list"></svg>활동 안내</button>
+        <button class="tab" role="tab" id="d8-ref-tab" aria-controls="d8-ref-panel" data-tab="d8-ref"><svg class="ic" data-i="book"></svg>참고 카드</button>
+      </div>
+      <div class="tabpanel" role="tabpanel" id="d8-guide-panel" aria-labelledby="d8-guide-tab">
+        <ol class="steps">
+          <li>모아 보기<span>통합 설계안 미리보기에서 빈 곳 찾기</span></li>
+          <li>완성 기준 점검<span>나와 동료가 함께 체크</span></li>
+          <li>나누기<span>개인 설계 → 모둠 나눔 → 전체 공유</span></li>
+          <li>고쳐서 옮기기<span>피드백을 반영해 구글 문서 설계표 5·7단계에</span></li>
+          <li>마무리 성찰<span>이틀 동안 생각이 어떻게 바뀌었나</span></li>
+        </ol>
+        <p class="note">통합 설계안은 세 쪽입니다. 1쪽 질문 중심 단원 설계표와 2쪽 STAR 수업 설계안은 1일차에, 3쪽 질문 중심 평가 설계안은 오늘 완성합니다.</p>
+      </div>
+      <div class="tabpanel" role="tabpanel" id="d8-ref-panel" aria-labelledby="d8-ref-tab" hidden>
+        <div class="subhead">질문 중심 평가 설계 순서</div>
+        <ol class="plain">
+          <li>문항 정보 정리: 성취기준, 평가 영역, 평가 요소</li>
+          <li>발문과 조건 명확화: 질문 행동과 근거 행동이 드러나게</li>
+          <li>모범 답안 작성: 조건을 모두 지킨 A 수준 답안</li>
+          <li>평가 요소와 채점 기준 연결: 질문의 질 + 답안의 질</li>
+          <li>체크리스트로 최종 점검</li>
+        </ol>
+        <div class="subhead">나눔 순서</div>
+        <ul class="plain">
+          <li>개인 설계: 미리보기에서 빈 곳을 채웁니다.</li>
+          <li>모둠 나눔: 한 사람씩 설계를 소개하고, 모둠원은 질문을 하나씩 던집니다.</li>
+          <li>전체 공유: 모둠에서 가장 배울 점이 많았던 설계 하나를 소개합니다.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="sheet-area" id="d8-sheet-anchor">
+      <div class="sheet-bar" data-for="sheet8"></div>
+      <div class="sheet-scroll">
+        <div class="sheet" id="sheet8" data-file="8차시_질문중심평가설계안">
+          <div class="sh-head">
+            <span class="sh-no">8차시</span>
+            <div class="sh-title">질문 중심 평가 설계안<small>모아 보기 → 완성 기준 점검 → 나눔 기록 → 마무리 성찰</small></div>
+            <label class="who" for="d8-who">작성자(개인 또는 모둠) <input id="d8-who" data-k="d8.who" placeholder="이름 / 모둠명"></label>
+          </div>
+
+          <div class="sh-sec">
+            <h4>① 통합 설계안 미리보기 <span>1일차와 5~7차시에서 자동으로 모였어요. 고칠 곳은 해당 차시에서 고치면 바로 바뀝니다.</span></h4>
+            <div class="preview" id="d8-preview"></div>
+            <div class="trow no-export">
+              <button type="button" class="addrow" id="d8-copy"><svg class="ic" data-i="copy"></svg><span>설계안을 글로 복사하기</span></button>
+              <span class="note sm">구글 문서 설계표 5·7단계에 붙여 넣을 수 있어요.</span>
+            </div>
+          </div>
+
+          <div class="sh-sec">
+            <h4>② 2일차 완성 기준 점검 <span>나와 동료가 각각 체크</span></h4>
+            <table class="c8tbl">
+              <colgroup><col><col style="width:9%"><col style="width:9%"></colgroup>
+              <thead><tr><th>완성 기준</th><th>나</th><th>동료</th></tr></thead>
+              <tbody id="c8-body"></tbody>
+            </table>
+          </div>
+
+          <div class="sh-sec">
+            <h4>③ 나눔 기록</h4>
+            <div class="say"><svg class="ic" data-i="users"></svg><span><b>함께 이야기해요</b><span data-c="say.d8share"></span></span></div>
+            <table>
+              <colgroup><col style="width:24%"><col></colgroup>
+              <tbody>
+                <tr><td class="no">내 설계의 장점</td><td><textarea id="d8-good" data-k="d8.good" rows="1"></textarea></td></tr>
+                <tr><td class="no">동료가 던진 질문</td><td><textarea id="d8-q" data-k="d8.q" rows="1"></textarea></td></tr>
+                <tr><td class="no">질문에 대한 나의 답변</td><td><textarea id="d8-ans" data-k="d8.ans" rows="1"></textarea></td></tr>
+                <tr><td class="no">수업에 적용 가능한 팁</td><td><textarea id="d8-tip" data-k="d8.tip" rows="1"></textarea></td></tr>
+                <tr><td class="no">고칠 점 (피드백 반영)</td><td><textarea id="d8-fix" data-k="d8.fix" rows="1"></textarea></td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="sh-sec">
+            <h4>④ 마무리 성찰</h4>
+            <div class="say"><svg class="ic" data-i="users"></svg><span><b>함께 이야기해요</b><span data-c="say.d8end"></span></span></div>
+            <div class="fields">
+              <label for="d8-used">I used to think… (연수 전 내 생각)<textarea id="d8-used" data-k="d8.used" rows="1"></textarea></label>
+              <label for="d8-now">Now I think… (지금 내 생각)<textarea id="d8-now" data-k="d8.now" rows="1"></textarea></label>
+            </div>
+            <label class="fields" for="d8-first" style="grid-template-columns:1fr"><span>우리 수업에 가장 먼저 적용할 한 가지</span><textarea id="d8-first" data-k="d8.first" rows="1"></textarea></label>
+          </div>
+          <div class="sh-foot"><span>질문 중심 영어 수업·평가의 이해와 실제 · 2일차</span><span>통합 설계안 3쪽 · 질문 중심 평가 설계안</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="rail">
+      <div class="panel prog-card">
+        <div class="meter" data-meter="d8"><div class="meter-top"><span>8차시 진행률</span><b class="num"><span data-val>0</span><small>%</small></b></div><div class="track"><div class="fillbar"></div></div><div class="detail" data-detail></div></div>
+        <div class="timer mini" data-timer-mini></div>
+      </div>
+      <div class="panel crit-card">
+        <div class="panel-head"><h3>마무리 확인</h3><small>진행률에 반영</small></div>
+        <ul class="crit">
+          <li><label><input type="checkbox" data-k="c8.1">동료 피드백을 반영해 설계를 고쳤다.</label></li>
+          <li><label><input type="checkbox" data-k="c8.2">구글 문서 설계표 5·7단계에 옮겨 통합 설계안을 완성했다.</label></li>
+          <li><label><input type="checkbox" data-k="c8.3">PNG 또는 PDF로 저장해 패들렛에 공유했다.</label></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
 
 <section class="view" id="v-content" data-title="예시·문장 편집">
   <div class="v-head" style="margin-bottom:18px">
     <div class="meta"><span class="chip"><svg class="ic" data-i="edit"></svg>강사용</span></div>
     <h2>예시·문장 편집</h2>
-    <p>토의 질문, 5차시 학습 증거 카드, 6차시 제공 문항과 질문 중심 예시를 고칠 수 있어요. 저장하면 이 페이지를 연 모든 연수생 화면에 바로 반영됩니다.</p>
+    <p>토의 질문, 5차시 학습 증거 카드, 6차시 제공 문항과 질문 중심 예시, 7차시 표본 답안과 루브릭·강사 기준을 고칠 수 있어요. 저장하면 이 페이지를 연 모든 연수생 화면에 바로 반영됩니다.</p>
   </div>
   <div class="ed-status" id="ed-status"></div>
   <div class="tools-grid" style="grid-template-columns:minmax(0,1fr)">
@@ -1040,6 +1320,24 @@ body.is-teacher.tp-open .views{padding-right:400px}
     <div class="panel">
       <div class="panel-head"><h3>6차시 · 질문 중심으로 바꾼 예시</h3><small>① 비교하기 오른쪽</small></div>
       <div class="ed-sub" id="ed-qc"></div>
+    </div>
+    <div class="panel">
+      <div class="panel-head"><h3>7차시 · 표본 답안</h3><small>① 표본 채점에 보이는 답안</small></div>
+      <label class="fld" for="ed-d7ctx"><span>문항 설명 (한 줄)</span><input id="ed-d7ctx" class="inp" maxlength="200" data-ed="d7.ctx"></label>
+      <div class="tbl"><table class="ed-table">
+        <thead><tr><th style="width:5%">#</th><th style="width:12%">구조</th><th>답안 문장</th><th style="width:44px"></th></tr></thead>
+        <tbody id="ed-parts"></tbody>
+      </table></div>
+      <div><button type="button" class="btn sm" id="ed-parts-add"><svg class="ic" data-i="plus"></svg>부분 추가</button></div>
+    </div>
+    <div class="panel">
+      <div class="panel-head"><h3>7차시 · 루브릭과 강사 기준</h3><small>강사 기준은 ‘결과 공개’ 때 보여요</small></div>
+      <div class="tbl"><table class="ed-table">
+        <thead><tr><th style="width:13%">평가 요소</th><th>A (10)</th><th>B (8)</th><th>C (6)</th><th>D (4)</th><th style="width:8%">강사 기준</th><th style="width:18%">이유</th><th style="width:44px"></th></tr></thead>
+        <tbody id="ed-rub"></tbody>
+      </table></div>
+      <label class="fld" for="ed-d7e"><span>E (2) 공통 기술</span><input id="ed-d7e" class="inp" maxlength="200" data-ed="d7.e"></label>
+      <div><button type="button" class="btn sm" id="ed-rub-add"><svg class="ic" data-i="plus"></svg>평가 요소 추가</button></div>
     </div>
     <div class="panel">
       <div class="trow">
@@ -1186,6 +1484,10 @@ body.is-teacher.tp-open .views{padding-right:400px}
       <div class="sw" id="tp-lock" role="switch" tabindex="0" aria-checked="false"><div><b>화면 잠그기</b><small>연수생이 다른 화면으로 가지 못합니다 (따라오기 자동 켜짐)</small></div><i></i></div>
       <button type="button" class="btn primary block" id="tp-call"><svg class="ic" data-i="megaphone"></svg>지금 이 화면으로 모두 부르기</button>
       <div class="tp-cur" id="tp-cur"></div>
+      <div class="tp-sec" id="tp-resp" hidden>
+        <div class="tp-h"><span id="tp-resp-t">응답 분포</span><button type="button" class="btn sm primary" id="tp-reveal">결과 공개</button></div>
+        <div id="tp-resp-body"></div>
+      </div>
       <div class="tp-sec">
         <div class="tp-h"><span>공지 띄우기</span></div>
         <textarea id="tp-ntext" class="inp" maxlength="200" rows="2" placeholder="예: 쉬는 시간 10분! 3시 10분에 3차시부터 · 링크도 됩니다"></textarea>
@@ -1337,6 +1639,27 @@ const AREA_NAMES=Object.keys(AREAS);
 const ALL_TYPES=[...Object.values(AREAS).flatMap(a=>a[1]),"직접 정하기"];
 const QACT=[["고르기","제시된 질문 가운데 알맞은 질문을 고릅니다."],["틀 완성","질문 틀의 빈칸을 채워 질문을 만듭니다."],["구체화","교사 발문에 ‘누가·무엇이·어떤 상황에서?’를 더해 질문 대상을 좁힙니다."],["스스로 만들기","렌즈를 골라 탐구 질문을 직접 만듭니다."]];
 const QACT_NAMES=QACT.map(q=>q[0]);
+const LV=["A","B","C","D","E"], LVP={A:10,B:8,C:6,D:4,E:2};
+const QUAL=["질문의 질","답안의 질"];
+const FBHOW=["재질문","질문 사다리 힌트","체크리스트","동료 피드백","교사 코멘트","AI 답변과 비교하기"];
+const E_COMMON="활동에 참여하며 자신의 생각을 표현하려고 노력함.";
+const CRIT8=[
+  "평가 요소가 성취기준 및 학습 목표와 연결되어 있는가?",
+  "평가 문항에 학생의 질문 생성 및 탐구 과정이 반영되어 있는가?",
+  "문항의 자료·발문·조건이 평가 목적에 적합한가?",
+  "루브릭이 학생의 수행 수준에 따른 질적 차이를 구체적으로 구분하는가?",
+  "학생의 탐구 과정과 최종 산출물을 확인할 수 있는 평가 방법이 마련되어 있는가?",
+  "수업에서의 활동과 평가 과제 사이에 정합성이 확보되어 있는가?",
+  "동료 피드백을 반영하여 설계안을 수정·보완하였는가?"
+];
+/* A 수준 기술에서 B~D 초안 만들기 */
+function gradeDraft(a){
+  a=String(a||"").trim(); if(!a) return ["","",""];
+  for(const w of ["정확하게","적절하게","명확하게","충분히"]){
+    if(a.includes(w)){ const k=w==="충분히"?["비교적 충분히","대략적으로","부분적으로"]:["비교적 "+w,"대략적으로","부분적으로"]; return k.map(x=>a.replace(w,x)); }
+  }
+  return ["대체로 "+a,"일부 "+a,"시도하며 부분적으로 "+a];
+}
 
 /* ---------- 행 ---------- */
 const lensOptions=()=>`<option value="">렌즈 선택</option>`+LENSES.map(l=>`<option value="${l[1]}">${l[1]} (${l[2]})</option>`).join("");
@@ -1348,13 +1671,17 @@ const ROWDEF={
     <td><textarea id="d5-ev${i}" data-k="d5.ev${i}" data-group="d5r${i}" rows="1"></textarea></td>
     <td><select id="d5-when${i}" data-k="d5.when${i}" data-group="d5r${i}">${opts(WHEN)}</select></td>
     <td><textarea id="d5-how${i}" data-k="d5.how${i}" data-group="d5r${i}" rows="1"></textarea></td>
-    <td><textarea id="d5-a${i}" data-k="d5.a${i}" data-group="d5r${i}" rows="1"></textarea></td>`}
+    <td><textarea id="d5-a${i}" data-k="d5.a${i}" data-group="d5r${i}" rows="1"></textarea></td>`},
+  d7:{min:4,max:6,make:i=>`<td><select id="d7-q${i}" data-k="d7.q${i}" data-np="1">${(i<=2?QUAL:[...QUAL].reverse()).map(x=>`<option>${x}</option>`).join("")}</select></td>
+    <td><select id="d7-el${i}" data-k="d7.el${i}" data-group="d7r${i}">${elOptions()}</select></td>
+    ${["a","b","c","d"].map(l=>`<td><textarea id="d7-${l}${i}" data-k="d7.${l}${i}" data-group="d7r${i}" rows="1"></textarea></td>`).join("")}`}
 };
-const REVEAL={ d5:{sheet:"sheet5",btn:"d5-reveal",on:"강사 예시와 이유 숨기기",off:"강사 예시와 이유 보기"} };
-function setReveal(n,on){
+const REVEAL={ d5:{sheet:"sheet5",btn:"d5-reveal",on:"강사 예시와 이유 숨기기",off:"강사 예시와 이유 보기"}, d7:{sheet:"sheet7",btn:"d7-reveal",on:"강사 기준과 이유 숨기기",off:"강사 기준과 이유 보기"} };
+const isRev=n=>$(REVEAL[n].sheet).classList.contains("reveal");
+function setReveal(n,on,noSave){
   const r=REVEAL[n]; $(r.sheet).classList.toggle("reveal",on);
   $(r.btn).querySelector("span").textContent=on?r.on:r.off;
-  try{ localStorage.setItem(NS+"ui."+n+"reveal",on?"1":"0"); }catch(e){}
+  if(!noSave) try{ localStorage.setItem(NS+"ui."+n+"reveal",on?"1":"0"); }catch(e){}
   refresh();
 }
 function typeOptions(area){ const t=AREAS[area]?[...AREAS[area][1],"직접 정하기"]:ALL_TYPES; return opts(t); }
@@ -1363,6 +1690,8 @@ function fillStaticSelects(){
   $("d6-type").innerHTML=typeOptions(store.get("d6.area")||"");
   $("d6-qact").innerHTML=opts(QACT_NAMES);
   $("d6-lens").innerHTML=lensOptions(); $("d6-lens2").innerHTML=lensOptions();
+  $("d7-fbwhen").innerHTML=opts(WHEN); $("d7-fbhow").innerHTML=opts(FBHOW);
+  $("c8-body").innerHTML=CRIT8.map((c,i)=>`<tr><td>${i+1}. ${esc(c)}</td><td class="c"><input type="checkbox" id="c8-m${i}" data-k="c8.m${i}" aria-label="${i+1}번 기준 나"></td><td class="c"><input type="checkbox" id="c8-p${i}" data-k="c8.p${i}" aria-label="${i+1}번 기준 동료"></td></tr>`).join("");
   $("d6-typeref").innerHTML=AREA_NAMES.map(a=>`<tr><td style="width:18%">${a}</td><td>${AREAS[a][1].map(esc).join(" · ")}</td></tr>`).join("");
   // 평가 요소 칩
   $("d5-chips").innerHTML=`<input type="hidden" id="d5-els" data-k="d5.els">`+
@@ -1393,7 +1722,15 @@ function wireDay2(){
     refresh();
   });
   $("d6-load").addEventListener("click",loadBase);
-  $("d5-reveal").addEventListener("click",()=>setReveal("d5",!$("sheet5").classList.contains("reveal")));
+  $("d5-reveal").addEventListener("click",()=>setReveal("d5",!isRev("d5")));
+  $("d7-reveal").addEventListener("click",()=>setReveal("d7",!isRev("d7")));
+  $("d7-draft").addEventListener("click",()=>{
+    let n=0; const put=(k,v)=>{ const el=document.querySelector(`[data-k="${k}"]`); if(!el||(el.value||"").trim()) return; el.value=v; store.set(k,v); grow(el); n++; };
+    for(let i=1;i<=rowCount("d7");i++){ const a=$("d7-a"+i).value; if(!a.trim()) continue; const [b,c,d]=gradeDraft(a); put("d7.b"+i,b); put("d7.c"+i,c); put("d7.d"+i,d); }
+    put("d7.e",E_COMMON);
+    refresh(); stamp(); toast(n?`빈 칸 ${n}곳에 초안을 넣었어요. 수준마다 다른 행동으로 고쳐 보세요.`:"A 칸을 먼저 쓰거나, 비어 있는 B~D 칸이 없어요.");
+  });
+  $("d8-copy").addEventListener("click",copyDesign);
 }
 async function loadBase(){
   const keys=["om","op","oc","os"], b=C.base;
@@ -1483,11 +1820,9 @@ function cmpHtml(a,b){
   const col=(t,cls,x)=>`<div class="cmp-col ${cls}"><h5>${t}</h5><dl><dt>자료</dt><dd>${esc(x.m||"—")}</dd><dt>발문</dt><dd>${esc(x.p||"—")}</dd><dt>조건</dt><dd>${esc(x.c||"—")}</dd><dt>채점</dt><dd>${esc(x.s||"—")}</dd></dl></div>`;
   return col("기존 문항","",a)+col("질문 중심 문항","q",b);
 }
-function applyModes(){ document.querySelectorAll(".mode-sel").forEach(s=>{ const sh=s.closest(".sheet"); if(sh) sh.dataset.mode=s.value||"모둠"; }); }
 function refresh(){
   const val=id=>{ const e=$(id); return e?e.value.trim():""; };
   const carry=(id,html)=>{ const e=$(id); if(!e) return; e.innerHTML=html; e.hidden=!html; };
-  applyModes();
   const d1=day1Info();
   // 개요 · 1일차 연결
   carry("home-day1", d1.any
@@ -1497,7 +1832,8 @@ function refresh(){
   carry("d5-day1", `<b>1일차 단원</b> <span>${d1.unit?esc(d1.unit):'<span class="muted">—</span>'}</span><b>EQ</b> <span>${d1.eq?esc(d1.eq):'<span class="muted">—</span>'}</span>${d1.qfs.length?`<b>Q-Focus</b> <span>${d1.qfs.map(esc).join(" / ")}</span>`:""}<small>학습 목표와 학습 증거는 4차시 구글 문서 설계표에서 옮겨 적어요.</small>`);
   const rev=$("sheet5").classList.contains("reveal"); let ok=0,tot=0;
   document.querySelectorAll('[data-cls="d5"] tr').forEach((tr,i)=>{ const a=tr.dataset.ans, v=val(`d5-cls${i+1}`); tr.classList.remove("ok","no"); if(!rev||!v) return; tot++; if(v===a){ ok++; tr.classList.add("ok"); } else tr.classList.add("no"); });
-  $("d5-clsscore").textContent = rev ? (tot?`강사 예시와 같은 카드 ${ok} / ${tot} · 다르게 나눈 카드는 이유를 이야기해 보세요`:"분류를 고른 뒤 다시 보세요") : "";
+  const waitNote=asStudent()?"강사가 결과를 공개하면 강사 예시가 보여요.":"";
+  $("d5-clsscore").textContent = rev ? (tot?`강사 예시와 같은 카드 ${ok} / ${tot} · 다르게 나눈 카드는 이유를 이야기해 보세요`:"분류를 고른 뒤 다시 보세요") : waitNote;
   const els=pickedEls();
   document.querySelectorAll("#d5-chips [data-el]").forEach(b=>b.setAttribute("aria-pressed",els.includes(b.dataset.el)?"true":"false"));
   const byDom={}; els.forEach(e=>{ const d=elDomain(e)||"기타"; (byDom[d]=byDom[d]||[]).push(e); });
@@ -1508,14 +1844,64 @@ function refresh(){
   carry("d6-carry", `<b>단원</b> <span>${d1.unit?esc(d1.unit):'<span class="muted">—</span>'}</span><b>EQ</b> <span>${d1.eq?esc(d1.eq):'<span class="muted">—</span>'}</span><b>5차시 평가 요소</b> <span>${useEls.length?useEls.map(esc).join(", "):'<span class="muted">5차시 ④ 표를 채우면 보여요</span>'}</span>${d1.lenses.length?`<b>1일차 렌즈</b> <span>${d1.lenses.map(esc).join(", ")}</span>`:""}`);
   const area=val("d6-area"), qa=QACT.find(q=>q[0]===val("d6-qact"));
   carry("d6-areahint", (area||qa)?`${area?`<b>${esc(area)}</b><span>${esc(AREAS[area][0])}</span>`:""}${qa?`<b>질문 행동 · ${esc(qa[0])}</b><span>${esc(qa[1])}</span>`:""}`:"");
+  // 7차시
+  const r7=isRev("d7"); let tsum=0,tn=0,same=0;
+  document.querySelectorAll('[data-rub="d7"] tr').forEach((tr,i)=>{ const v=val(`d7-sc${i+1}`), a=tr.dataset.lv; tr.classList.remove("ok","no"); if(v){ tsum+=LVP[v]; tn++; } if(r7&&v){ if(v===a){ same++; tr.classList.add("ok"); } else tr.classList.add("no"); } });
+  const nEl=document.querySelectorAll('[data-rub="d7"] tr').length;
+  $("d7-total").textContent=tn?`${tsum} / ${nEl*10}점`:"";
+  $("d7-scscore").textContent = r7 ? (tn?`강사 기준과 같은 요소 ${same} / ${tn}`:"채점한 뒤 다시 보세요") : (asStudent()?"강사가 결과를 공개하면 강사 기준이 보여요.":"");
+  const g=k=>(store.get(k)||"").trim();
+  carry("d7-carry", (g("d6.np")||g("d6.nc"))?`<b>6차시 내 문항</b><span>발문: ${esc(g("d6.np")||"—")}</span><span>조건: ${esc(g("d6.nc")||"—")}</span>${g("d6.ns")?`<span>채점 요소: ${esc(g("d6.ns"))}</span>`:""}`:`<b>6차시 내 문항</b> <span class="muted">6차시 ④ 재구성 칸을 쓰면 여기에 보여요.</span>`);
+  // 8차시
+  $("d8-preview").innerHTML=designHtml();
   // 진행률
   const res={}; let sum=0;
   ["d5","d6","d7","d8"].forEach(s=>{ res[s]=unitsFor(s); sum+=res[s].pct; });
   document.querySelectorAll("[data-meter]").forEach(m=>{ const r=res[m.dataset.meter]; if(r) setMeter(m,r.pct,r.total?`채운 항목 ${r.done} / ${r.total}`:"준비 중"); });
-  const all=Math.round((res.d5.pct+res.d6.pct)/2);
+  const all=Math.round(sum/4);
   setMeter($("m-all"),all);
   document.querySelectorAll("[data-pct]").forEach(e=>{ const k=e.dataset.pct; const p=k==="all"?all:(res[k]?res[k].pct:0); e.textContent=p?p+"%":""; });
   updateBackupSummary();
+  if(typeof pushResp==="function") pushResp();
+}
+
+const asStudent=()=>typeof L!=="undefined"&&L.role==="student";
+/* 8차시 통합 설계안 */
+function designData(){
+  const g=k=>(store.get(k)||"").trim(), d1=day1Info();
+  const plan=[]; for(let i=1;i<=rowCount("d5");i++){ const r={dom:g("d5.dom"+i),el:g("d5.el"+i),ev:g("d5.ev"+i),when:g("d5.when"+i),how:g("d5.how"+i),a:g("d5.a"+i)}; if(Object.values(r).some(Boolean)) plan.push(r); }
+  const rub=[]; for(let i=1;i<=rowCount("d7");i++){ const r={q:g("d7.q"+i),el:g("d7.el"+i),a:g("d7.a"+i),b:g("d7.b"+i),c:g("d7.c"+i),d:g("d7.d"+i)}; if(r.el||r.a||r.b||r.c||r.d) rub.push(r); }
+  const lens=[g("d6.lens"),g("d6.lens2")].filter(Boolean).join(", ");
+  return {d1,goal:g("d5.goal"),evid:g("d5.evid"),plan,
+    item:{topic:g("d6.topic"),std:g("d6.std"),area:g("d6.area"),type:g("d6.type"),qact:g("d6.qact"),lens,m:g("d6.nm"),p:g("d6.np"),c:g("d6.nc"),s:g("d6.ns")},
+    model:g("d7.model"),rub,e:g("d7.e"),fb:{when:g("d7.fbwhen"),how:g("d7.fbhow"),q:g("d7.fbq"),self:g("d7.self"),refl:g("d7.refl")}};
+}
+function designHtml(){
+  const D=designData(), x=v=>v?esc(v):'<span class="muted">—</span>';
+  const kv=rows=>`<dl class="pv-kv">${rows.map(([k,v])=>`<dt>${k}</dt><dd>${x(v)}</dd>`).join("")}</dl>`;
+  let h=`<div class="pv-sec"><h5>1. 단원과 질문</h5>${kv([["단원",D.d1.unit],["핵심 질문(EQ)",D.d1.eq],["Q-Focus",D.d1.qfs.join(" / ")],["학습 목표",D.goal]])}</div>`;
+  h+=`<div class="pv-sec"><h5>2. 평가 요소와 학습 증거 수집 계획 <small>5차시</small></h5>`+(D.plan.length?`<table class="pv-t"><thead><tr><th>영역</th><th>평가 요소</th><th>학습 증거</th><th>시점</th><th>방법</th><th>A 수준 모습</th></tr></thead><tbody>${D.plan.map(r=>`<tr><td>${x(r.dom)}</td><td>${x(r.el)}</td><td>${x(r.ev)}</td><td>${x(r.when)}</td><td>${x(r.how)}</td><td>${x(r.a)}</td></tr>`).join("")}</tbody></table>`:`<p class="muted pv-empty">5차시 ④ 표가 비어 있어요.</p>`)+`</div>`;
+  h+=`<div class="pv-sec"><h5>3. 질문 중심 서·논술형 문항 <small>6차시</small></h5>${kv([["주제·성취기준",[D.item.topic,D.item.std].filter(Boolean).join(" · ")],["영역·유형",[D.item.area,D.item.type].filter(Boolean).join(" · ")],["질문 행동·렌즈",[D.item.qact,D.item.lens].filter(Boolean).join(" · ")],["자료",D.item.m],["발문",D.item.p],["조건",D.item.c],["채점 요소",D.item.s]])}</div>`;
+  h+=`<div class="pv-sec"><h5>4. 모범 답안과 루브릭 <small>7차시</small></h5>${kv([["모범 답안",D.model]])}`+(D.rub.length?`<table class="pv-t"><thead><tr><th>구분</th><th>평가 요소</th><th>A (10)</th><th>B (8)</th><th>C (6)</th><th>D (4)</th></tr></thead><tbody>${D.rub.map(r=>`<tr><td>${x(r.q)}</td><td>${x(r.el)}</td><td>${x(r.a)}</td><td>${x(r.b)}</td><td>${x(r.c)}</td><td>${x(r.d)}</td></tr>`).join("")}<tr><td colspan="2">E (2) 공통</td><td colspan="4">${x(D.e)}</td></tr></tbody></table>`:`<p class="muted pv-empty">7차시 ④ 루브릭이 비어 있어요.</p>`)+`</div>`;
+  h+=`<div class="pv-sec"><h5>5. 피드백과 성찰 <small>7차시</small></h5>${kv([["피드백 시점·방법",[D.fb.when,D.fb.how].filter(Boolean).join(" · ")],["재질문 예시",D.fb.q],["자기·동료평가",D.fb.self],["성찰 활동",D.fb.refl]])}</div>`;
+  return h;
+}
+function designText(){
+  const D=designData(), v=s=>s||"-";
+  const L2=[];
+  L2.push("[질문 중심 평가 설계안]","","1. 단원과 질문",`- 단원: ${v(D.d1.unit)}`,`- 핵심 질문(EQ): ${v(D.d1.eq)}`,`- Q-Focus: ${v(D.d1.qfs.join(" / "))}`,`- 학습 목표: ${v(D.goal)}`,"");
+  L2.push("2. 평가 요소와 학습 증거 수집 계획 (5단계)");
+  if(D.plan.length) D.plan.forEach((r,i)=>L2.push(`${i+1}) [${v(r.dom)}] ${v(r.el)} | 학습 증거: ${v(r.ev)} | 시점: ${v(r.when)} | 방법: ${v(r.how)} | A 수준: ${v(r.a)}`)); else L2.push("-");
+  L2.push("","3. 질문 중심 서·논술형 문항 (7단계)",`- 주제·성취기준: ${v([D.item.topic,D.item.std].filter(Boolean).join(" · "))}`,`- 영역·유형: ${v([D.item.area,D.item.type].filter(Boolean).join(" · "))}`,`- 질문 행동·렌즈: ${v([D.item.qact,D.item.lens].filter(Boolean).join(" · "))}`,`- 자료: ${v(D.item.m)}`,`- 발문: ${v(D.item.p)}`,`- 조건: ${v(D.item.c)}`,`- 채점 요소: ${v(D.item.s)}`,"");
+  L2.push("4. 모범 답안",v(D.model),"","5. 루브릭 (A 10 · B 8 · C 6 · D 4 · E 2)");
+  if(D.rub.length) D.rub.forEach((r,i)=>L2.push(`${i+1}) [${v(r.q)}] ${v(r.el)}`,`   A: ${v(r.a)}`,`   B: ${v(r.b)}`,`   C: ${v(r.c)}`,`   D: ${v(r.d)}`)); else L2.push("-");
+  L2.push(`   E(공통): ${v(D.e)}`,"","6. 피드백과 성찰",`- 피드백 시점·방법: ${v([D.fb.when,D.fb.how].filter(Boolean).join(" · "))}`,`- 재질문 예시: ${v(D.fb.q)}`,`- 자기·동료평가: ${v(D.fb.self)}`,`- 성찰 활동: ${v(D.fb.refl)}`);
+  return L2.join("\n");
+}
+async function copyDesign(){
+  const t=designText();
+  try{ await navigator.clipboard.writeText(t); toast("설계안을 복사했어요. 구글 문서에 붙여 넣으세요."); }
+  catch(e){ const ta=document.createElement("textarea"); ta.value=t; ta.style.position="fixed"; ta.style.opacity="0"; document.body.appendChild(ta); ta.select(); let ok=false; try{ ok=document.execCommand("copy"); }catch(_){} ta.remove(); toast(ok?"설계안을 복사했어요. 구글 문서에 붙여 넣으세요.":"복사하지 못했어요. 미리보기를 직접 선택해 복사해 주세요."); }
 }
 
 /* ---------- 모달 ---------- */
@@ -1685,22 +2071,30 @@ const SCHEMA="qcd1-day2-worksheets", SCHEMA_VERSION=1;
 const isMine=k=>/^(d[5-8]\.|c[5-8]\.|rows\.d[5-8]$)/.test(k);
 const N20="([1-9]|1[0-9]|20)", R6="[1-6]";
 const KEY_RULES=[
-  [/^d5\.(who|members|memo|peer|goal|evid|els)$/,"text"],
-  [/^d[5-8]\.mode$/,["","모둠","개인"]],
+  [/^d5\.(who|memo|goal|evid|els)$/,"text"],
   [new RegExp("^d5\\.cls"+N20+"$"),["",...DOMAINS]],
   [/^d[56]\.chk[1-5]$/,["0","1"]],
   [new RegExp("^d5\\.dom"+R6+"$"),["",...DOMAINS]],
   [new RegExp("^d5\\.el"+R6+"$"),["",...ALL_ELS]],
   [new RegExp("^d5\\.when"+R6+"$"),["",...WHEN]],
   [new RegExp("^d5\\.(ev|how|a)"+R6+"$"),"text"],
-  [/^d6\.(who|members|memo|peer|topic|std|c[1-4]|om|op|oc|os|nm|np|nc|ns|stu|score|fix)$/,"text"],
+  [/^d6\.(who|memo|topic|std|c[1-4]|om|op|oc|os|nm|np|nc|ns|stu|score|fix)$/,"text"],
   [/^d6\.area$/,["",...AREA_NAMES]],
   [/^d6\.type$/,["",...ALL_TYPES]],
   [/^d6\.qact$/,["",...QACT_NAMES]],
   [/^d6\.src$/,["","강사 제공 문항","내 교과서 문항"]],
   [/^d6\.lens2?$/,["",...LENS_NAMES]],
+  [/^d7\.(who|memo|diff|note|model|e|fbq|self|refl)$/,"text"],
+  [/^d7\.sc[1-6]$/,["",...LV]],
+  [/^d7\.q[1-6]$/,["",...QUAL]],
+  [/^d7\.el[1-6]$/,["",...ALL_ELS]],
+  [/^d7\.[a-d][1-6]$/,"text"],
+  [/^d7\.fbwhen$/,["",...WHEN]],
+  [/^d7\.fbhow$/,["",...FBHOW]],
+  [/^d8\.(who|good|q|ans|tip|fix|used|now|first)$/,"text"],
   [/^c[5-8]\.[1-6]$/,["0","1"]],
-  [/^rows\.d5$/,"int:3-6"]
+  [/^c8\.(m|p)[0-6]$/,["0","1"]],
+  [/^rows\.d5$/,"int:3-6"],[/^rows\.d7$/,"int:4-6"]
 ];
 
 function validateBackup(obj){
@@ -1954,6 +2348,7 @@ function renderLive(){
   $("tpanel").hidden=r!=="teacher";
   if(r==="student") renderStudent();
   if(r==="teacher") renderTeacher();
+  liveHook();
 }
 function renderStudent(){
   const st=L.st||{}, fol=!!st.follow, lk=!!st.lock, p=getPos();
@@ -1993,6 +2388,7 @@ function renderTeacher(){
   $("tp-roster").hidden=!L.rosterOpen; $("tp-rt").textContent=L.rosterOpen?"접기":`펼치기 (${list.length})`;
   $("tp-close").textContent=L.closed?"참여 다시 받기":"참여 마감";
   $("tp-pill").innerHTML=`${ic("users")}<b class="num">${esc(L.code||"")}</b> · ${st.lock?"잠금":st.follow?"따라오기 켬":"따라오기 끔"} · 접속 ${online.length}${helps.length?" · 손 "+helps.length:""}`;
+  renderResp();
 }
 setInterval(()=>{ if(L.role==="teacher"&&Object.values(L.members||{}).some(m=>m&&m.help)) renderTeacher(); },15000);
 
@@ -2201,11 +2597,63 @@ async function initLive(){
   if(q&&/^[A-Z2-9]{6}$/i.test(q)){ $("j-code").value=q.toUpperCase(); if(saved.name) $("j-name").value=saved.name; openJoin("s"); }
 }
 
+/* ---------- 응답 모으기 · 분포 · 결과 공개 (5차시 증거 나누기, 7차시 표본 채점) ---------- */
+const DCODE={"지식·이해":"K","과정·기능":"P","가치·태도":"V"}, DNAME={K:"지식·이해",P:"과정·기능",V:"가치·태도"};
+let respT=null, respLast="";
+function myResp(){
+  const d5=C.cards.map((_,i)=>DCODE[store.get("d5.cls"+(i+1))||""]||"-").join("");
+  const d7=C.d7.rub.map((_,i)=>store.get("d7.sc"+(i+1))||"-").join("");
+  return {d5,d7};
+}
+function pushResp(){
+  if(typeof L==="undefined"||L.role!=="student"||!rdb||!L.uid||!L.code) return;
+  clearTimeout(respT);
+  respT=setTimeout(()=>{ const r=myResp(), k=JSON.stringify(r); if(k===respLast) return; respLast=k;
+    rdb.ref(`classes/${L.code}/members/${L.uid}/resp`).set(r).catch(()=>{ respLast=""; }); },600);
+}
+const RV={};
+function liveHook(){
+  if(!L.role){ Object.keys(RV).forEach(k=>delete RV[k]); respLast=""; return; }
+  const rv=(L.st&&L.st.reveal)||{};
+  ["d5","d7"].forEach(n=>{ const want=!!rv[n]; if(RV[n]!==want){ RV[n]=want; if(isRev(n)!==want) setReveal(n,want,true); } });
+  if(L.role==="student") pushResp();
+}
+function respBar(segs,total){
+  return `<div class="rs-bar">${segs.map(s=>`<span class="${s.key?"key":""}" style="flex:${Math.max(s.n,0.0001)}" title="${esc(s.label)} ${s.n}명">${s.n?`${esc(s.short)} ${s.n}`:""}</span>`).join("")}${total?"":'<i class="rs-none">아직 응답 없음</i>'}</div>`;
+}
+function renderResp(){
+  const box=$("tp-resp"); if(!box) return;
+  const v=getPos().view; if(L.role!=="teacher"||!["d5","d7"].includes(v)){ box.hidden=true; return; }
+  box.hidden=false;
+  const ms=Object.values(L.members||{}).filter(m=>m&&m.resp);
+  const st=L.st||{}, on=!!(st.reveal&&st.reveal[v]);
+  const rb=$("tp-reveal"); rb.textContent=on?"결과 숨기기":"결과 공개"; rb.className="btn sm"+(on?"":" primary");
+  let rows=[];
+  if(v==="d5"){
+    rows=C.cards.map((c,i)=>{ const cnt={K:0,P:0,V:0}; ms.forEach(m=>{ const x=(m.resp.d5||"")[i]; if(cnt[x]!==undefined) cnt[x]++; });
+      const n=cnt.K+cnt.P+cnt.V, mx=Math.max(cnt.K,cnt.P,cnt.V), agree=n?mx/n:1, key=DCODE[c.a];
+      return {i,n,score:n?1-agree:-1,html:`<div class="rs"><div class="rs-h"><b>${i+1}. ${esc(c.t)}</b><small>${n?`응답 ${n} · 일치 ${Math.round(agree*100)}%`:"응답 없음"}</small></div>${respBar(["K","P","V"].map(k=>({n:cnt[k],short:DNAME[k].split("·")[0],label:DNAME[k],key:k===key})),n)}</div>`}; });
+    $("tp-resp-t").textContent=`증거 나누기 분포 · ${ms.length}명`;
+  }else{
+    rows=C.d7.rub.map((r,i)=>{ const cnt={A:0,B:0,C:0,D:0,E:0}; ms.forEach(m=>{ const x=(m.resp.d7||"")[i]; if(cnt[x]!==undefined) cnt[x]++; });
+      const pts=[]; LV.forEach(l=>{ for(let j=0;j<cnt[l];j++) pts.push(LVP[l]); });
+      const n=pts.length, mean=n?pts.reduce((a,b)=>a+b,0)/n:0, sd=n?Math.sqrt(pts.reduce((a,b)=>a+(b-mean)**2,0)/n):0;
+      return {i,n,score:n?sd:-1,html:`<div class="rs"><div class="rs-h"><b>${esc(r.el)}</b><small>${n?`응답 ${n} · 평균 ${mean.toFixed(1)}점 · ${sd>=2?"많이 갈림":sd>=1?"조금 갈림":"거의 일치"}`:"응답 없음"}</small></div>${respBar(LV.map(l=>({n:cnt[l],short:l,label:l+" 수준",key:l===r.lv})),n)}</div>`}; });
+    $("tp-resp-t").textContent=`표본 채점 분포 · ${ms.length}명`;
+  }
+  rows.sort((a,b)=>(b.score-a.score)||(a.i-b.i));
+  $("tp-resp-body").innerHTML=`<p class="note sm">의견이 가장 갈린 ${v==="d5"?"카드":"요소"}가 위에 와요. 테두리 칸이 강사 기준입니다.</p>`+rows.map(r=>r.html).join("");
+}
+$("tp-reveal").addEventListener("click",()=>{ const v=getPos().view; if(!["d5","d7"].includes(v)) return; const on=!!(L.st&&L.st.reveal&&L.st.reveal[v]); stUpd({["reveal/"+v]:on?null:true}); });
+window.addEventListener("hashchange",()=>{ if(L.role==="teacher") setTimeout(renderResp,0); });
+
 /* ---------- 강사가 고칠 수 있는 예시·문장 ---------- */
 const CONTENT_PATH="content2";
 const SAY_LABELS = {
   d5open:"5차시 ① 열기", d5cards:"5차시 ② 증거 나누기", d5plan:"5차시 ④ 학습 증거 수집 계획",
-  d6cmp:"6차시 ① 비교하기", d6make:"6차시 ④ 네 방향으로 바꾸기", d6end:"6차시 마무리 토론"
+  d6cmp:"6차시 ① 비교하기", d6make:"6차시 ④ 네 방향으로 바꾸기", d6end:"6차시 마무리 토론",
+  d7score:"7차시 ② 점수 비교", d7rub:"7차시 ④ 내 문항의 루브릭", d7fb:"7차시 ⑤ 피드백과 성찰 계획",
+  d8share:"8차시 ③ 나눔 기록", d8end:"8차시 ④ 마무리 성찰"
 };
 const BASE_LABELS={topic:"주제 · 단원",std:"성취기준",m:"자료",p:"발문",c:"조건",s:"채점 요소"};
 const QC_LABELS={m:"자료",p:"발문",c:"조건",s:"채점 요소"};
@@ -2216,6 +2664,11 @@ const DEFAULT_CONTENT = {
     d5plan:"이 학습 증거는 수업 중 언제 생기나요? 따로 시험을 보지 않아도 수업 흐름 안에서 모을 수 있을까요?",
     d6cmp:"이 문항에서 학생은 어떤 질문을 하게 되나요? 무엇을 평가하고 있나요? 평소 발문, 조건, 자료를 어떻게 생각해 왔는지도 나눠 보세요.",
     d6make:"자료·발문·조건·채점 가운데 무엇을 먼저 바꾸면 나머지가 따라 바뀔까요? 수업에서 쓴 렌즈가 조건 안에 들어갔나요?",
+    d7score:"같은 답안인데 왜 점수가 달랐을까요? 점수가 갈린 요소의 수준 기술을 함께 다시 읽고, 무엇이 보이면 A인지 말로 정리해 보세요.",
+    d7rub:"B~D가 부사만 바뀐 수준 기술로 채점자끼리 점수가 맞을까요? 표본 채점에서 갈린 요소를 떠올리며, 수준마다 보이는 행동이 다르게 고쳐 보세요.",
+    d7fb:"학생이 답을 고치게 만드는 피드백은 언제, 어떤 말로 해야 할까요? 정답을 알려 주는 대신 되물을 수 있는 질문을 찾아보세요.",
+    d8share:"이 설계에서 학생은 어떤 질문을 하게 되나요? 수업 활동과 평가 과제가 자연스럽게 이어지나요? 한 사람씩 소개하고, 듣는 사람은 질문을 하나씩 던져 주세요.",
+    d8end:"이틀 동안 ‘질문’과 ‘평가’에 대한 생각이 어떻게 바뀌었나요? 우리 반 교실에서 가장 먼저 해 볼 한 가지는 무엇인가요?",
     d6end:"Q1 평가 요소는 학습자의 사고 과정과 역량을 충분히 드러내고 있는가? · Q2 질문 중심 평가가 단순한 답안 작성에 머물지 않으려면 수업 설계에서 무엇을 고려해야 하는가? · Q3 핵심 질문과 질문 초점화는 학습자의 사고를 어떻게 조직하고 심화시키는가? · Q4 우리 수업에서 당장 적용 가능한 유형은 무엇이며 어떤 자료가 필요한가?"
   },
   cards:[
@@ -2237,6 +2690,24 @@ const DEFAULT_CONTENT = {
     c:"(가) 메모의 네 가지 내용(발명품, 쓰임, 장점, 단점)을 모두 포함할 것\n(나) 5~6개의 영어 문장으로 쓸 것\n(다) 수동태를 최소 한 문장 이상 사용할 것",
     s:"내용: 메모의 네 가지 정보 포함\n언어 형식: 수동태 사용, 문장 수"
   },
+  d7:{
+    ctx:"Lesson 6 · Wise Communication 논술형 · Q-OREO 구조로 자신만의 가치 질문에 답하기",
+    parts:[
+      {t:"Q",x:"Is being kind online more important than expressing yourself freely?"},
+      {t:"O",x:"I think we should always think about others' feelings before we post or send something online."},
+      {t:"R+E",x:"When we post or send something without thinking, we can hurt someone without knowing it. In the story, Yumin posted a photo of Sia without asking her. The photo had rude comments. Sia felt hurt, but she didn't know about it. This shows that one small action online can hurt someone deeply."},
+      {t:"E",x:"In fact, 78 out of 100 students said they felt hurt by a message online. This is not just Sia's problem — it happens to many people. I think wise communication means thinking about others' feelings before you click or post."},
+      {t:"O",x:"So, is being kind online more important than expressing yourself freely? I think yes. Wise communication starts with caring about others, not just saying what you want."}
+    ],
+    rub:[
+      {el:"질문의 깊이",tag:"Q",a:"논제를 자신만의 가치 질문으로 정확하게 재구성함",lv:"A",w:"온라인 소통이라는 논제를 ‘친절과 표현의 자유 중 무엇이 더 중요한가’라는 자신만의 가치 질문으로 바꾸었어요."},
+      {el:"의미 전달",tag:"O",a:"자신의 주장을 명확하고 논리적인 한 문장으로 정확하게 표현함",lv:"A",w:"‘올리기 전에 다른 사람의 감정을 먼저 생각해야 한다’는 주장이 한 문장으로 분명해요."},
+      {el:"비판적 사고",tag:"R",a:"주장에 대한 이유를 근거와 함께 논리적으로 정확하게 설명함",lv:"A",w:"‘모르는 사이에 상처를 줄 수 있다’는 이유를 지문 사례로 뒷받침해 논리가 이어져요."},
+      {el:"전이",tag:"E",a:"지문 속 장면을 적절하게 활용하여 주장을 설득력 있게 뒷받침함",lv:"A",w:"유민과 시아의 장면에 설문 수치까지 더해 주장을 설득력 있게 뒷받침해요."},
+      {el:"의미·맥락 이해",tag:"Definition",a:"Definition 렌즈를 활용하여 Wise Communication을 정확하게 정의함",lv:"A",w:"‘클릭하거나 올리기 전에 다른 사람의 감정을 생각하는 것’으로 Wise Communication을 자신의 말로 정의했어요."}
+    ],
+    e:"활동에 참여하며 자신의 생각을 표현하려고 노력함."
+  },
   qc:{
     m:"스마트폰이 삶에 미친 영향을 보여 주는 그림, 짧은 글, 설문 결과 표",
     p:"[자료]를 보고 스마트폰이 우리 삶에 미친 영향에 대해 탐구 질문을 만든 뒤, 가장 중요한 질문 1개를 골라 자료나 AI 답변에서 필요한 정보를 선별하여 그 질문에 답하는 글을 영어로 쓰시오.",
@@ -2244,6 +2715,7 @@ const DEFAULT_CONTENT = {
     s:"질문의 질: 질문의 다양성, 질문의 깊이\n답안의 질: 의미 전달, 비판적 사고(근거 선별), 정확성\n성찰"
   }
 };
+DEFAULT_CONTENT.d7.rub.forEach(r=>{ const [b,c,d]=gradeDraft(r.a); r.b=b; r.c=c; r.d=d; });
 const clone=o=>JSON.parse(JSON.stringify(o));
 const toArr=v=>Array.isArray(v)?v.filter(Boolean):(v&&typeof v==="object"?Object.keys(v).sort((a,b)=>a-b).map(k=>v[k]).filter(Boolean):[]);
 const cut=(v,n)=>String(v==null?"":v).slice(0,n);
@@ -2253,7 +2725,11 @@ function normContent(v){
   const cards=toArr(v.cards).map(x=>({t:cut(x.t,60),d:cut(x.d,120),a:DOMAINS.includes(x.a)?x.a:"과정·기능",w:cut(x.w,300)})).filter(x=>x.t).slice(0,16);
   const base={...d.base}; if(v.base&&typeof v.base==="object") Object.keys(base).forEach(k=>{ if(typeof v.base[k]==="string") base[k]=v.base[k].slice(0,1200); });
   const qc={...d.qc}; if(v.qc&&typeof v.qc==="object") Object.keys(qc).forEach(k=>{ if(typeof v.qc[k]==="string") qc[k]=v.qc[k].slice(0,1200); });
-  return {say,cards:cards.length?cards:d.cards,base,qc};
+  const v7=v.d7&&typeof v.d7==="object"?v.d7:{};
+  const parts=toArr(v7.parts).map(x=>({t:cut(x.t,12),x:cut(x.x,800)})).filter(x=>x.x).slice(0,10);
+  const rub=toArr(v7.rub).map(x=>({el:cut(x.el,40),tag:cut(x.tag,16),a:cut(x.a,200),b:cut(x.b,200),c:cut(x.c,200),d:cut(x.d,200),lv:LV.includes(x.lv)?x.lv:"A",w:cut(x.w,300)})).filter(x=>x.el).slice(0,6);
+  const d7={ctx:typeof v7.ctx==="string"?v7.ctx.slice(0,200):d.d7.ctx, parts:parts.length?parts:d.d7.parts, rub:rub.length?rub:d.d7.rub, e:typeof v7.e==="string"?v7.e.slice(0,200):d.d7.e};
+  return {say,cards:cards.length?cards:d.cards,base,qc,d7};
 }
 let C=(()=>{ try{ const s=JSON.parse(localStorage.getItem(NS+"ui.content2")||"null"); if(s) return normContent(s); }catch(e){} return clone(DEFAULT_CONTENT); })();
 
@@ -2271,6 +2747,14 @@ function renderContent(){
     <td class="ans a">${esc(x.a)}</td><td class="ans w">${esc(x.w)}</td></tr>`).join("");
   bindAll(tb);
   $("d6-cmp").innerHTML=cmpHtml(C.base,C.qc);
+  const d7=C.d7;
+  $("d7-sample").innerHTML=`<div class="sample-ctx">${esc(d7.ctx)}</div>`+d7.parts.map(p=>`<p><b class="stag">${esc(p.t)}</b><span class="en">${esc(p.x)}</span></p>`).join("");
+  const rb=document.querySelector('[data-rub="d7"]');
+  rb.innerHTML=d7.rub.map((r,i)=>`<tr data-lv="${r.lv}"><td class="el"><b>${esc(r.el)}</b>${r.tag?`<small>${esc(r.tag)}</small>`:""}</td><td>${esc(r.a)}</td><td>${esc(r.b)}</td><td>${esc(r.c)}</td><td>${esc(r.d)}</td>
+    <td><select id="d7-sc${i+1}" data-k="d7.sc${i+1}" aria-label="${esc(r.el)} 내 채점">${opts(LV,"-")}</select></td><td class="ans a">${r.lv}</td></tr>`).join("");
+  bindAll(rb);
+  $("d7-ecommon").innerHTML=`<b>E (2)</b> 모든 요소 공통 · ${esc(d7.e)}`;
+  $("d7-why").innerHTML=`<b>강사 기준의 이유</b><ul>${d7.rub.map(r=>`<li><b>${esc(r.el)} · ${r.lv}</b> ${esc(r.w)}</li>`).join("")}</ul>`;
   $("d6-excmp").innerHTML=cmpHtml(C.base,C.qc);
   refresh();
 }
@@ -2290,6 +2774,16 @@ function renderEditor(){
     <td><button type="button" class="ibtn sm" data-eddel="cards.${i}" data-tip="이 카드 지우기" data-tip-pos="left" aria-label="${i+1}번 카드 지우기">${ic("trash")}</button></td></tr>`).join("");
   const sub=(key,labels)=>Object.keys(labels).map(k=>`<span>${labels[k]}</span><textarea class="inp" rows="${k==="m"||k==="c"?3:1}" maxlength="1200" data-ed="${key}.${k}" aria-label="${labels[k]}">${esc(w[key][k]||"")}</textarea>`).join("");
   $("ed-base").innerHTML=sub("base",BASE_LABELS);
+  $("ed-d7ctx").value=w.d7.ctx; $("ed-d7e").value=w.d7.e;
+  $("ed-parts").innerHTML=w.d7.parts.map((x,i)=>`<tr><td class="no">${i+1}</td>
+    <td><input class="inp" maxlength="12" data-ed="d7.parts.${i}.t" value="${esc(x.t)}" aria-label="${i+1}번 구조 표시"></td>
+    <td><textarea class="inp" rows="1" maxlength="800" data-ed="d7.parts.${i}.x" aria-label="${i+1}번 문장">${esc(x.x)}</textarea></td>
+    <td><button type="button" class="ibtn sm" data-eddel="d7.parts.${i}" data-tip="이 부분 지우기" data-tip-pos="left" aria-label="${i+1}번 부분 지우기">${ic("trash")}</button></td></tr>`).join("");
+  $("ed-rub").innerHTML=w.d7.rub.map((x,i)=>`<tr><td><input class="inp" maxlength="40" data-ed="d7.rub.${i}.el" value="${esc(x.el)}" aria-label="${i+1}번 평가 요소"><input class="inp" maxlength="16" data-ed="d7.rub.${i}.tag" value="${esc(x.tag)}" aria-label="${i+1}번 표시" placeholder="표시 (예: Q)"></td>
+    ${["a","b","c","d"].map(l=>`<td><textarea class="inp" rows="2" maxlength="200" data-ed="d7.rub.${i}.${l}" aria-label="${i+1}번 ${l.toUpperCase()} 수준">${esc(x[l])}</textarea></td>`).join("")}
+    <td><select class="inp" data-ed="d7.rub.${i}.lv" aria-label="${i+1}번 강사 기준">${LV.map(a=>`<option${a===x.lv?" selected":""}>${a}</option>`).join("")}</select></td>
+    <td><textarea class="inp" rows="2" maxlength="300" data-ed="d7.rub.${i}.w" aria-label="${i+1}번 이유">${esc(x.w)}</textarea></td>
+    <td><button type="button" class="ibtn sm" data-eddel="d7.rub.${i}" data-tip="이 요소 지우기" data-tip-pos="left" aria-label="${i+1}번 요소 지우기">${ic("trash")}</button></td></tr>`).join("");
   $("ed-qc").innerHTML=sub("qc",QC_LABELS);
   document.querySelectorAll("#v-content textarea.inp").forEach(t=>requestAnimationFrame(()=>{ if(t.offsetParent) taH(t); }));
 }
@@ -2301,10 +2795,13 @@ document.getElementById("v-content").addEventListener("input",e=>{
 document.getElementById("v-content").addEventListener("change",e=>{ const el=e.target.closest("select[data-ed]"); if(el) edSet(el.dataset.ed,el.value); });
 document.getElementById("v-content").addEventListener("click",e=>{
   const d=e.target.closest("[data-eddel]"); if(!d) return;
-  const [k,i]=d.dataset.eddel.split("."); if(ED.w[k].length<=1){ toast("최소 한 개는 남겨 두세요."); return; }
-  ED.w[k].splice(+i,1); ED.dirty=true; renderEditor();
+  const p=d.dataset.eddel.split("."), i=+p.pop(); let arr=ED.w; p.forEach(k=>arr=arr[k]);
+  if(arr.length<=1){ toast("최소 한 개는 남겨 두세요."); return; }
+  arr.splice(i,1); ED.dirty=true; renderEditor();
 });
 $("ed-cards-add").addEventListener("click",()=>{ if(ED.w.cards.length>=16) return toast("카드는 16개까지 넣을 수 있어요."); ED.w.cards.push({t:"",d:"",a:"과정·기능",w:""}); ED.dirty=true; renderEditor(); });
+$("ed-parts-add").addEventListener("click",()=>{ if(ED.w.d7.parts.length>=10) return toast("10개까지 넣을 수 있어요."); ED.w.d7.parts.push({t:"",x:""}); ED.dirty=true; renderEditor(); });
+$("ed-rub-add").addEventListener("click",()=>{ if(ED.w.d7.rub.length>=6) return toast("평가 요소는 6개까지 넣을 수 있어요."); ED.w.d7.rub.push({el:"",tag:"",a:"",b:"",c:"",d:"",lv:"A",w:""}); ED.dirty=true; renderEditor(); });
 $("ed-reset").addEventListener("click",async()=>{
   const ok=await confirmBox("기본값으로 되돌릴까요?","<p>편집 화면의 내용이 처음 제공된 예시로 바뀝니다. <b>저장하고 모두에게 반영</b>을 눌러야 연수생 화면에도 적용돼요.</p>","되돌리기",false);
   if(!ok) return; ED.w=clone(DEFAULT_CONTENT); ED.dirty=true; renderEditor(); toast("기본값을 불러왔어요. 저장을 눌러야 반영돼요.");
@@ -2312,7 +2809,7 @@ $("ed-reset").addEventListener("click",async()=>{
 $("ed-save").addEventListener("click",async()=>{
   const er=$("ed-err"), dt=$("ed-detail"); er.textContent=""; dt.textContent="";
   const data=normContent(ED.w);
-  const ok=await confirmBox("모두에게 반영할까요?",`<p>학습 증거 카드 ${data.cards.length}개, 6차시 제공 문항과 질문 중심 예시, 토의 질문 ${Object.keys(data.say).length}개가 이 페이지를 연 모든 화면에 바로 바뀝니다. 비어 있는 카드는 빠집니다.</p>`,"저장하고 반영",false);
+  const ok=await confirmBox("모두에게 반영할까요?",`<p>학습 증거 카드 ${data.cards.length}개, 6차시 제공 문항과 질문 중심 예시, 7차시 표본 답안과 루브릭 ${data.d7.rub.length}개 요소, 토의 질문 ${Object.keys(data.say).length}개가 이 페이지를 연 모든 화면에 바로 바뀝니다. 비어 있는 카드는 빠집니다.</p>`,"저장하고 반영",false);
   if(!ok) return;
   try{
     await busy($("ed-save"),async()=>{ await ensureTeacher($("ed-key").value.trim()); await rdb.ref(CONTENT_PATH).set({...data,updatedAt:TS()}); });
@@ -2338,10 +2835,10 @@ async function initContent(){
 hydrateIcons();
 paintHero();
 fillStaticSelects();
-["d5"].forEach(renderRows);
+["d5","d7"].forEach(renderRows);
 bindAll(document);
 wireDay2();
-(function(){ let r=false; try{ r=localStorage.getItem(NS+"ui.d5reveal")==="1"; }catch(e){} setReveal("d5",r); })();
+["d5","d7"].forEach(n=>{ let r=false; try{ r=localStorage.getItem(NS+"ui."+n+"reveal")==="1"; }catch(e){} setReveal(n,r,true); });
 setupSheetBars();
 setupTabs();
 route();
